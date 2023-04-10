@@ -6,6 +6,10 @@ vierkant= new component(30, 30, "orange", 10, 120);
 //De grootte van het tangramvierkant:
 var zijde = 100;
 var z_vierkant = zijde/(2*Math.sqrt(2))
+
+let drag = false;
+let startX;
+let startY;
 draw();
 
 //De verschillende vormen
@@ -61,39 +65,80 @@ function component(width, height, color, x, y) {
     ctx.fillRect(this.x, this.y, this.width, this.height);
 }
 
-triangle.onmousedown = function(event) {
+let is_mouse_in_shape = function(x,y,shape){
+  let shape_left = shape.x;
+  let shape_right = shape.x + shape.width;
+  let shape_top = shape.x + shape.width;
+  let shape_bottom = shape.y + shape.height;
 
-    let shiftX = event.clientX - triangle.getBoundingClientRect().left;
-    let shiftY = event.clientY - triangle.getBoundingClientRect().top;
-  
-    triangle.style.position = 'absolute';
-    triangle.style.zIndex = 1000;
-    document.body.append(triangle);
-  
-    moveAt(event.pageX, event.pageY);
-  
-    // moves the triangle at (pageX, pageY) coordinates
-    // taking initial shifts into account
-    function moveAt(pageX, pageY) {
-      triangle.style.left = pageX - shiftX + 'px';
-      triangle.style.top = pageY - shiftY + 'px';
-    }
-  
-    function onMouseMove(event) {
-      moveAt(event.pageX, event.pageY);
-    }
-  
-    // move the triangle on mousemove
-    document.addEventListener('mousemove', onMouseMove);
-  
-    // drop the triangle, remove unneeded handlers
-    triangle.onmouseup = function() {
-      document.removeEventListener('mousemove', onMouseMove);
-      triangle.onmouseup = null;
-    };
-  
-  };
-  
-  triangle.ondragstart = function() {
-    return false;
-  };
+  if(x>shape_left && x < shape_right && y>shape_top && y<shape_bottom){
+    return true;
+  }
+  return false;
+}
+
+let mouse_down = function(event){
+
+  event.PreventDefault();
+
+  startX = parseInt(event.clientX);
+  startY = parseInt(event.clientY);
+
+  if(is_mouse_in_shape(startX,startY,vierkant)){
+    console.log('yes');
+    drag=true;
+    return;
+  }else{
+    console.log('no');
+  }
+}
+
+let mouse_up = function(event){
+  event.PreventDefault();
+  if(!drag){
+    return;
+  }
+  event.PreventDefault();
+  drag=false;
+}
+
+let mouse_out = function(event){
+  event.PreventDefault();
+  if(!drag){
+    return;
+  }
+  event.PreventDefault();
+  drag=false;
+}
+
+let mouse_move = function(event){
+  event.PreventDefault();
+  if(!drag){
+    return;
+  }else{
+    event.PreventDefault();
+    let mouseX = parseInt(event.clientX);
+    let mouseY = parseInt(event.clientY);
+
+    let dx = mouseX - startX;
+    let dy = mouseX - startY;
+
+    console.log(dx,dy);
+    vierkant.x += dx;
+    vierkant.y += dy;
+
+    //clear it and redraw
+    ctx.clearRect(0,0,650,500);
+    vierkant= new component(30, 30, "orange", 10, 120);
+    
+    startX = mouseX;
+    startY = mouseY;
+
+  }
+}
+
+//eventlisteners
+canvas.onmousedown = mouse_down;
+canvas.onmouseup = mouse_up;
+canvas.onmouseout = mouse_out;
+canvas.onmousemove = mouse_move;
