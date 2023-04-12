@@ -11,16 +11,16 @@ var canvas_height = canvas.height;
 let offset_x;
 let offset_y;
 
-let get_offset = function(){
+let get_offset = function () {
   let canvas_offsets = canvas.getBoundingClientRect();
   offset_x = canvas_offsets.left;
   offset_y = canvas_offsets.top;
 }
 
 get_offset();
-window.onscroll = function(){get_offset();}
-window.onresize = function(){get_offset();}
-canvas.onresize = function(){get_offset();}
+window.onscroll = function () { get_offset(); }
+window.onresize = function () { get_offset(); }
+canvas.onresize = function () { get_offset(); }
 
 //Vormen
 let shapes = [];
@@ -29,74 +29,89 @@ let drag = false;
 let startX;
 let startY;
 
-shapes.push({x : 200, y : 50, width: 100, height: 100 , color: 'red'});
+shapes.push({ x: 200, y: 50, width: 100, height: 100, rotation: 0, color: 'red', solved: 0 });
+
+//Solution
+let solutions = [];
+let current_solution_index = null;
+
+solutions.push({ x: 200, y: 50, width: 100, height: 100, rotation: 0, color: 'grey', solved: 0 });
+
 
 //Tekenvorm
-function draw_shapes(){
-  ctx.clearRect(0,0,canvas_width,canvas_height);
-  for(let shape of shapes){
-    console.log(shape.x+shape.y);
+function draw_shapes() {
+  ctx.clearRect(0, 0, canvas_width, canvas_height);
+  for (let shape of shapes) {
+    console.log(shape.x + shape.y);
     ctx.fillStyle = shape.color;
-    ctx.fillRect(shape.x,shape.y,shape.width,shape.height);
+    ctx.fillRect(shape.x, shape.y, shape.width, shape.height);
   }
 }
 draw_shapes();
 
-let is_mouse_in_shape = function(x,y,shape){
+let is_mouse_in_shape = function (x, y, shape) {
   let shape_left = shape.x;
   let shape_right = shape.x + shape.width;
   let shape_top = shape.y;
   let shape_bottom = shape.y + shape.height;
 
-  if(x > shape_left && x < shape_right && y > shape_top && y < shape_bottom){
+  if (x > shape_left && x < shape_right && y > shape_top && y < shape_bottom) {
     return true;
   }
   return false;
 }
 
-let mouse_down = function(event){
+let mouse_down = function (event) {
 
   event.preventDefault();
 
   startX = parseInt(event.clientX - offset_x);
   startY = parseInt(event.clientY - offset_y);
 
-  let index = 0 ;
-  for(let shape of shapes){
+  let index = 0;
+  for (let shape of shapes) {
 
-    if(is_mouse_in_shape(startX,startY,shape)){
-      console.log('yes');
-      current_shape_index = index;
-      console.log(current_shape_index);
-      drag=true;
-      return;
-    }else{
+    if (is_mouse_in_shape(startX, startY, shape)) {
+      if (shape.solution == false) {
+        console.log('yes');
+        current_shape_index = index;
+        console.log(current_shape_index);
+        drag = true;
+        return;
+      }
+      else {
+        console.log("in solution")
+        current_shape_index = index;
+        console.log(current_shape_index);
+      }
+    } else {
       console.log('no');
     }
     index++;
   }
 }
 
-let mouse_up = function(event){
-  if(!drag){
+let mouse_up = function (event) {
+  if (!drag) {
     return;
   }
   event.preventDefault();
-  drag=false;
+  check_correct()
+  drag = false;
 }
 
-let mouse_out = function(event){
-  if(!drag){
+let mouse_out = function (event) {
+  if (!drag) {
     return;
   }
   event.preventDefault();
-  drag=false;
+  drag = false;
 }
 
-let mouse_move = function(event){
-  if(!drag){
+let mouse_move = function (event) {
+  if (!drag) {
     return;
-  }else{
+  } else {
     event.preventDefault();
     let mouseX = parseInt(event.clientX - offset_x);
     let mouseY = parseInt(event.clientY - offset_y);
@@ -104,12 +119,12 @@ let mouse_move = function(event){
     let dx = mouseX - startX;
     let dy = mouseY - startY;
 
-    console.log(dx,dy);
+    console.log(dx, dy);
     let current_shape = shapes[current_shape_index];
-    
+
     current_shape.x += dx;
     current_shape.y += dy;
-    
+
     //clear it and redraw
     draw_shapes();
 
@@ -117,6 +132,34 @@ let mouse_move = function(event){
     startY = mouseY;
 
   }
+}
+
+function check_correct() {
+  for (let shape of shapes) {
+      for (let solution of solutions) {
+        if (!shape.solved && !solution.solved && shape.x == solution.x && shape.y == solution.y && shape.width == solution.width 
+          && shape.height==solution.height && shape.rotation == solution.rotation)
+          shape.solved = true;
+          solution.solved = true;
+          check_finished()
+          return;
+      }
+  }
+}
+
+function check_finished() {
+  for (let shape of shapes) {
+    if (!shape.solved) {
+      return false;
+    }
+  }
+  for (let solution of solutions) {
+    if (!solution.solved) {
+      return false;
+    }
+  }
+  return true;
+
 }
 
 //eventlisteners
