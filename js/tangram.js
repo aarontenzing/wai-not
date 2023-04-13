@@ -29,7 +29,18 @@ let drag = false;
 let startX;
 let startY;
 
-shapes.push({ x: 200, y: 50, width: 100, height: 100, rotation: 0, color: 'red', solved: 0 });
+var zijde = 300;
+var z_vierkant = zijde/(2*Math.sqrt(2))
+
+shapes.push({ x: 200, y: 50, width: z_vierkant, height: z_vierkant, rotation: 0, color: 'red', type: 'square', solved: 0 });
+shapes.push({ x: 200, y: 200, width: zijde/2, height: z_vierkant/Math.sqrt(2), rotation: 0, color: 'yellow', type: 'parallel', solved: 0 });
+shapes.push({ x: 500, y: 300, width: zijde/2, height: zijde, rotation: 0, color: 'blue', type: 'big_triangle', solved: 0 });
+shapes.push({ x: 200, y: 300, width: zijde/2, height: zijde, rotation: 0, color: 'orange', type: 'big_triangle', solved: 0 });
+shapes.push({ x: 500, y: 150, width: zijde/2, height: zijde/2, rotation: 0, color: 'green', type: 'med_triangle', solved: 0 });
+shapes.push({ x: 800, y: 350, width: zijde/4, height: zijde/2, rotation: 0, color: 'purple', type: 'small_triangle', solved: 0 });
+shapes.push({ x: 900, y: 350, width: zijde/4, height: zijde/2, rotation: 0, color: 'violet', type: 'small_triangle', solved: 0 });
+
+
 
 //Solution
 let solutions = [];
@@ -37,14 +48,61 @@ let current_solution_index = null;
 
 solutions.push({ x: 200, y: 50, width: 100, height: 100, rotation: 0, color: 'grey', solved: 0 });
 
-
 //Tekenvorm
 function draw_shapes() {
   ctx.clearRect(0, 0, canvas_width, canvas_height);
   for (let shape of shapes) {
-    console.log(shape.x + shape.y);
-    ctx.fillStyle = shape.color;
-    ctx.fillRect(shape.x, shape.y, shape.width, shape.height);
+    if(shape.type == 'square'){
+      ctx.fillStyle = shape.color;
+      ctx.fillRect(shape.x, shape.y, shape.width, shape.height);
+    }
+    
+    if(shape.type == 'big_triangle'){
+      ctx.fillStyle = shape.color;
+      ctx.beginPath();
+      ctx.moveTo(shape.x, shape.y);
+      ctx.lineTo(shape.x+shape.width,shape.y+shape.width);
+      ctx.lineTo(shape.x,shape.y+shape.height);
+      ctx.lineTo(shape.x,shape.y);
+      ctx.fill();
+      ctx.closePath();
+    }
+    
+    if(shape.type == 'med_triangle'){
+      ctx.fillStyle = shape.color;
+      ctx.beginPath();
+      ctx.moveTo(shape.x, shape.y);
+      ctx.lineTo(shape.x+shape.width,shape.y);
+      ctx.lineTo(shape.x+shape.width,shape.y+shape.height);
+      ctx.lineTo(shape.x,shape.y);
+      ctx.fill();
+      ctx.closePath();
+    }
+    
+    if(shape.type == 'small_triangle'){
+      ctx.fillStyle = shape.color;
+      ctx.beginPath();
+      ctx.moveTo(shape.x, shape.y);
+      ctx.lineTo(shape.x+shape.width,shape.y+shape.width);
+      ctx.lineTo(shape.x,shape.y+shape.height);
+      ctx.lineTo(shape.x,shape.y);
+      ctx.fill();
+      ctx.closePath();
+    }
+    
+    
+    if(shape.type == 'parallel'){
+      ctx.fillStyle = shape.color;
+      ctx.beginPath();
+      ctx.moveTo(shape.x, shape.y);
+      ctx.lineTo(shape.x-shape.height,shape.y+shape.height);
+      ctx.lineTo(shape.x-shape.height+shape.width,shape.y+shape.height);
+      ctx.lineTo(shape.x+shape.width,shape.y);
+      ctx.lineTo(shape.x,shape.y);
+      ctx.fill();
+      ctx.closePath();
+    }
+    
   }
 }
 draw_shapes();
@@ -72,18 +130,18 @@ let mouse_down = function (event) {
   for (let shape of shapes) {
 
     if (is_mouse_in_shape(startX, startY, shape)) {
-      if (shape.solution == false) {
+      //if (shape.solution == false) {
         console.log('yes');
         current_shape_index = index;
         console.log(current_shape_index);
         drag = true;
         return;
-      }
-      else {
-        console.log("in solution")
-        current_shape_index = index;
-        console.log(current_shape_index);
-      }
+     // }
+    //  else {
+     //   console.log("in solution")
+      //  current_shape_index = index;
+     //   console.log(current_shape_index);
+      //}
     } else {
       console.log('no');
     }
@@ -167,70 +225,3 @@ canvas.onmousedown = mouse_down;
 canvas.onmouseup = mouse_up;
 canvas.onmouseout = mouse_out;
 canvas.onmousemove = mouse_move;
-
-
-
-/*
-var vierkant;
-vierkant= new component(30, 30, "orange", 10, 120);
-//De grootte van het tangramvierkant:
-var zijde = 100;
-var z_vierkant = zijde/(2*Math.sqrt(2))
-
-
-draw();
-
-//De verschillende vormen
-function draw(){
-
-    //Vierkant
-    ctx.save();
-    ctx.translate(zijde,50);
-    ctx.rotate(45*Math.PI/180);
-    ctx.fillStyle = "red";
-    ctx.fillRect(0,0, z_vierkant, z_vierkant);
-    ctx.restore();
-
-    //Grote Driehoek 
-    ctx.fillStyle = "blue";
-    ctx.beginPath();
-    ctx.moveTo(0, 0);
-    ctx.lineTo(zijde/2, zijde/2);
-    ctx.lineTo(0, zijde);
-    ctx.fill();
-
-    //Kleine Driehoek 
-    ctx.fillStyle = "green";
-    ctx.beginPath();
-    ctx.moveTo(0, 0);
-    ctx.lineTo(zijde/2, zijde/2);
-    ctx.lineTo(0, zijde/2);
-    ctx.fill();
-    
-
-    //Parallellogram
-    ctx.fillStyle = "yellow";
-    ctx.beginPath();
-    var place = 100;
-    //ctx.save();
-    //ctx.translate(place,place);
-    //ctx.rotate(180*Math.PI/180);
-    ctx.moveTo(place, place);
-    ctx.lineTo(place+zijde/2,place);
-    ctx.lineTo(place+zijde/2+z_vierkant*Math.cos(45*Math.PI/180),place+z_vierkant*Math.sin(45*Math.PI/180));
-    ctx.lineTo(place+z_vierkant*Math.cos(45*Math.PI/180),place+z_vierkant*Math.sin(45*Math.PI/180));  
-    ctx.lineTo(place,place);
-    ctx.fill();
-    //ctx.restore();
-}
-
-function component(width, height, color, x, y) {
-    this.width = width;
-    this.height = height;
-    this.x = x;
-    this.y = y;    
-    ctx.fillStyle = color;
-    ctx.fillRect(this.x, this.y, this.width, this.height);
-}
-
-*/
