@@ -3,17 +3,13 @@ var ctx = canvas.getContext("2d");
 
 //Canvas waarden
 canvas.width = window.innerWidth - 30;
-canvas.height = window.innerHeight - 10;
+canvas.height = window.innerHeight - 25;
 
 var canvas_width = canvas.width;
 var canvas_height = canvas.height;
 
 let offset_x;
 let offset_y;
-
-let rotate = false;
-let angle = 0;
-let rot_shape = 0; //which shape to rotate
 
 let get_offset = function () {
   let canvas_offsets = canvas.getBoundingClientRect();
@@ -142,14 +138,11 @@ let mouse_down = function (event) {
   startX = parseInt(event.clientX - offset_x);
   startY = parseInt(event.clientY - offset_y);
 
-  console.log("hey")
   for (i = 6; i>=0; i--) {
     let shape = shapes[i];
-    console.log("hallo")
     console.log(shape);
     if (is_mouse_in_shape(startX, startY, shape) && !shape.solved) {
       if (event.button == 0) { // Checks if it is left mouse button
-
         console.log('yes');
         current_shape_index = i;
         console.log(current_shape_index);
@@ -178,11 +171,11 @@ let mouse_down = function (event) {
         }
         console.log(shape.rotation);
         draw_shapes();
+        check_correct();
         return;
       }
     }
   }
-  check_correct();
 }
 
 
@@ -196,7 +189,6 @@ let mouse_up = function (event) {
   let shape = shapes.splice(current_shape_index, 1);
   shapes = shapes.concat(shape);
   draw_shapes();
-  // console.log(shapes);
   drag = false;
 }
 
