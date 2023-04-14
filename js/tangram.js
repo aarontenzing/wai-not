@@ -59,67 +59,16 @@ solutions.push({ x: 800, y: 350, width: zijde / 4, height: zijde / 2, rotation: 
 solutions.push({ x: 900, y: 350, width: zijde / 4, height: zijde / 2, rotation: 45, type: 'small_triangle', solved: false });
 
 //Tekenvorm
+
 function draw_shapes() {
   ctx.clearRect(0, 0, canvas_width, canvas_height);
-  for (let solution of solutions) {
-    ctx.fillStyle = "grey";
-    ctx.save();
-    if (solution.type == 'square') {
-      ctx.translate(solution.x + solution.width / 2, solution.y + solution.height / 2);
-      ctx.rotate(solution.rotation * Math.PI / 180);
-      ctx.fillRect(solution.width / -2, solution.height / -2, solution.width, solution.height);
-
-    }
+  for (let shape of solutions.concat(shapes)) {
+    if (shape.color == null) {
+      ctx.fillStyle = "grey";
+    } 
     else {
-      if (solution.type == 'big_triangle') {
-        ctx.translate(solution.x + solution.width /3, solution.y+ (solution.height + solution.width) /3);
-        ctx.rotate(solution.rotation * Math.PI / 180);
-        ctx.beginPath();
-        ctx.moveTo(-solution.width /3, -(solution.height + solution.width) /3);
-        ctx.lineTo(solution.width - solution.width /3, solution.width -(solution.height + solution.width) /3);
-        ctx.lineTo(-solution.width /3, solution.height -(solution.height + solution.width) /3);
-        ctx.lineTo(-solution.width /3, -(solution.height + solution.width) /3);
-      }
-
-      if (solution.type == 'med_triangle') {
-        
-        ctx.translate(solution.x + solution.width * 2/3, solution.y + solution.width /3);
-        ctx.rotate(solution.rotation * Math.PI / 180);
-        ctx.beginPath();
-        ctx.moveTo(-solution.width * 2/3, -solution.width /3);
-        ctx.lineTo(solution.width - solution.width * 2/3, -solution.width /3);
-        ctx.lineTo(solution.width -solution.width * 2/3, solution.height -solution.width /3);
-        ctx.lineTo(-solution.width * 2/3, -solution.width /3 );
-      }
-
-      if (solution.type == 'small_triangle') {
-        ctx.translate(solution.x + solution.width /3, solution.y+ (solution.height + solution.width) /3);
-        ctx.rotate(solution.rotation * Math.PI / 180);
-        ctx.beginPath();
-        ctx.moveTo(-solution.width /3, -(solution.height + solution.width) /3);
-        ctx.lineTo(solution.width - solution.width /3, solution.width -(solution.height + solution.width) /3);
-        ctx.lineTo(-solution.width /3, solution.height -(solution.height + solution.width) /3);
-        ctx.lineTo(-solution.width /3, -(solution.height + solution.width) /3);
-      }
-
-      if (solution.type == 'parallel') {
-        ctx.translate(solution.x + (solution.height + solution.width)/2-solution.height, solution.y + solution.height/2);
-        ctx.rotate(solution.rotation * Math.PI / 180);
-        ctx.beginPath();
-        ctx.moveTo(-((solution.height + solution.width)/2-solution.height), - solution.height/2);
-        ctx.lineTo(-((solution.height + solution.width)/2-solution.height) - solution.height, - solution.height/2 + solution.height);
-        ctx.lineTo(-((solution.height + solution.width)/2-solution.height) - solution.height + solution.width, - solution.height/2 + solution.height);
-        ctx.lineTo(-((solution.height + solution.width)/2-solution.height) + solution.width, - solution.height/2);
-        ctx.lineTo(-((solution.height + solution.width)/2-solution.height), - solution.height/2);
-      }
-      ctx.fill(); 
-      ctx.closePath();
+      ctx.fillStyle = shape.color;
     }
-    ctx.restore();
-  }
-
-  for (let shape of shapes) {
-    ctx.fillStyle = shape.color;
     ctx.save();
     if (shape.type == 'square') {
       ctx.translate(shape.x + shape.width / 2, shape.y + shape.height / 2);
@@ -175,6 +124,7 @@ function draw_shapes() {
     ctx.restore();
   }
 }
+
 draw_shapes();
 
 let is_mouse_in_shape = function (x, y, shape) {
