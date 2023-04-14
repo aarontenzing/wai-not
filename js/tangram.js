@@ -34,15 +34,15 @@ let startX;
 let startY;
 
 var zijde = 300;
-var z_vierkant = zijde/(2*Math.sqrt(2))
+var z_vierkant = zijde / (2 * Math.sqrt(2))
 
 shapes.push({ x: 200, y: 50, width: z_vierkant, height: z_vierkant, rotation: 0, color: 'red', type: 'square', solved: 0 });
-shapes.push({ x: 200, y: 200, width: zijde/2, height: z_vierkant/Math.sqrt(2), rotation: 0, color: 'yellow', type: 'parallel', solved: 0 });
-shapes.push({ x: 500, y: 300, width: zijde/2, height: zijde, rotation: 0, color: 'blue', type: 'big_triangle', solved: 0 });
-shapes.push({ x: 200, y: 300, width: zijde/2, height: zijde, rotation: 0, color: 'orange', type: 'big_triangle', solved: 0 });
-shapes.push({ x: 500, y: 150, width: zijde/2, height: zijde/2, rotation: 0, color: 'green', type: 'med_triangle', solved: 0 });
-shapes.push({ x: 800, y: 350, width: zijde/4, height: zijde/2, rotation: 0, color: 'purple', type: 'small_triangle', solved: 0 });
-shapes.push({ x: 900, y: 350, width: zijde/4, height: zijde/2, rotation: 0, color: 'violet', type: 'small_triangle', solved: 0 });
+shapes.push({ x: 200, y: 200, width: zijde / 2, height: z_vierkant / Math.sqrt(2), rotation: 0, color: 'yellow', type: 'parallel', solved: 0 });
+shapes.push({ x: 500, y: 300, width: zijde / 2, height: zijde, rotation: 0, color: 'blue', type: 'big_triangle', solved: 0 });
+shapes.push({ x: 200, y: 300, width: zijde / 2, height: zijde, rotation: 0, color: 'orange', type: 'big_triangle', solved: 0 });
+shapes.push({ x: 500, y: 150, width: zijde / 2, height: zijde / 2, rotation: 0, color: 'green', type: 'med_triangle', solved: 0 });
+shapes.push({ x: 800, y: 350, width: zijde / 4, height: zijde / 2, rotation: 0, color: 'purple', type: 'small_triangle', solved: 0 });
+shapes.push({ x: 900, y: 350, width: zijde / 4, height: zijde / 2, rotation: 0, color: 'violet', type: 'small_triangle', solved: 0 });
 
 
 
@@ -56,77 +56,69 @@ solutions.push({ x: 200, y: 50, width: 100, height: 100, rotation: 0, color: 'gr
 function draw_shapes() {
   ctx.clearRect(0, 0, canvas_width, canvas_height);
   for (let shape of shapes) {
-    if(shape.type == 'square'){
-      if(rotate == true && rot_shape == 1) {
-        console.log("ROTATION");
-        ctx.save();
-        ctx.translate(shape.x, shape.y);
-        ctx.rotate(angle * Math.PI / 180);
-        ctx.fillStyle = shape.color;
-        ctx.fillRect(shape.width / -2, shape.height / -2, shape.width, shape.height);  
-        ctx.restore();
-        rotate = false;
-        rot_shape = 0;
-      }
-      else {
-        ctx.fillStyle = shape.color;
-        ctx.fillRect(shape.x, shape.y, shape.width, shape.height);
-      }
+    ctx.fillStyle = shape.color;
+    ctx.save();
+    if (shape.type == 'square') {
+      ctx.translate(shape.x + shape.width / 2, shape.y + shape.height / 2);
+      ctx.rotate(shape.rotation * Math.PI / 180);
+      ctx.fillRect(shape.width / -2, shape.height / -2, shape.width, shape.height);
+
     }
-    
-    if(shape.type == 'big_triangle'){
-
-      if(rotate == true && rot_shape == 2)
-      {
-        console.log("ROTATION");
-      }
-
-      else {
-        ctx.fillStyle = shape.color;
+    else {
+      if (shape.type == 'big_triangle') {
+        ctx.translate(shape.x + shape.width /3, shape.y+ (shape.height + shape.width) /3);
+        ctx.rotate(shape.rotation * Math.PI / 180);
         ctx.beginPath();
-        ctx.moveTo(shape.x, shape.y);
-        ctx.lineTo(shape.x+shape.width,shape.y+shape.width);
-        ctx.lineTo(shape.x,shape.y+shape.height);
-        ctx.lineTo(shape.x,shape.y);
-        ctx.fill();
-        ctx.closePath();
+        ctx.moveTo(-shape.width /3, -(shape.height + shape.width) /3);
+        ctx.lineTo(shape.width - shape.width /3, shape.width -(shape.height + shape.width) /3);
+        ctx.lineTo(-shape.width /3, shape.height -(shape.height + shape.width) /3);
+        ctx.lineTo(-shape.width /3, -(shape.height + shape.width) /3);
       }
-    }
-    
-    if(shape.type == 'med_triangle'){
-      ctx.fillStyle = shape.color;
-      ctx.beginPath();
-      ctx.moveTo(shape.x, shape.y);
-      ctx.lineTo(shape.x+shape.width,shape.y);
-      ctx.lineTo(shape.x+shape.width,shape.y+shape.height);
-      ctx.lineTo(shape.x,shape.y);
-      ctx.fill();
+
+      if (shape.type == 'med_triangle') {
+  
+        // ctx.beginPath();
+        // ctx.moveTo(shape.x, shape.y);
+        // ctx.lineTo(shape.x + shape.width, shape.y); 
+        // ctx.lineTo(shape.x + shape.width, shape.y + shape.height);
+        // ctx.lineTo(shape.x, shape.y);
+
+        
+        ctx.translate(shape.x + shape.width * 2/3, shape.y + shape.width /3);
+        ctx.rotate(shape.rotation * Math.PI / 180);
+        ctx.beginPath();
+        ctx.moveTo(-shape.width * 2/3, -shape.width /3);
+        ctx.lineTo(shape.width - shape.width * 2/3, -shape.width /3);
+        ctx.lineTo(shape.width -shape.width * 2/3, shape.height -shape.width /3);
+        ctx.lineTo(-shape.width * 2/3, -shape.width /3 );
+         
+       
+      }
+
+      if (shape.type == 'small_triangle') {
+        ctx.translate(shape.x + shape.width /3, shape.y+ (shape.height + shape.width) /3);
+        ctx.rotate(shape.rotation * Math.PI / 180);
+        ctx.beginPath();
+        ctx.moveTo(-shape.width /3, -(shape.height + shape.width) /3);
+        ctx.lineTo(shape.width - shape.width /3, shape.width -(shape.height + shape.width) /3);
+        ctx.lineTo(-shape.width /3, shape.height -(shape.height + shape.width) /3);
+        ctx.lineTo(-shape.width /3, -(shape.height + shape.width) /3);
+      }
+
+      if (shape.type == 'parallel') {
+        ctx.translate(shape.x + (shape.height + shape.width)/2-shape.height, shape.y + shape.height/2);
+        ctx.rotate(shape.rotation * Math.PI / 180);
+        ctx.beginPath();
+        ctx.moveTo(-((shape.height + shape.width)/2-shape.height), - shape.height/2);
+        ctx.lineTo(-((shape.height + shape.width)/2-shape.height) - shape.height, - shape.height/2 + shape.height);
+        ctx.lineTo(-((shape.height + shape.width)/2-shape.height) - shape.height + shape.width, - shape.height/2 + shape.height);
+        ctx.lineTo(-((shape.height + shape.width)/2-shape.height) + shape.width, - shape.height/2);
+        ctx.lineTo(-((shape.height + shape.width)/2-shape.height), - shape.height/2);
+      }
+      ctx.fill(); 
       ctx.closePath();
     }
-    
-    if(shape.type == 'small_triangle'){
-      ctx.fillStyle = shape.color;
-      ctx.beginPath();
-      ctx.moveTo(shape.x, shape.y);
-      ctx.lineTo(shape.x+shape.width,shape.y+shape.width);
-      ctx.lineTo(shape.x,shape.y+shape.height);
-      ctx.lineTo(shape.x,shape.y);
-      ctx.fill();
-      ctx.closePath();
-    }
-     
-    if(shape.type == 'parallel'){
-      ctx.fillStyle = shape.color;
-      ctx.beginPath();
-      ctx.moveTo(shape.x, shape.y);
-      ctx.lineTo(shape.x-shape.height,shape.y+shape.height);
-      ctx.lineTo(shape.x-shape.height+shape.width,shape.y+shape.height);
-      ctx.lineTo(shape.x+shape.width,shape.y);
-      ctx.lineTo(shape.x,shape.y);
-      ctx.fill();
-      ctx.closePath();
-    }
-    
+    ctx.restore();
   }
 }
 draw_shapes();
@@ -152,53 +144,33 @@ let mouse_down = function (event) {
 
   let index = 0;
   for (let shape of shapes) {
-    if(event.button == 0) { // Checks if it is left mouse button
-      if (is_mouse_in_shape(startX, startY, shape)) {
-        //if (shape.solution == false) {
-          console.log('yes');
-          current_shape_index = index;
-          console.log(current_shape_index);
-          drag = true;
-          return;
-      // }
-      //  else {
-      //   console.log("in solution")
-        //  current_shape_index = index;
-      //   console.log(current_shape_index);
-        //}
+    if (is_mouse_in_shape(startX, startY, shape)) {
+      if (event.button == 0) { // Checks if it is left mouse button
+
+        console.log('yes');
+        current_shape_index = index;
+        console.log(current_shape_index);
+        drag = true;
+        return;
       } else {
         console.log('no');
       }
-      index++;
-    }
 
-    if(event.button == 1) { // Checks if it is middle mouse button
-      if (is_mouse_in_shape(startX, startY, shape)) {
-          console.log('middle mouse click');
-          current_shape_index = index;
-          if (shape.type == 'square') {
-            rot_shape = 1;
-          }
-          else if(shape.type == 'big_triangle') {
-            rot_shape = 2;
-          } 
-          if(angle == 360 ) {
-            angle = 0;
-          }
-          else {
-            angle += 45;
-          }
-          shapes[current_shape_index].rotation = angle;
-          console.log(shapes[current_shape_index].rotation);
-          rotate = true;
-          draw_shapes();
-          index++;
+      if (event.button == 1) { // Checks if it is middle mouse button
+        console.log('middle mouse click');
+        current_shape_index = index;
+        shape.rotation += 45;
+        if (shape.rotation == 360) {
+          shape.rotation = 0;
+        }
+        console.log(shape.rotation);
+        draw_shapes();
       }
     }
+    index++;
   }
-
-
 }
+
 
 
 let mouse_up = function (event) {
@@ -246,14 +218,14 @@ let mouse_move = function (event) {
 
 function check_correct() {
   for (let shape of shapes) {
-      for (let solution of solutions) {
-        if (!shape.solved && !solution.solved && shape.x == solution.x && shape.y == solution.y && shape.width == solution.width 
-          && shape.height==solution.height && shape.rotation == solution.rotation)
-          shape.solved = true;
-          solution.solved = true;
-          check_finished()
-          return;
-      }
+    for (let solution of solutions) {
+      if (!shape.solved && !solution.solved && shape.x == solution.x && shape.y == solution.y && shape.width == solution.width
+        && shape.height == solution.height && shape.rotation == solution.rotation)
+        shape.solved = true;
+      solution.solved = true;
+      check_finished()
+      return;
+    }
   }
 }
 
