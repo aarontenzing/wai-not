@@ -44,8 +44,6 @@ shapes.push({ x: 500, y: 150, width: zijde / 2, height: zijde / 2, rotation: 0, 
 shapes.push({ x: 800, y: 350, width: zijde / 4, height: zijde / 2, rotation: 0, color: 'purple', type: 'small_triangle', solved: false });
 shapes.push({ x: 900, y: 350, width: zijde / 4, height: zijde / 2, rotation: 0, color: 'violet', type: 'small_triangle', solved: false });
 
-
-
 //Solution
 let solutions = [];
 let current_solution_index = null;
@@ -183,6 +181,8 @@ let mouse_up = function (event) {
     return;
   }
   event.preventDefault();
+  round_xy();
+  draw_shapes();
   check_correct();
   drag = false;
 }
@@ -221,6 +221,11 @@ let mouse_move = function (event) {
   }
 }
 
+function round_xy() { 
+  shapes[current_shape_index].x = Math.round(shapes[current_shape_index].x/50)*50;
+  shapes[current_shape_index].y = Math.round(shapes[current_shape_index].y/50)*50;
+}
+
 function check_correct() {
   for (let shape of shapes) {
     for (let solution of solutions) {
@@ -236,10 +241,8 @@ function check_correct() {
 }
 
 function check_finished() {
-  console.log("we komen hier in, hoera")
   for (let shape of shapes) {
     if (!shape.solved) {
-      console.log("maar we falen met de shapes");
       console.log(shapes[0]);
       console.log(solutions[0]);
       return false;
