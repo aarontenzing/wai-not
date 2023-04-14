@@ -36,13 +36,13 @@ let startY;
 var zijde = 300;
 var z_vierkant = zijde / (2 * Math.sqrt(2))
 
-shapes.push({ x: 200, y: 50, width: z_vierkant, height: z_vierkant, rotation: 0, color: 'red', type: 'square', solved: 0 });
-shapes.push({ x: 200, y: 200, width: zijde / 2, height: z_vierkant / Math.sqrt(2), rotation: 0, color: 'yellow', type: 'parallel', solved: 0 });
-shapes.push({ x: 500, y: 300, width: zijde / 2, height: zijde, rotation: 0, color: 'blue', type: 'big_triangle', solved: 0 });
-shapes.push({ x: 200, y: 300, width: zijde / 2, height: zijde, rotation: 0, color: 'orange', type: 'big_triangle', solved: 0 });
-shapes.push({ x: 500, y: 150, width: zijde / 2, height: zijde / 2, rotation: 0, color: 'green', type: 'med_triangle', solved: 0 });
-shapes.push({ x: 800, y: 350, width: zijde / 4, height: zijde / 2, rotation: 0, color: 'purple', type: 'small_triangle', solved: 0 });
-shapes.push({ x: 900, y: 350, width: zijde / 4, height: zijde / 2, rotation: 0, color: 'violet', type: 'small_triangle', solved: 0 });
+shapes.push({ x: 200, y: 50, width: z_vierkant, height: z_vierkant, rotation: 0, color: 'red', type: 'square', solved: false });
+shapes.push({ x: 200, y: 200, width: zijde / 2, height: z_vierkant / Math.sqrt(2), rotation: 0, color: 'yellow', type: 'parallel', solved: false });
+shapes.push({ x: 500, y: 300, width: zijde / 2, height: zijde, rotation: 0, color: 'blue', type: 'big_triangle', solved: false });
+shapes.push({ x: 200, y: 300, width: zijde / 2, height: zijde, rotation: 0, color: 'orange', type: 'big_triangle', solved: false });
+shapes.push({ x: 500, y: 150, width: zijde / 2, height: zijde / 2, rotation: 0, color: 'green', type: 'med_triangle', solved: false });
+shapes.push({ x: 800, y: 350, width: zijde / 4, height: zijde / 2, rotation: 0, color: 'purple', type: 'small_triangle', solved: false });
+shapes.push({ x: 900, y: 350, width: zijde / 4, height: zijde / 2, rotation: 0, color: 'violet', type: 'small_triangle', solved: false });
 
 
 
@@ -50,11 +50,74 @@ shapes.push({ x: 900, y: 350, width: zijde / 4, height: zijde / 2, rotation: 0, 
 let solutions = [];
 let current_solution_index = null;
 
-solutions.push({ x: 200, y: 50, width: 100, height: 100, rotation: 0, color: 'grey', solved: 0 });
+solutions.push({ x: 200, y: 50, width: z_vierkant, height: z_vierkant, rotation: 45, type: 'square', solved: false });
+solutions.push({ x: 200, y: 200, width: zijde / 2, height: z_vierkant / Math.sqrt(2), rotation: 45, type: 'parallel', solved: false });
+solutions.push({ x: 500, y: 300, width: zijde / 2, height: zijde, rotation: 45, type: 'big_triangle', solved: false });
+solutions.push({ x: 200, y: 300, width: zijde / 2, height: zijde, rotation: 45, type: 'big_triangle', solved: false });
+solutions.push({ x: 500, y: 150, width: zijde / 2, height: zijde / 2, rotation: 45, type: 'med_triangle', solved: false });
+solutions.push({ x: 800, y: 350, width: zijde / 4, height: zijde / 2, rotation: 45, type: 'small_triangle', solved: false });
+solutions.push({ x: 900, y: 350, width: zijde / 4, height: zijde / 2, rotation: 45, type: 'small_triangle', solved: false });
 
 //Tekenvorm
 function draw_shapes() {
   ctx.clearRect(0, 0, canvas_width, canvas_height);
+  for (let solution of solutions) {
+    ctx.fillStyle = "grey";
+    ctx.save();
+    if (solution.type == 'square') {
+      ctx.translate(solution.x + solution.width / 2, solution.y + solution.height / 2);
+      ctx.rotate(solution.rotation * Math.PI / 180);
+      ctx.fillRect(solution.width / -2, solution.height / -2, solution.width, solution.height);
+
+    }
+    else {
+      if (solution.type == 'big_triangle') {
+        ctx.translate(solution.x + solution.width /3, solution.y+ (solution.height + solution.width) /3);
+        ctx.rotate(solution.rotation * Math.PI / 180);
+        ctx.beginPath();
+        ctx.moveTo(-solution.width /3, -(solution.height + solution.width) /3);
+        ctx.lineTo(solution.width - solution.width /3, solution.width -(solution.height + solution.width) /3);
+        ctx.lineTo(-solution.width /3, solution.height -(solution.height + solution.width) /3);
+        ctx.lineTo(-solution.width /3, -(solution.height + solution.width) /3);
+      }
+
+      if (solution.type == 'med_triangle') {
+        
+        ctx.translate(solution.x + solution.width * 2/3, solution.y + solution.width /3);
+        ctx.rotate(solution.rotation * Math.PI / 180);
+        ctx.beginPath();
+        ctx.moveTo(-solution.width * 2/3, -solution.width /3);
+        ctx.lineTo(solution.width - solution.width * 2/3, -solution.width /3);
+        ctx.lineTo(solution.width -solution.width * 2/3, solution.height -solution.width /3);
+        ctx.lineTo(-solution.width * 2/3, -solution.width /3 );
+      }
+
+      if (solution.type == 'small_triangle') {
+        ctx.translate(solution.x + solution.width /3, solution.y+ (solution.height + solution.width) /3);
+        ctx.rotate(solution.rotation * Math.PI / 180);
+        ctx.beginPath();
+        ctx.moveTo(-solution.width /3, -(solution.height + solution.width) /3);
+        ctx.lineTo(solution.width - solution.width /3, solution.width -(solution.height + solution.width) /3);
+        ctx.lineTo(-solution.width /3, solution.height -(solution.height + solution.width) /3);
+        ctx.lineTo(-solution.width /3, -(solution.height + solution.width) /3);
+      }
+
+      if (solution.type == 'parallel') {
+        ctx.translate(solution.x + (solution.height + solution.width)/2-solution.height, solution.y + solution.height/2);
+        ctx.rotate(solution.rotation * Math.PI / 180);
+        ctx.beginPath();
+        ctx.moveTo(-((solution.height + solution.width)/2-solution.height), - solution.height/2);
+        ctx.lineTo(-((solution.height + solution.width)/2-solution.height) - solution.height, - solution.height/2 + solution.height);
+        ctx.lineTo(-((solution.height + solution.width)/2-solution.height) - solution.height + solution.width, - solution.height/2 + solution.height);
+        ctx.lineTo(-((solution.height + solution.width)/2-solution.height) + solution.width, - solution.height/2);
+        ctx.lineTo(-((solution.height + solution.width)/2-solution.height), - solution.height/2);
+      }
+      ctx.fill(); 
+      ctx.closePath();
+    }
+    ctx.restore();
+  }
+
   for (let shape of shapes) {
     ctx.fillStyle = shape.color;
     ctx.save();
@@ -76,13 +139,6 @@ function draw_shapes() {
       }
 
       if (shape.type == 'med_triangle') {
-  
-        // ctx.beginPath();
-        // ctx.moveTo(shape.x, shape.y);
-        // ctx.lineTo(shape.x + shape.width, shape.y); 
-        // ctx.lineTo(shape.x + shape.width, shape.y + shape.height);
-        // ctx.lineTo(shape.x, shape.y);
-
         
         ctx.translate(shape.x + shape.width * 2/3, shape.y + shape.width /3);
         ctx.rotate(shape.rotation * Math.PI / 180);
@@ -91,8 +147,6 @@ function draw_shapes() {
         ctx.lineTo(shape.width - shape.width * 2/3, -shape.width /3);
         ctx.lineTo(shape.width -shape.width * 2/3, shape.height -shape.width /3);
         ctx.lineTo(-shape.width * 2/3, -shape.width /3 );
-         
-       
       }
 
       if (shape.type == 'small_triangle') {
@@ -169,6 +223,7 @@ let mouse_down = function (event) {
     }
     index++;
   }
+  check_correct();
 }
 
 
@@ -178,7 +233,7 @@ let mouse_up = function (event) {
     return;
   }
   event.preventDefault();
-  check_correct()
+  check_correct();
   drag = false;
 }
 
@@ -220,18 +275,23 @@ function check_correct() {
   for (let shape of shapes) {
     for (let solution of solutions) {
       if (!shape.solved && !solution.solved && shape.x == solution.x && shape.y == solution.y && shape.width == solution.width
-        && shape.height == solution.height && shape.rotation == solution.rotation)
-        shape.solved = true;
-      solution.solved = true;
-      check_finished()
-      return;
+        && shape.height == solution.height && shape.rotation == solution.rotation) {
+          shape.solved = true;
+          solution.solved = true;
+          check_finished();
+          return;
+        }
     }
   }
 }
 
 function check_finished() {
+  console.log("we komen hier in, hoera")
   for (let shape of shapes) {
     if (!shape.solved) {
+      console.log("maar we falen met de shapes");
+      console.log(shapes[0]);
+      console.log(solutions[0]);
       return false;
     }
   }
@@ -240,6 +300,7 @@ function check_finished() {
       return false;
     }
   }
+  console.log('je hebt gewonnen, yeeeeeeeeeeeeeeeeeey');
   return true;
 
 }
