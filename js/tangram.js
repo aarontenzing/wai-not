@@ -43,13 +43,30 @@ shapes.push({ x: 900, y: 350, width: zijde / 4, height: zijde / 2, rotation: 0, 
 //Solution
 let solutions = [];
 
-solutions.push({ x: 400, y: 50, width: z_vierkant, height: z_vierkant, rotation: 45, type: 'square', solved: false });
-solutions.push({ x: 200, y: 200, width: zijde / 2, height: z_vierkant / Math.sqrt(2), rotation: 45, type: 'parallel', solved: false });
-solutions.push({ x: 500, y: 300, width: zijde / 2, height: zijde, rotation: 45, type: 'big_triangle', solved: false });
-solutions.push({ x: 200, y: 300, width: zijde / 2, height: zijde, rotation: 45, type: 'big_triangle', solved: false });
-solutions.push({ x: 500, y: 150, width: zijde / 2, height: zijde / 2, rotation: 45, type: 'med_triangle', solved: false });
-solutions.push({ x: 800, y: 350, width: zijde / 4, height: zijde / 2, rotation: 45, type: 'small_triangle', solved: false });
-solutions.push({ x: 900, y: 350, width: zijde / 4, height: zijde / 2, rotation: 45, type: 'small_triangle', solved: false });
+solutions.push({ x: 1246, y: 265, width: z_vierkant, height: z_vierkant, rotation: 45, type: 'square', solved: false });
+solutions.push({ x: 1313 , y: 145, width: zijde / 2, height: z_vierkant / Math.sqrt(2), rotation: 45, type: 'parallel', solved: false });
+solutions.push({ x: 1423 , y: 168, width: zijde / 2, height: zijde, rotation: 180, type: 'big_triangle', solved: false });
+solutions.push({ x: 1523 , y: 167, width: zijde / 2, height: zijde, rotation: 0, type: 'big_triangle', solved: false });
+solutions.push({ x: 1604 , y: 156, width: zijde / 2, height: zijde / 2, rotation: 315, type: 'med_triangle', solved: false });
+solutions.push({ x: 1653 , y: 335, width: zijde / 4, height: zijde / 2, rotation: 90, type: 'small_triangle', solved: false });
+solutions.push({ x: 1395, y: 388, width: zijde / 4, height: zijde / 2, rotation: 180, type: 'small_triangle', solved: false });
+
+levels = [];
+levels.push({x: 1471, y : 188, rotation : 45 });
+levels.push({x: 1768, y : 579, rotation : 0 });
+levels.push({x: 1575, y : 433, rotation : 45 });
+levels.push({x: 1545, y : 293, rotation : 0 });
+levels.push({x: 1410, y : 350, rotation : 225 });
+levels.push({x: 1449, y : 93, rotation : 0 });
+levels.push({x: 1549, y : 92, rotation : 180 });
+
+/*
+for (let i = 0; i < 7; i++) {
+  solutions[i].x = levels[i].x;
+  solutions[i].y = levels[i].y;
+  solutions[i].rotation = levels[i].rotation;
+}
+*/
 
 //Tekenvorm
 
@@ -217,6 +234,9 @@ let mouse_move = function (event) {
     current_shape.x += dx;
     current_shape.y += dy;
 
+    console.log(current_shape.x, current_shape.y);
+
+
     //clear it and redraw
     draw_shapes();
 
@@ -253,6 +273,7 @@ function check_finished() {
     }
   }
   console.log('je hebt gewonnen, yeeeeeeeeeeeeeeeeeey');
+  location.reload();
   return true;
 
 }
