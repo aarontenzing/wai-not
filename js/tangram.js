@@ -11,6 +11,10 @@ var canvas_height = canvas.height;
 let offset_x;
 let offset_y;
 
+let rotate = false;
+let angle = 0;
+let rot_shape = 0; //which shape to rotate
+
 let get_offset = function () {
   let canvas_offsets = canvas.getBoundingClientRect();
   offset_x = canvas_offsets.left;
@@ -53,19 +57,40 @@ function draw_shapes() {
   ctx.clearRect(0, 0, canvas_width, canvas_height);
   for (let shape of shapes) {
     if(shape.type == 'square'){
-      ctx.fillStyle = shape.color;
-      ctx.fillRect(shape.x, shape.y, shape.width, shape.height);
+      if(rotate == true && rot_shape == 1) {
+        console.log("ROTATION");
+        ctx.save();
+        ctx.translate(shape.x, shape.y);
+        ctx.rotate(angle * Math.PI / 180);
+        ctx.fillStyle = shape.color;
+        ctx.fillRect(shape.width / -2, shape.height / -2, shape.width, shape.height);  
+        ctx.restore();
+        rotate = false;
+        rot_shape = 0;
+      }
+      else {
+        ctx.fillStyle = shape.color;
+        ctx.fillRect(shape.x, shape.y, shape.width, shape.height);
+      }
     }
     
     if(shape.type == 'big_triangle'){
-      ctx.fillStyle = shape.color;
-      ctx.beginPath();
-      ctx.moveTo(shape.x, shape.y);
-      ctx.lineTo(shape.x+shape.width,shape.y+shape.width);
-      ctx.lineTo(shape.x,shape.y+shape.height);
-      ctx.lineTo(shape.x,shape.y);
-      ctx.fill();
-      ctx.closePath();
+
+      if(rotate == true && rot_shape == 2)
+      {
+        console.log("ROTATION");
+      }
+
+      else {
+        ctx.fillStyle = shape.color;
+        ctx.beginPath();
+        ctx.moveTo(shape.x, shape.y);
+        ctx.lineTo(shape.x+shape.width,shape.y+shape.width);
+        ctx.lineTo(shape.x,shape.y+shape.height);
+        ctx.lineTo(shape.x,shape.y);
+        ctx.fill();
+        ctx.closePath();
+      }
     }
     
     if(shape.type == 'med_triangle'){
@@ -89,8 +114,7 @@ function draw_shapes() {
       ctx.fill();
       ctx.closePath();
     }
-    
-    
+     
     if(shape.type == 'parallel'){
       ctx.fillStyle = shape.color;
       ctx.beginPath();
@@ -128,26 +152,54 @@ let mouse_down = function (event) {
 
   let index = 0;
   for (let shape of shapes) {
-
-    if (is_mouse_in_shape(startX, startY, shape)) {
-      //if (shape.solution == false) {
-        console.log('yes');
-        current_shape_index = index;
-        console.log(current_shape_index);
-        drag = true;
-        return;
-     // }
-    //  else {
-     //   console.log("in solution")
-      //  current_shape_index = index;
-     //   console.log(current_shape_index);
-      //}
-    } else {
-      console.log('no');
+    if(event.button == 0) { // Checks if it is left mouse button
+      if (is_mouse_in_shape(startX, startY, shape)) {
+        //if (shape.solution == false) {
+          console.log('yes');
+          current_shape_index = index;
+          console.log(current_shape_index);
+          drag = true;
+          return;
+      // }
+      //  else {
+      //   console.log("in solution")
+        //  current_shape_index = index;
+      //   console.log(current_shape_index);
+        //}
+      } else {
+        console.log('no');
+      }
+      index++;
     }
-    index++;
+
+    if(event.button == 1) { // Checks if it is middle mouse button
+      if (is_mouse_in_shape(startX, startY, shape)) {
+          console.log('middle mouse click');
+          current_shape_index = index;
+          if (shape.type == 'square') {
+            rot_shape = 1;
+          }
+          else if(shape.type == 'big_triangle') {
+            rot_shape = 2;
+          } 
+          if(angle == 360 ) {
+            angle = 0;
+          }
+          else {
+            angle += 45;
+          }
+          shapes[current_shape_index].rotation = angle;
+          console.log(shapes[current_shape_index].rotation);
+          rotate = true;
+          draw_shapes();
+          index++;
+      }
+    }
   }
+
+
 }
+
 
 let mouse_up = function (event) {
   if (!drag) {
