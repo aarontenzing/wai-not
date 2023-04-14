@@ -46,9 +46,8 @@ shapes.push({ x: 900, y: 350, width: zijde / 4, height: zijde / 2, rotation: 0, 
 
 //Solution
 let solutions = [];
-let current_solution_index = null;
 
-solutions.push({ x: 200, y: 50, width: z_vierkant, height: z_vierkant, rotation: 45, type: 'square', solved: false });
+solutions.push({ x: 400, y: 50, width: z_vierkant, height: z_vierkant, rotation: 45, type: 'square', solved: false });
 solutions.push({ x: 200, y: 200, width: zijde / 2, height: z_vierkant / Math.sqrt(2), rotation: 45, type: 'parallel', solved: false });
 solutions.push({ x: 500, y: 300, width: zijde / 2, height: zijde, rotation: 45, type: 'big_triangle', solved: false });
 solutions.push({ x: 200, y: 300, width: zijde / 2, height: zijde, rotation: 45, type: 'big_triangle', solved: false });
@@ -72,7 +71,6 @@ function draw_shapes() {
       ctx.translate(shape.x + shape.width / 2, shape.y + shape.height / 2);
       ctx.rotate(shape.rotation * Math.PI / 180);
       ctx.fillRect(shape.width / -2, shape.height / -2, shape.width, shape.height);
-
     }
     else {
       if (shape.type == 'big_triangle') {
@@ -144,13 +142,16 @@ let mouse_down = function (event) {
   startX = parseInt(event.clientX - offset_x);
   startY = parseInt(event.clientY - offset_y);
 
-  let index = 0;
-  for (let shape of shapes) {
+  console.log("hey")
+  for (i = 6; i>=0; i--) {
+    let shape = shapes[i];
+    console.log("hallo")
+    console.log(shape);
     if (is_mouse_in_shape(startX, startY, shape) && !shape.solved) {
       if (event.button == 0) { // Checks if it is left mouse button
 
         console.log('yes');
-        current_shape_index = index;
+        current_shape_index = i;
         console.log(current_shape_index);
         drag = true;
         return;
@@ -160,16 +161,26 @@ let mouse_down = function (event) {
 
       if (event.button == 1) { // Checks if it is middle mouse button
         console.log('middle mouse click');
-        current_shape_index = index;
+        current_shape_index = i;
         shape.rotation += 45;
+        if (shape.type == "square") {
+          if (shape.rotation == 90) {
+            shape.rotation = 0;
+          }
+        }
+        if (shape.type == "parallel") {
+          if (shape.rotation == 180) {
+            shape.rotation = 0;
+          }
+        }
         if (shape.rotation == 360) {
           shape.rotation = 0;
         }
         console.log(shape.rotation);
         draw_shapes();
+        return;
       }
     }
-    index++;
   }
   check_correct();
 }
@@ -181,6 +192,11 @@ let mouse_up = function (event) {
   }
   event.preventDefault(); 
   check_correct();
+  console.log(shapes);
+  let shape = shapes.splice(current_shape_index, 1);
+  shapes = shapes.concat(shape);
+  draw_shapes();
+  // console.log(shapes);
   drag = false;
 }
 
@@ -237,15 +253,10 @@ function check_correct() {
 }
 
 function check_finished() {
-  for (let shape of shapes) {
+  for (let shape of shapes.concat(solutions)) {
     if (!shape.solved) {
       console.log(shapes[0]);
       console.log(solutions[0]);
-      return false;
-    }
-  }
-  for (let solution of solutions) {
-    if (!solution.solved) {
       return false;
     }
   }
