@@ -146,7 +146,7 @@ let mouse_down = function (event) {
 
   let index = 0;
   for (let shape of shapes) {
-    if (is_mouse_in_shape(startX, startY, shape)) {
+    if (is_mouse_in_shape(startX, startY, shape) && !shape.solved) {
       if (event.button == 0) { // Checks if it is left mouse button
 
         console.log('yes');
@@ -175,14 +175,11 @@ let mouse_down = function (event) {
 }
 
 
-
 let mouse_up = function (event) {
   if (!drag) {
     return;
   }
-  event.preventDefault();
-  round_xy();
-  draw_shapes();
+  event.preventDefault(); 
   check_correct();
   drag = false;
 }
@@ -221,16 +218,15 @@ let mouse_move = function (event) {
   }
 }
 
-function round_xy() { 
-  shapes[current_shape_index].x = Math.round(shapes[current_shape_index].x/50)*50;
-  shapes[current_shape_index].y = Math.round(shapes[current_shape_index].y/50)*50;
-}
-
 function check_correct() {
   for (let shape of shapes) {
     for (let solution of solutions) {
-      if (!shape.solved && !solution.solved && shape.x == solution.x && shape.y == solution.y && shape.width == solution.width
-        && shape.height == solution.height && shape.rotation == solution.rotation) {
+      console.log('komen we hier ooit?')
+      if (!shape.solved && !solution.solved && shape.x <= solution.x + 25 && shape.x >= solution.x -25 && shape.y <= solution.y + 25 && shape.y >= solution.y - 25
+         && shape.type == solution.type && shape.rotation == solution.rotation) {
+          shape.x = solution.x;
+          shape.y = solution.y;
+          draw_shapes();
           shape.solved = true;
           solution.solved = true;
           check_finished();
