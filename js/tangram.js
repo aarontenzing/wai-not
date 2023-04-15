@@ -41,32 +41,91 @@ shapes.push({ x: 800, y: 350, width: zijde / 4, height: zijde / 2, rotation: 0, 
 shapes.push({ x: 900, y: 350, width: zijde / 4, height: zijde / 2, rotation: 0, color: 'violet', type: 'small_triangle', solved: false });
 
 //Solution
+let sol = [];
+
+for (let i = 0; i < 4; i++) {
+  sol.push([]);
+}
+
+sol[0].push({ x: 1246, y: 265, width: z_vierkant, height: z_vierkant, rotation: 45, type: 'square', solved: false, level: 'hard' });
+sol[0].push({ x: 1313 , y: 145, width: zijde / 2, height: z_vierkant / Math.sqrt(2), rotation: 45, type: 'parallel', solved: false});
+sol[0].push({ x: 1423 , y: 168, width: zijde / 2, height: zijde, rotation: 180, type: 'big_triangle', solved: false});
+sol[0].push({ x: 1523 , y: 167, width: zijde / 2, height: zijde, rotation: 0, type: 'big_triangle', solved: false});
+sol[0].push({ x: 1604 , y: 156, width: zijde / 2, height: zijde / 2, rotation: 315, type: 'med_triangle', solved: false});
+sol[0].push({ x: 1653 , y: 335, width: zijde / 4, height: zijde / 2, rotation: 90, type: 'small_triangle', solved: false});
+sol[0].push({ x: 1395, y: 388, width: zijde / 4, height: zijde / 2, rotation: 180, type: 'small_triangle', solved: false});
+
+sol[1].push({ x: 1471, y: 188, width: z_vierkant, height: z_vierkant, rotation: 45, type: 'square', solved: false, level: 'hard' });
+sol[1].push({ x: 1768 , y: 579, width: zijde / 2, height: z_vierkant / Math.sqrt(2), rotation: 0, type: 'parallel', solved: false});
+sol[1].push({ x: 1575 , y: 433, width: zijde / 2, height: zijde, rotation: 45, type: 'big_triangle', solved: false});
+sol[1].push({ x: 1545 , y: 293, width: zijde / 2, height: zijde, rotation: 0, type: 'big_triangle', solved: false});
+sol[1].push({ x: 1411 , y: 350, width: zijde / 2, height: zijde / 2, rotation: 225, type: 'med_triangle', solved: false});
+sol[1].push({ x: 1449 , y: 93, width: zijde / 4, height: zijde / 2, rotation: 0, type: 'small_triangle', solved: false});
+sol[1].push({ x: 1549, y: 92, width: zijde / 4, height: zijde / 2, rotation: 180, type: 'small_triangle', solved: false});
+
+sol[2].push({ x: 1477, y: 131, width: z_vierkant, height: z_vierkant, rotation: 45, type: 'square', solved: false, level: 'easy' });
+sol[2].push({ x: 1466 , y: 525, width: zijde / 2, height: z_vierkant / Math.sqrt(2), rotation: 0, type: 'parallel', solved: false, level: 'easy'});
+sol[2].push({ x: 1347 , y: 264, width: zijde / 2, height: zijde, rotation: 45, type: 'big_triangle', solved: false, level: 'easy'});
+sol[2].push({ x: 1590 , y: 270, width: zijde / 2, height: zijde, rotation: 135, type: 'big_triangle', solved: false, level: 'easy'});
+sol[2].push({ x: 1411 , y: 628, width: zijde / 2, height: zijde / 2, rotation: 135, type: 'med_triangle', solved: false, level: 'easy'});
+sol[2].push({ x: 1331 , y: 504, width: zijde / 4, height: zijde / 2, rotation: 45, type: 'small_triangle', solved: false, level: 'easy'});
+sol[2].push({ x: 1630, y: 502, width: zijde / 4, height: zijde / 2, rotation: 135, type: 'small_triangle', solved: false, level: 'easy'});
+
+sol[3].push({ x: 1423, y: 427, width: z_vierkant, height: z_vierkant, rotation: 0, type: 'square', solved: false, level: 'medium' });
+sol[3].push({ x: 1740 , y: 453, width: zijde / 2, height: z_vierkant / Math.sqrt(2), rotation: 0, type: 'parallel', solved: false});
+sol[3].push({ x: 1550 , y: 231, width: zijde / 2, height: zijde, rotation: 135, type: 'big_triangle', solved: false});
+sol[3].push({ x: 1550 , y: 372, width: zijde / 2, height: zijde, rotation: 225, type: 'big_triangle', solved: false});
+sol[3].push({ x: 1267 , y: 327, width: zijde / 2, height: zijde / 2, rotation: 180, type: 'med_triangle', solved: false});
+sol[3].push({ x: 1866 , y: 428, width: zijde / 4, height: zijde / 2, rotation: 270, type: 'small_triangle', solved: false});
+sol[3].push({ x: 1363, y: 388, width: zijde / 4, height: zijde / 2, rotation: 315, type: 'small_triangle', solved: false});
+
 let solutions = [];
 
-solutions.push({ x: 1246, y: 265, width: z_vierkant, height: z_vierkant, rotation: 45, type: 'square', solved: false });
-solutions.push({ x: 1313 , y: 145, width: zijde / 2, height: z_vierkant / Math.sqrt(2), rotation: 45, type: 'parallel', solved: false });
-solutions.push({ x: 1423 , y: 168, width: zijde / 2, height: zijde, rotation: 180, type: 'big_triangle', solved: false });
-solutions.push({ x: 1523 , y: 167, width: zijde / 2, height: zijde, rotation: 0, type: 'big_triangle', solved: false });
-solutions.push({ x: 1604 , y: 156, width: zijde / 2, height: zijde / 2, rotation: 315, type: 'med_triangle', solved: false });
-solutions.push({ x: 1653 , y: 335, width: zijde / 4, height: zijde / 2, rotation: 90, type: 'small_triangle', solved: false });
-solutions.push({ x: 1395, y: 388, width: zijde / 4, height: zijde / 2, rotation: 180, type: 'small_triangle', solved: false });
-
-levels = [];
-levels.push({x: 1471, y : 188, rotation : 45 });
-levels.push({x: 1768, y : 579, rotation : 0 });
-levels.push({x: 1575, y : 433, rotation : 45 });
-levels.push({x: 1545, y : 293, rotation : 0 });
-levels.push({x: 1410, y : 350, rotation : 225 });
-levels.push({x: 1449, y : 93, rotation : 0 });
-levels.push({x: 1549, y : 92, rotation : 180 });
-
-/*
-for (let i = 0; i < 7; i++) {
-  solutions[i].x = levels[i].x;
-  solutions[i].y = levels[i].y;
-  solutions[i].rotation = levels[i].rotation;
+function get_level(diff) {
+  do {
+    console.log(sol.length);
+    rand = Math.floor(Math.random()*sol.length);
+  } while(sol[rand][0].level != diff);
+  solutions = sol[rand];
+  return;
 }
-*/
+
+const hardBtn = document.getElementById("hardBtn"); 
+hardBtn.innerText = "HARD";
+hardBtn.addEventListener("click", function() { console.log("hard pressed"); chose_level("hard");});
+
+const mediumBtn = document.getElementById("mediumBtn"); 
+mediumBtn.innerText = "MEDIUM";
+mediumBtn.addEventListener("click", function() { chose_level("medium");});
+
+const easyBtn = document.getElementById("easyBtn"); 
+easyBtn.innerText = "EASY";
+easyBtn.addEventListener("click", function() { chose_level("easy");});
+
+const restart = document.getElementById("restart");
+restart.style.display = "none";
+
+
+function chose_level(difficulty) {
+  switch (difficulty ) {
+
+    case "hard":
+      console.log("hey dit is het level");
+      get_level('hard');
+      draw_shapes();
+      break;
+
+    case "medium":
+      get_level('medium');
+      draw_shapes();
+      break;
+
+    case "easy":
+      get_level('easy');
+      draw_shapes();
+      break;
+  }
+}
 
 //Tekenvorm
 
@@ -134,7 +193,6 @@ function draw_shapes() {
   }
 }
 
-draw_shapes();
 
 let is_mouse_in_shape = function (x, y, shape) {
   let shape_left = shape.x;
@@ -273,7 +331,8 @@ function check_finished() {
     }
   }
   console.log('je hebt gewonnen, yeeeeeeeeeeeeeeeeeey');
-  location.reload();
+  restart.style.display = "block";
+  restart.addEventListener("click", function() {location.reload();})
   return true;
 
 }
