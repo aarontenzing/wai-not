@@ -116,7 +116,7 @@ function draw_shapes() {
     ctx.restore();
   }
 }
-
+ctx.scale(0.5,0.5);
 draw_shapes();
 
 let is_mouse_in_shape = function (x, y, shape) {
@@ -135,8 +135,8 @@ let mouse_down = function (event) {
 
   event.preventDefault();
 
-  startX = parseInt(event.clientX - offset_x);
-  startY = parseInt(event.clientY - offset_y);
+  startX = parseInt(event.clientX - offset_x)*2;
+  startY = parseInt(event.clientY - offset_y)*2;
 
   for (i = 6; i>=0; i--) {
     let shape = shapes[i];
@@ -206,8 +206,8 @@ let mouse_move = function (event) {
     return;
   } else {
     event.preventDefault();
-    let mouseX = parseInt(event.clientX - offset_x);
-    let mouseY = parseInt(event.clientY - offset_y);
+    let mouseX = parseInt(event.clientX - offset_x)*2;
+    let mouseY = parseInt(event.clientY - offset_y)*2;
 
     let dx = mouseX - startX;
     let dy = mouseY - startY;
