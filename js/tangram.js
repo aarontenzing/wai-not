@@ -98,16 +98,21 @@ function get_level(diff) {
 }
 
 const hardBtn = document.getElementById("hardBtn");
-hardBtn.innerText = "HARD";
+hardBtn.innerText = "moeilijk";
 hardBtn.addEventListener("click", function () { console.log("hard pressed"); chose_level("hard"); });
 
 const mediumBtn = document.getElementById("mediumBtn");
-mediumBtn.innerText = "MEDIUM";
+mediumBtn.innerText = "normaal";
 mediumBtn.addEventListener("click", function () { chose_level("medium"); });
 
 const easyBtn = document.getElementById("easyBtn");
-easyBtn.innerText = "EASY";
+easyBtn.innerText = "makkelijk";
 easyBtn.addEventListener("click", function () { chose_level("easy"); });
+
+ctx.font = "30px Arial";
+ctx.fillStyle = "red";
+ctx.textAlign = "center";
+ctx.fillText("Sleep de vormen naar de juiste plaats!", 1000 * scale_factor, 750 * scale_factor);
 
 const restart = document.getElementById("restart");
 restart.style.display = "none";
