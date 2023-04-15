@@ -28,6 +28,10 @@ window.onscroll = function () { get_offset(); }
 window.onresize = function () { get_offset(); }
 canvas.onresize = function () { get_offset(); }
 
+//Check mous in shape
+var polygon;
+var polylength;
+
 //Vormen
 let shapes = [];
 let current_shape_index = null;
@@ -212,17 +216,22 @@ function easy_rotate() {
   } 
 }
 
-
 let is_mouse_in_shape = function (x, y, shape) {
-  let shape_left = shape.x;
-  let shape_right = shape.x + shape.width;
-  let shape_top = shape.y;
-  let shape_bottom = shape.y + shape.height;
+ 
+  const pixel = ctx.getImageData(x,y,1,1).data;
+  console.log(pixel);
+  const color = `rgb(${pixel[0]},${pixel[1]},${pixel[2]})`;
 
-  if (x > shape_left && x < shape_right && y > shape_top && y < shape_bottom) {
-    return true;
+  //check op zelfde kleur
+  var kleuren = {"red":"rgb(255,0,0)","blue": "rgb(255,0,0)","yellow":"rgb(255,255,0)","blue": "rgb(0,0,255)","orange": "rgb(255,165,0)","green":"rgb(0,128,0)","purple":"rgb(128,0,128)","violet":"rgb(238,130,238)"};
+
+  if(shape.color in kleuren){
+    if(kleuren[shape.color]==color){
+      return true;
+    }
+    return false;
   }
-  return false;
+
 }
 
 let mouse_down = function (event) {
