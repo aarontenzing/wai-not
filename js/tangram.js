@@ -209,21 +209,7 @@ function easy_rotate() {
 }
 
 let is_mouse_in_shape = function (x, y, shape) {
-<<<<<<< HEAD
-  const pixel = ctx.getImageData(x, y, 1, 1).data;
-  console.log(pixel);
-  const color = `rgb(${pixel[0]},${pixel[1]},${pixel[2]})`;
-  //check op zelfde kleur
-  var kleuren = { "red":"rgb(255,0,0)","blue": "rgb(255,0,0)", "yellow": "rgb(255,255,0)", "blue": "rgb(0,0,255)", "orange": "rgb(255,165,0)", "green": "rgb(0,255,0)", "purple": "rgb(128,0,128)", "violet": "rgb(238,130,238)" };
-  console.log("we komen hier");
-  console.log(kleuren[shape.color]);
-  console.log("--------");
-  console.log(color);
-  if (kleuren[shape.color] == color) {
-    return true;
-  }
-  return false;
-=======
+
  
   const pixel = ctx.getImageData(x,y,1,1).data;
   console.log(pixel);
@@ -238,7 +224,7 @@ let is_mouse_in_shape = function (x, y, shape) {
     }
     return false;
   }
->>>>>>> 1ed113906e6314002a35c152f0f2b8caf006b109
+
 
 }
 
