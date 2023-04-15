@@ -134,6 +134,7 @@ function chose_level(difficulty) {
 
     case "easy":
       get_level('easy');
+      easy_rotate();
       draw_shapes();
       break;
   }
@@ -204,6 +205,13 @@ function draw_shapes() {
     ctx.restore();
   }
 }
+
+function easy_rotate() {
+  for (i =0; i < 7; i++) {
+    shapes[i].rotation = solutions[i].rotation;
+  } 
+}
+
 
 let is_mouse_in_shape = function (x, y, shape) {
   let shape_left = shape.x;
