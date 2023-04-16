@@ -383,14 +383,14 @@ function check_finished() {
   ctx.font = "30px Arial";
   ctx.fillStyle = "red";
   ctx.textAlign = "center";
-  ctx.fillText("Je hebt gewonnen!", 1000 * scale_factor, 750 * scale_factor);
+  ctx.fillText("Je hebt gewonnen!", 1000, 750);
   console.log("we geraken hier");
-  drawButton(700 * scale_factor, 800 * scale_factor, 200, 40,"OPNIEUW");
+  drawButton(700, 800, 200, 40,"OPNIEUW");
   canvas.addEventListener("click", function(event) {
-    var x = event.clientX - canvas.offsetLeft;
-    var y = event.clientY - canvas.offsetTop;
+    var x = event.clientX - offset_x;
+    var y = event.clientY - offset_y;
     
-    if (x > (700 * scale_factor) && x < (700 * scale_factor) + 200 && y > (800 * scale_factor) && y < (800 * scale_factor) + 40) {
+    if (x > 700  && x < 700  + 200  && y > 800 && y < 800 + 40 ) {
       // Button was clicked
       location.reload();
     }
