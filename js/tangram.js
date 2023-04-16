@@ -383,14 +383,14 @@ function check_finished() {
   ctx.font = "30px Arial";
   ctx.fillStyle = "red";
   ctx.textAlign = "center";
-  ctx.fillText("Je hebt gewonnen!", 1000, 750);
+  ctx.fillText("Je hebt gewonnen!", canvas_width/2 +100, canvas_height*2/3-50);
   console.log("we geraken hier");
-  drawButton(700, 800, 200, 40,"OPNIEUW");
+  drawButton(canvas_width/2, canvas_height*2/3, 200, 40,"OPNIEUW");
   canvas.addEventListener("click", function(event) {
     var x = event.clientX - offset_x;
     var y = event.clientY - offset_y;
     
-    if (x > 700  && x < 700  + 200  && y > 800 && y < 800 + 40 ) {
+    if (x > canvas_width/2  && x < canvas_width/2  + 200  && y > canvas_height*2/3 && y < canvas_height*2/3 + 40 ) {
       // Button was clicked
       location.reload();
     }
