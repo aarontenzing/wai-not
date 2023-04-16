@@ -29,10 +29,6 @@ window.onscroll = function () { get_offset(); }
 window.onresize = function () { get_offset(); }
 canvas.onresize = function () { get_offset(); }
 
-//Check mous in shape
-var polygon;
-var polylength;
-
 //Vormen
 let shapes = [];
 let current_shape_index = null;
@@ -90,7 +86,7 @@ sol[3].push({ x: 1550 * scale_factor, y: 231 * scale_factor, width: solution_zij
 sol[3].push({ x: 1550 * scale_factor, y: 372 * scale_factor, width: solution_zijde / 2, height: solution_zijde, rotation: 225, type: 'big_triangle', solved: false });
 sol[3].push({ x: 1267 * scale_factor, y: 327 * scale_factor, width: solution_zijde / 2, height: solution_zijde / 2, rotation: 180, type: 'med_triangle', solved: false });
 sol[3].push({ x: 1866 * scale_factor, y: 428 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 270, type: 'small_triangle', solved: false });
-sol[3].push({ x: 1361 * scale_factor, y: 388 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 315, type: 'small_triangle', solved: false });
+sol[3].push({ x: 1362 * scale_factor, y: 388 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 315, type: 'small_triangle', solved: false });
 
 let solutions = [];
 
@@ -149,6 +145,7 @@ function chose_level(difficulty) {
 //Tekenvorm
 
 function draw_shapes() {
+  console.log("in drawshapes")
   ctx.clearRect(0, 0, canvas_width, canvas_height);
   for (let shape of solutions.concat(shapes)) {
     if (shape.color == null) {
@@ -208,24 +205,16 @@ function easy_rotate() {
   }
 }
 
+
 let is_mouse_in_shape = function (x, y, shape) {
-
- 
-  const pixel = ctx.getImageData(x,y,1,1).data;
-  console.log(pixel);
+  const pixel = ctx.getImageData(x, y, 1, 1).data;
   const color = `rgb(${pixel[0]},${pixel[1]},${pixel[2]})`;
-
   //check op zelfde kleur
-  var kleuren = {"red":"rgb(255,0,0)","blue": "rgb(255,0,0)","yellow":"rgb(255,255,0)","blue": "rgb(0,0,255)","orange": "rgb(255,165,0)","green":"rgb(0,128,0)","purple":"rgb(128,0,128)","violet":"rgb(238,130,238)"};
-
-  if(shape.color in kleuren){
-    if(kleuren[shape.color]==color){
-      return true;
-    }
-    return false;
+  var kleuren = { "red": "rgb(255,0,0)", "blue": "rgb(255,0,0)", "yellow": "rgb(255,255,0)", "blue": "rgb(0,0,255)", "orange": "rgb(255,165,0)", "green": "rgb(0,128,0)", "purple": "rgb(128,0,128)", "violet": "rgb(238,130,238)" };
+  if (kleuren[shape.color] == color) {
+    return true;
   }
-
-
+  return false;
 }
 
 let mouse_down = function (event) {
@@ -277,20 +266,16 @@ let mouse_down = function (event) {
   }
 }
 
-
-
-
-
 let mouse_up = function (event) {
   if (!drag) {
     return;
   }
   event.preventDefault();
+  draw_shapes();
   check_correct();
   console.log(shapes);
   let shape = shapes.splice(current_shape_index, 1);
   shapes = shapes.concat(shape);
-  draw_shapes();
   drag = false;
 }
 
@@ -326,7 +311,6 @@ let mouse_move = function (event) {
 
     startX = mouseX;
     startY = mouseY;
-
   }
 }
 
@@ -357,6 +341,12 @@ function check_finished() {
     }
   }
   console.log('je hebt gewonnen, yeeeeeeeeeeeeeeeeeey');
+  ctx.beginPath();
+  ctx.font = "30px Arial";
+  ctx.fillStyle = "red";
+  ctx.textAlign = "center";
+  ctx.fillText("Je hebt gewonnen!", 1000 * scale_factor, 750 * scale_factor);
+  console.log("we geraken hier")
   restart.style.display = "block";
   restart.addEventListener("click", function () { location.reload(); })
   return true;
