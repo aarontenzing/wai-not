@@ -35,6 +35,8 @@ let current_shape_index = null;
 let drag = false;
 let startX;
 let startY;
+let clickedX;
+let clickedY;
 
 var zijde = 300 * scale_factor;
 var z_vierkant = zijde / (2 * Math.sqrt(2))
@@ -209,7 +211,6 @@ function easy_rotate() {
   }
 }
 
-
 let is_mouse_in_shape = function (x, y, shape) {
   const pixel = ctx.getImageData(x, y, 1, 1).data;
   const color = `rgb(${pixel[0]},${pixel[1]},${pixel[2]})`;
@@ -224,9 +225,12 @@ let is_mouse_in_shape = function (x, y, shape) {
 let mouse_down = function (event) {
 
   event.preventDefault();
-
-  startX = parseInt(event.clientX - offset_x);
-  startY = parseInt(event.clientY - offset_y);
+  //first coordinates where you click
+  clickedX = parseInt(event.clientX - offset_x);
+  clickedY = parseInt(event.clientY - offset_y);
+  //coordinates used when dragging
+  startX = clickedX;
+  startY = clickedY;
 
   for (i = 6; i >= 0; i--) {
     let shape = shapes[i];
@@ -237,15 +241,58 @@ let mouse_down = function (event) {
         console.log('yes');
         console.log(current_shape_index);
         drag = true;
+        console.log("-----------")
+        console.log(clickedX);
+        console.log(clickedY);
+        console.log("===========")
         return;
       } else {
         console.log('no');
       }
-      console.log("HEEEELP");
-      console.log(solutions[0].level);
-      if (!(solutions[0].level == "easy")) {
-        if (event.button == 1) { // Checks if it is middle mouse button
-          console.log('middle mouse click');
+      //rotate met middle mouse button
+      // if (!(solutions[0].level == "easy")) {
+      //   if (event.button == 1) { // Checks if it is middle mouse button
+      // console.log('middle mouse click');
+      // shape.rotation += 45;
+      // if (shape.type == "square") {
+      //   if (shape.rotation == 90) {
+      //     shape.rotation = 0;
+      //   }
+      // }
+      // if (shape.type == "parallel") {
+      //   if (shape.rotation == 180) {
+      //     shape.rotation = 0;
+      //   }
+      // }
+      // if (shape.rotation == 360) {
+      //   shape.rotation = 0;
+      // }
+      // console.log(shape.rotation);
+      // draw_shapes();
+      // check_correct();
+      // return;
+      //   }
+      // }
+    }
+  }
+}
+
+let mouse_up = function (event) {
+  if (!drag) {
+    return;
+  }
+  event.preventDefault();
+  draw_shapes();
+  check_correct();
+  console.log(shapes);
+  let shape = shapes.splice(current_shape_index, 1);
+  shapes = shapes.concat(shape);
+  drag = false;
+  if (!(solutions[0].level == "easy")) {
+    for (i = 6; i >= 0; i--) {
+      let shape = shapes[i];
+      if (is_mouse_in_shape(startX, startY, shape) && !shape.solved) {
+        if (startX == clickedX && startY == clickedY) {
           shape.rotation += 45;
           if (shape.type == "square") {
             if (shape.rotation == 90) {
@@ -268,19 +315,6 @@ let mouse_down = function (event) {
       }
     }
   }
-}
-
-let mouse_up = function (event) {
-  if (!drag) {
-    return;
-  }
-  event.preventDefault();
-  draw_shapes();
-  check_correct();
-  console.log(shapes);
-  let shape = shapes.splice(current_shape_index, 1);
-  shapes = shapes.concat(shape);
-  drag = false;
 }
 
 let mouse_out = function (event) {
