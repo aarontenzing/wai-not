@@ -249,30 +249,7 @@ let mouse_down = function (event) {
       } else {
         console.log('no');
       }
-      //rotate met middle mouse button
-      // if (!(solutions[0].level == "easy")) {
-      //   if (event.button == 1) { // Checks if it is middle mouse button
-      // console.log('middle mouse click');
-      // shape.rotation += 45;
-      // if (shape.type == "square") {
-      //   if (shape.rotation == 90) {
-      //     shape.rotation = 0;
-      //   }
-      // }
-      // if (shape.type == "parallel") {
-      //   if (shape.rotation == 180) {
-      //     shape.rotation = 0;
-      //   }
-      // }
-      // if (shape.rotation == 360) {
-      //   shape.rotation = 0;
-      // }
-      // console.log(shape.rotation);
-      // draw_shapes();
-      // check_correct();
-      // return;
-      //   }
-      // }
+      
     }
   }
 }
