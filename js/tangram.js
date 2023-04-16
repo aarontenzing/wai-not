@@ -108,6 +108,7 @@ function hideButton() {
   document.getElementById('easyBtn').style.visibility = 'hidden';
 }
 
+let sound = new Audio('solved.mp3');
 
 const hardBtn = document.getElementById("hardBtn");
 hardBtn.innerText = "moeilijk";
@@ -337,10 +338,12 @@ function check_correct() {
         && shape.type == solution.type && shape.rotation == solution.rotation) {
         shape.x = solution.x;
         shape.y = solution.y;
+       
         draw_shapes();
         shape.solved = true;
         solution.solved = true;
         check_finished();
+        sound.play();
         return;
       }
     }
