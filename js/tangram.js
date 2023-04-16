@@ -99,26 +99,30 @@ function get_level(diff) {
   return;
 }
 
+function hideButton() {
+  console.log("ik ben hier");
+  document.getElementById('hardBtn').style.visibility = 'hidden';
+  document.getElementById('mediumBtn').style.visibility = 'hidden';
+  document.getElementById('easyBtn').style.visibility = 'hidden';
+}
+
+
 const hardBtn = document.getElementById("hardBtn");
 hardBtn.innerText = "moeilijk";
-hardBtn.addEventListener("click", function () { console.log("hard pressed"); chose_level("hard"); });
+hardBtn.addEventListener("click", function () { console.log("hard pressed"); chose_level("hard"); hideButton();});
 
 const mediumBtn = document.getElementById("mediumBtn");
 mediumBtn.innerText = "normaal";
-mediumBtn.addEventListener("click", function () { chose_level("medium"); });
+mediumBtn.addEventListener("click", function () { chose_level("medium"); hideButton();});
 
 const easyBtn = document.getElementById("easyBtn");
 easyBtn.innerText = "makkelijk";
-easyBtn.addEventListener("click", function () { chose_level("easy"); });
+easyBtn.addEventListener("click", function () { chose_level("easy");hideButton();});
 
 ctx.font = "30px Arial";
 ctx.fillStyle = "red";
 ctx.textAlign = "center";
 ctx.fillText("Sleep de vormen naar de juiste plaats!", 1000 * scale_factor, 750 * scale_factor);
-
-const restart = document.getElementById("restart");
-restart.style.display = "none";
-
 
 function chose_level(difficulty) {
   switch (difficulty) {
@@ -346,10 +350,31 @@ function check_finished() {
   ctx.fillStyle = "red";
   ctx.textAlign = "center";
   ctx.fillText("Je hebt gewonnen!", 1000 * scale_factor, 750 * scale_factor);
-  console.log("we geraken hier")
-  restart.style.display = "block";
-  restart.addEventListener("click", function () { location.reload(); })
+  console.log("we geraken hier");
+  drawButton(700 * scale_factor, 800 * scale_factor, 200, 40,"OPNIEUW");
+  canvas.addEventListener("click", function(event) {
+    var x = event.clientX - canvas.offsetLeft;
+    var y = event.clientY - canvas.offsetTop;
+    
+    if (x > (700 * scale_factor) && x < (700 * scale_factor) + 200 && y > (800 * scale_factor) && y < (800 * scale_factor) + 40) {
+      // Button was clicked
+      location.reload();
+    }
+  });
   return true;
+}
+
+function drawButton(x, y, width, height, text) {
+
+  // draw button
+  ctx.fillStyle = "red";
+  ctx.fillRect(x, y, width, height);
+
+  // draw text
+  ctx.font = "30px Arial";
+  ctx.fillStyle = "white";
+  ctx.fillText(text, x + 100, y + 30);
+
 }
 
 //eventlisteners
