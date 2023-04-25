@@ -1,4 +1,4 @@
-var canvas = document.getElementById("canvas");
+var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 
 //Canvas waarden
@@ -11,8 +11,12 @@ var canvas_height = canvas.height;
 //absolute waarden om mee te scalen
 var abs_width = 2018;
 var abs_height = 985;
+
 //scale factor
 var scale_factor = canvas_width / abs_width;
+
+// Solutions
+var AANTAL = 4;
 
 let offset_x;
 let offset_y;
@@ -52,7 +56,7 @@ shapes.push({ x: 900 * scale_factor, y: 350 * scale_factor, width: zijde / 4, he
 //Solution
 let sol = [];
 
-for (let i = 0; i < 4; i++) {
+for (let i = 0; i < AANTAL; i++) {
   sol.push([]);
 }
 var solution_zijde = zijde - 5;
@@ -101,35 +105,12 @@ function get_level(diff) {
   return;
 }
 
-function hideButton() {
-  console.log("ik ben hier");
-  document.getElementById('hardBtn').style.visibility = 'hidden';
-  document.getElementById('mediumBtn').style.visibility = 'hidden';
-  document.getElementById('easyBtn').style.visibility = 'hidden';
-}
-
-let sound = new Audio('solved.mp3');
-
-const hardBtn = document.getElementById("hardBtn");
-hardBtn.innerText = "moeilijk";
-hardBtn.addEventListener("click", function () { console.log("hard pressed"); chose_level("hard"); hideButton();});
-
-const mediumBtn = document.getElementById("mediumBtn");
-mediumBtn.innerText = "normaal";
-mediumBtn.addEventListener("click", function () { chose_level("medium"); hideButton();});
-
-const easyBtn = document.getElementById("easyBtn");
-easyBtn.innerText = "makkelijk";
-easyBtn.addEventListener("click", function () { chose_level("easy");hideButton();});
-
-ctx.font = "30px Arial";
-ctx.fillStyle = "red";
-ctx.textAlign = "center";
-ctx.fillText("Sleep de vormen naar de juiste plaats!", 1000 * scale_factor, 750 * scale_factor);
+let sound1 = new Audio('solved.mp3');
+let sound2 = new Audio('gewonnen.mp3');
 
 function chose_level(difficulty) {
+  document.getElementById("start").style.visibility = "hidden";
   switch (difficulty) {
-
     case "hard":
       console.log("hey dit is het level");
       get_level('hard');
@@ -148,6 +129,8 @@ function chose_level(difficulty) {
       break;
   }
 }
+
+
 
 //Tekenvorm
 
@@ -343,7 +326,7 @@ function check_correct() {
         shape.solved = true;
         solution.solved = true;
         check_finished();
-        sound.play();
+        sound1.play();
         return;
       }
     }
@@ -358,38 +341,44 @@ function check_finished() {
       return false;
     }
   }
-  console.log('je hebt gewonnen, yeeeeeeeeeeeeeeeeeey');
-  ctx.beginPath();
-  ctx.font = "30px Arial";
-  ctx.fillStyle = "red";
-  ctx.textAlign = "center";
-  ctx.fillText("Je hebt gewonnen!", canvas_width/2 +100, canvas_height*2/3-50);
-  console.log("we geraken hier");
-  drawButton(canvas_width/2, canvas_height*2/3, 200, 40,"OPNIEUW");
-  canvas.addEventListener("click", function(event) {
-    var x = event.clientX - offset_x;
-    var y = event.clientY - offset_y;
-    
-    if (x > canvas_width/2  && x < canvas_width/2  + 200  && y > canvas_height*2/3 && y < canvas_height*2/3 + 40 ) {
-      // Button was clicked
-      location.reload();
+  sound2.play();
+
+  // Functie die confetti genereert
+  const duration = 10 * 1000,
+  animationEnd = Date.now() + duration,
+  defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+  function randomInRange(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+
+  const interval = setInterval(function() {
+    const timeLeft = animationEnd - Date.now();
+    if (timeLeft <= 0) {
+      return clearInterval(interval);
     }
-  });
+  
+    const particleCount = 50 * (timeLeft / duration);
+  
+  confetti(
+    Object.assign({}, defaults, {
+      particleCount,
+      origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
+    })
+  );
+  confetti(
+    Object.assign({}, defaults, {
+      particleCount,
+      origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
+    })
+  );
+  }, 250);
+
+  let einde = document.getElementById("einde");
+  einde.style.visibility = "visible"
   return true;
 }
 
-function drawButton(x, y, width, height, text) {
-
-  // draw button
-  ctx.fillStyle = "red";
-  ctx.fillRect(x, y, width, height);
-
-  // draw text
-  ctx.font = "30px Arial";
-  ctx.fillStyle = "white";
-  ctx.fillText(text, x + 100, y + 30);
-
-}
 
 //eventlisteners
 canvas.onmousedown = mouse_down;

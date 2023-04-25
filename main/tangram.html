@@ -2,15 +2,57 @@
 <html>
     <head>
         <title>Tangram</title>
+        <link rel="stylesheet" href="../css/tangram.css">
+        <script src="https://cdn.jsdelivr.net/npm/tsparticles-confetti@2.9.3/tsparticles.confetti.bundle.min.js"></script>
     </head>
-
-    <body style="background-color:rgb(220, 233, 235)">
-        
-        <canvas id="canvas" style="border:1px solid #fc0000;" >Testcanvas </canvas>
-        <button id="easyBtn" style="background-color: green; color: white">Easy</button>
-        <button id="mediumBtn" style="background-color: orange; color: white">Medium</button>
-        <button id="hardBtn" style="background-color: red; color: white">Hard</button>
-        <script src="../js/tangram.js"></script>
     
+    <body>
+
+    <canvas id="myCanvas">Testcanvas</canvas>
+    <script src="../js/tangram.js"></script>
+
+        <!--Keuzen level-->
+        <div id="start" class="dialog"  style="transform: scale(0.6);">
+        <div class="dialog-wrapper">
+            <div class="dialog-content">                        
+                <div class="dialog-content-top">
+                    <div class="tutorial"></div>
+                    <p>Sleep de figuur naar de juiste plaats</p>
+                    <img src="./sleep.gif" alt="sleep"/>
+                    <p>Klik en draai de figuur</p>
+                    <img src="./draai.gif" alt="draai"/>
+                </div>
+                <div class="dialog-content-bottom">
+                  <p class="text-small" id="login-warning">Opgelet! Vergeet niet in te loggen om je score op het <br />scoreboard te zien!</p>
+                  <div class="btn-group">
+                      <a href="javascript:chose_level('easy');" class="btn easy"><div>Makkelijk</div></a>
+                      <a href="javascript:chose_level('medium');" class="btn normal"><div>Normaal</div></a>
+                      <a href="javascript:chose_level('hard');" class="btn hard"><div>Moeilijk</div></a>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Nieuwe game starten-->
+
+    <div id="einde" class="dialog"  style="transform: scale(0.7); visibility: hidden;">
+        <div class="dialog-wrapper">
+            <div class="dialog-content">                        
+                <div class="dialog-content-top">
+                  <div>
+                    <h1>Super goed gedaan!</h1>
+                  </div>
+                <div class="dialog-content-bottom">
+                  <div class="btn-group">
+                      <a href="javascript:location.reload();" class="btn easy"><div>Volgende</div></a>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
     </body>
 </html>
