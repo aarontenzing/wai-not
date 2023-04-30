@@ -244,11 +244,22 @@ let mouse_up = function (event) {
     return;
   }
   event.preventDefault();
-  draw_shapes();
+  
   check_correct();
   console.log(shapes);
-  let shape = shapes.splice(current_shape_index, 1);
-  shapes = shapes.concat(shape);
+
+  
+    // let curr_shape = shapes.splice(current_shape_index, 1);
+    
+    // if (!curr_shape[0].solved) {
+    //   shapes = shapes.concat(curr_shape);
+    // }
+    // else{
+    //   shapes = curr_shape.concat(shapes);
+    //   //console.log(shapes);
+    // }
+ 
+
   drag = false;
   if (!(solutions[0].level == "easy")) {
     for (i = 6; i >= 0; i--) {
@@ -272,11 +283,22 @@ let mouse_up = function (event) {
           console.log(shape.rotation);
           draw_shapes();
           check_correct();
-          return;
+          break;
         }
       }
     }
   }
+  let curr_shape = shapes.splice(current_shape_index, 1);
+    
+    if (!curr_shape[0].solved) {
+      shapes = shapes.concat(curr_shape);
+    }
+    else{
+      shapes = curr_shape.concat(shapes);
+      //console.log(shapes);
+    }
+    draw_shapes();
+ 
 }
 
 let mouse_out = function (event) {
