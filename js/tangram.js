@@ -112,25 +112,26 @@ function chose_level(difficulty) {
   document.getElementById("start").style.visibility = "hidden";
   switch (difficulty) {
     case "hard":
+      document.getElementById("hard_button").blur();
       console.log("hey dit is het level");
       get_level('hard');
       draw_shapes();
       break;
 
     case "medium":
+      document.getElementById("medium_button").blur();
       get_level('medium');
       draw_shapes();
       break;
 
     case "easy":
+      document.getElementById("easy_button").blur();
       get_level('easy');
       easy_rotate();
       draw_shapes();
       break;
   }
 }
-
-
 
 //Tekenvorm
 
@@ -378,7 +379,6 @@ function check_finished() {
   einde.style.visibility = "visible"
   return true;
 }
-
 
 //eventlisteners
 canvas.onmousedown = mouse_down;
