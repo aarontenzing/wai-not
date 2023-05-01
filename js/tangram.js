@@ -59,25 +59,27 @@ let sol = [];
 for (let i = 0; i < AANTAL; i++) {
   sol.push([]);
 }
-var solution_zijde = zijde - 5;
+var solution_zijde = zijde;
 var z_solution_vierkant = solution_zijde / (2 * Math.sqrt(2))
-
-sol[0].push({ x: 746 * scale_factor, y: 265 * scale_factor, width: z_solution_vierkant, height: z_solution_vierkant, rotation: 45, type: 'square', solved: false, level: 'hard' });
+//schildpad
+sol[0].push({ x: 748 * scale_factor, y: 263 * scale_factor, width: z_solution_vierkant, height: z_solution_vierkant, rotation: 45, type: 'square', solved: false, level: 'hard' });
 sol[0].push({ x: 813 * scale_factor, y: 145 * scale_factor, width: solution_zijde / 2, height: z_solution_vierkant / Math.sqrt(2), rotation: 45, type: 'parallel', solved: false });
-sol[0].push({ x: 923 * scale_factor, y: 168 * scale_factor, width: solution_zijde / 2, height: solution_zijde, rotation: 180, type: 'big_triangle', solved: false });
-sol[0].push({ x: 1023 * scale_factor, y: 167 * scale_factor, width: solution_zijde / 2, height: solution_zijde, rotation: 0, type: 'big_triangle', solved: false });
+sol[0].push({ x: 924 * scale_factor, y: 168 * scale_factor, width: solution_zijde / 2, height: solution_zijde, rotation: 180, type: 'big_triangle',  orientation: 1, solved: false });
+sol[0].push({ x: 1024 * scale_factor, y: 167 * scale_factor, width: solution_zijde / 2, height: solution_zijde, rotation: 0, type: 'big_triangle', orientation: 1, solved: false });
+sol[0].push({ x: 975 * scale_factor, y: 117.5 * scale_factor, width: solution_zijde / 2, height: solution_zijde, rotation: 270, type: 'big_triangle',  orientation: 2, solved: false });
+sol[0].push({ x: 975 * scale_factor, y: 217 * scale_factor, width: solution_zijde / 2, height: solution_zijde, rotation: 90, type: 'big_triangle', orientation: 2, solved: false });
 sol[0].push({ x: 1104 * scale_factor, y: 156 * scale_factor, width: solution_zijde / 2, height: solution_zijde / 2, rotation: 315, type: 'med_triangle', solved: false });
 sol[0].push({ x: 1153 * scale_factor, y: 335 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 90, type: 'small_triangle', solved: false });
 sol[0].push({ x: 895 * scale_factor, y: 388 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 180, type: 'small_triangle', solved: false });
-
+//kat
 sol[1].push({ x: 871 * scale_factor, y: 188 * scale_factor, width: z_solution_vierkant, height: z_solution_vierkant, rotation: 45, type: 'square', solved: false, level: 'hard' });
-sol[1].push({ x: 1168 * scale_factor, y: 579 * scale_factor, width: solution_zijde / 2, height: z_solution_vierkant / Math.sqrt(2), rotation: 0, type: 'parallel', solved: false });
+sol[1].push({ x: 1168 * scale_factor, y: 576 * scale_factor, width: solution_zijde / 2, height: z_solution_vierkant / Math.sqrt(2), rotation: 0, type: 'parallel', solved: false });
 sol[1].push({ x: 975 * scale_factor, y: 433 * scale_factor, width: solution_zijde / 2, height: solution_zijde, rotation: 45, type: 'big_triangle', solved: false });
 sol[1].push({ x: 945 * scale_factor, y: 293 * scale_factor, width: solution_zijde / 2, height: solution_zijde, rotation: 0, type: 'big_triangle', solved: false });
 sol[1].push({ x: 811 * scale_factor, y: 350 * scale_factor, width: solution_zijde / 2, height: solution_zijde / 2, rotation: 225, type: 'med_triangle', solved: false });
 sol[1].push({ x: 849 * scale_factor, y: 93 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 0, type: 'small_triangle', solved: false });
 sol[1].push({ x: 949 * scale_factor, y: 92 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 180, type: 'small_triangle', solved: false });
-
+//vormen
 sol[2].push({ x: 977 * scale_factor, y: 131 * scale_factor, width: z_solution_vierkant, height: z_solution_vierkant, rotation: 45, type: 'square', solved: false, level: 'easy' });
 sol[2].push({ x: 966 * scale_factor, y: 525 * scale_factor, width: solution_zijde / 2, height: z_solution_vierkant / Math.sqrt(2), rotation: 0, type: 'parallel', solved: false, level: 'easy' });
 sol[2].push({ x: 847 * scale_factor, y: 264 * scale_factor, width: solution_zijde / 2, height: solution_zijde, rotation: 45, type: 'big_triangle', solved: false, level: 'easy' });
@@ -85,7 +87,7 @@ sol[2].push({ x: 1090 * scale_factor, y: 270 * scale_factor, width: solution_zij
 sol[2].push({ x: 911 * scale_factor, y: 628 * scale_factor, width: solution_zijde / 2, height: solution_zijde / 2, rotation: 135, type: 'med_triangle', solved: false, level: 'easy' });
 sol[2].push({ x: 831 * scale_factor, y: 504 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 45, type: 'small_triangle', solved: false, level: 'easy' });
 sol[2].push({ x: 1130 * scale_factor, y: 502 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 135, type: 'small_triangle', solved: false, level: 'easy' });
-
+//vliegtuig
 sol[3].push({ x: 823 * scale_factor, y: 427 * scale_factor, width: z_solution_vierkant, height: z_solution_vierkant, rotation: 0, type: 'square', solved: false, level: 'medium' });
 sol[3].push({ x: 1140 * scale_factor, y: 453 * scale_factor, width: solution_zijde / 2, height: z_solution_vierkant / Math.sqrt(2), rotation: 0, type: 'parallel', solved: false });
 sol[3].push({ x: 950 * scale_factor, y: 231 * scale_factor, width: solution_zijde / 2, height: solution_zijde, rotation: 135, type: 'big_triangle', solved: false });
@@ -102,6 +104,7 @@ function get_level(diff) {
     rand = Math.floor(Math.random() * sol.length);
   } while (sol[rand][0].level != diff);
   solutions = sol[rand];
+  console.log(solutions)
   return;
 }
 
@@ -227,15 +230,10 @@ let mouse_down = function (event) {
         console.log('yes');
         console.log(current_shape_index);
         drag = true;
-        console.log("-----------")
-        console.log(clickedX);
-        console.log(clickedY);
-        console.log("===========")
         return;
       } else {
         console.log('no');
       }
-
     }
   }
 }
@@ -245,7 +243,7 @@ let mouse_up = function (event) {
     return;
   }
   event.preventDefault();
-  console.log(shapes);
+  //console.log(shapes);
   drag = false;
   if (!(solutions[0].level == "easy")) {
     for (i = 6; i >= 0; i--) {
@@ -329,25 +327,38 @@ let mouse_move = function (event) {
 }
 
 function check_correct() {
-  for (let shape of shapes) {
+  let shape = shapes[shapes.length -1];
     for (let solution of solutions) {
       console.log('komen we hier ooit?')
       if (!shape.solved && !solution.solved && shape.x <= solution.x + 25 * scale_factor && shape.x >= solution.x - 25 * scale_factor && shape.y <= solution.y + 25 * scale_factor && shape.y >= solution.y - 25 * scale_factor
         && shape.type == solution.type && shape.rotation == solution.rotation) {
-        shape.x = solution.x;
+        shape.x = solution.x; 
         shape.y = solution.y;
 
         draw_shapes();
         shape.solved = true;
         solution.solved = true;
+        if (solution.orientation) { 
+          // solutions = solutions.filter(sol => sol.orientation==null || sol.orientation == solution.orientation);
+          solutions = solutions.filter(sol => sol.orientation==null ||sol.type != solution.type || sol.orientation == solution.orientation);
+
+        }
+        console.log("-----")
+        console.log(solutions)
         check_finished();
         sound1.play();
         return;
       }
     }
   }
-}
 
+function same_orientation(solution){
+  for (let sol of solutions) {
+    if (sol.orientation && sol.orientation != solution.orientation){
+
+    }
+  }
+}
 function check_finished() {
   for (let shape of shapes.concat(solutions)) {
     if (!shape.solved) {
