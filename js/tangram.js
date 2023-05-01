@@ -243,7 +243,6 @@ let mouse_up = function (event) {
     return;
   }
   event.preventDefault();
-  //console.log(shapes);
   drag = false;
   if (!(solutions[0].level == "easy")) {
     for (i = 6; i >= 0; i--) {
@@ -287,7 +286,6 @@ function change_draworder() {
   }
   else {
     shapes = curr_shape.concat(shapes);
-    //console.log(shapes);
   }
 }
 
@@ -339,7 +337,6 @@ function check_correct() {
         shape.solved = true;
         solution.solved = true;
         if (solution.orientation) { 
-          // solutions = solutions.filter(sol => sol.orientation==null || sol.orientation == solution.orientation);
           solutions = solutions.filter(sol => sol.orientation==null ||sol.type != solution.type || sol.orientation == solution.orientation);
 
         }
@@ -352,13 +349,6 @@ function check_correct() {
     }
   }
 
-function same_orientation(solution){
-  for (let sol of solutions) {
-    if (sol.orientation && sol.orientation != solution.orientation){
-
-    }
-  }
-}
 function check_finished() {
   for (let shape of shapes.concat(solutions)) {
     if (!shape.solved) {
