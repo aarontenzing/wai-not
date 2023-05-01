@@ -59,7 +59,7 @@ let sol = [];
 for (let i = 0; i < AANTAL; i++) {
   sol.push([]);
 }
-var solution_zijde = zijde;
+var solution_zijde = zijde-5;
 var z_solution_vierkant = solution_zijde / (2 * Math.sqrt(2))
 //schildpad
 sol[0].push({ x: 748 * scale_factor, y: 263 * scale_factor, width: z_solution_vierkant, height: z_solution_vierkant, rotation: 45, type: 'square', solved: false, level: 'hard' });
