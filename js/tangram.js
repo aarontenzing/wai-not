@@ -64,7 +64,8 @@ for (let i = 0; i < AANTAL; i++) {
   sol.push([]);
 }
 //kleinere zijdes voor normal en easy
-var solution_zijde = zijde - 5;
+var difference = 5;
+var solution_zijde = zijde - difference;
 var z_solution_vierkant = solution_zijde / (2 * Math.sqrt(2))
 //schildpad
 sol[0].push({ x: 748 * scale_factor, y: 263 * scale_factor, width: z_vierkant, height: z_vierkant, rotation: 45, type: 'square', solved: false, level: 'hard' });
@@ -373,6 +374,13 @@ function check_correct() {
           solutions = solutions.filter(sol => sol.orientation == null || sol.type != solution.type || sol.orientation == solution.orientation);
         }
 
+        console.log("____________________")
+        console.log(shape.x);
+        console.log(shape.y);
+        console.log("---------------------")
+        console.log(solution.x);
+        console.log(solution.y);
+        console.log("____________________")
         check_finished();
         sound1.play();
         return;
