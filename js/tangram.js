@@ -36,6 +36,7 @@ canvas.onresize = function () { get_offset(); }
 //Vormen
 let shapes = [];
 let current_shape_index = null;
+let current_shape;
 let drag = false;
 let startX;
 let startY;
@@ -241,9 +242,8 @@ function set_drag(event) {
     let shape = shapes[i];
     console.log(shape);
     if (is_mouse_in_shape(startX, startY, shape) && !shape.solved) {
-      current_shape_index = i;
+      current_shape = shape;
       console.log('yes');
-      console.log(current_shape_index);
       drag = true;
       return;
     }
@@ -268,7 +268,6 @@ let mouse_touch_up = function (event) {
     }
   }
   check_correct();
-  change_draworder();
   draw_shapes();
 }
 
@@ -292,12 +291,12 @@ function rotate(shape) {
 }
 
 function change_draworder() {
-  let curr_shape = shapes.splice(current_shape_index, 1);
-  if (!curr_shape[0].solved) {
-    shapes = shapes.concat(curr_shape);
+  let to_change = shapes.splice(shapes.indexOf(current_shape), 1);
+  if (!to_change[0].solved) {
+    shapes = shapes.concat(to_change);
   }
   else {
-    shapes = curr_shape.concat(shapes);
+    shapes = to_change.concat(shapes);
   }
 }
 
@@ -339,10 +338,10 @@ let mouse_move = function (event) {
     move_shape(mouseX, mouseY);
   }
 }
+
 function move_shape(posX, posY) {
 
   console.log(dx, dy);
-  let current_shape = shapes[current_shape_index];
 
   current_shape.x += dx;
   current_shape.y += dy;
@@ -350,6 +349,7 @@ function move_shape(posX, posY) {
   console.log(current_shape.x, current_shape.y);
 
   //clear it and redraw
+  change_draworder();
   draw_shapes();
 
   startX = posX;
@@ -367,7 +367,7 @@ function check_correct() {
 
         shape.solved = true;
         solution.solved = true;
-
+        change_draworder();
         draw_shapes();
         if (solution.orientation) {
           solutions = solutions.filter(sol => sol.orientation == null || sol.type != solution.type || sol.orientation == solution.orientation);
