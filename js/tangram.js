@@ -39,8 +39,10 @@ let current_shape_index = null;
 let drag = false;
 let startX;
 let startY;
-let clickedX;
-let clickedY;
+let positionX;
+let positionY;
+let dx;
+let dy;
 
 var zijde = 300 * scale_factor;
 var z_vierkant = zijde / (2 * Math.sqrt(2))
@@ -60,14 +62,14 @@ for (let i = 0; i < AANTAL; i++) {
   sol.push([]);
 }
 //kleinere zijdes voor normal en easy
-var solution_zijde = zijde-5;
+var solution_zijde = zijde - 5;
 var z_solution_vierkant = solution_zijde / (2 * Math.sqrt(2))
 //schildpad
 sol[0].push({ x: 748 * scale_factor, y: 263 * scale_factor, width: z_vierkant, height: z_vierkant, rotation: 45, type: 'square', solved: false, level: 'hard' });
 sol[0].push({ x: 813 * scale_factor, y: 145 * scale_factor, width: zijde / 2, height: z_vierkant / Math.sqrt(2), rotation: 45, type: 'parallel', solved: false });
-sol[0].push({ x: 924 * scale_factor, y: 168 * scale_factor, width: zijde / 2, height: zijde, rotation: 180, type: 'big_triangle',  orientation: 1, solved: false });
+sol[0].push({ x: 924 * scale_factor, y: 168 * scale_factor, width: zijde / 2, height: zijde, rotation: 180, type: 'big_triangle', orientation: 1, solved: false });
 sol[0].push({ x: 1024 * scale_factor, y: 167 * scale_factor, width: zijde / 2, height: zijde, rotation: 0, type: 'big_triangle', orientation: 1, solved: false });
-sol[0].push({ x: 975 * scale_factor, y: 117.5 * scale_factor, width: zijde / 2, height: zijde, rotation: 270, type: 'big_triangle',  orientation: 2, solved: false });
+sol[0].push({ x: 975 * scale_factor, y: 117.5 * scale_factor, width: zijde / 2, height: zijde, rotation: 270, type: 'big_triangle', orientation: 2, solved: false });
 sol[0].push({ x: 975 * scale_factor, y: 217 * scale_factor, width: zijde / 2, height: zijde, rotation: 90, type: 'big_triangle', orientation: 2, solved: false });
 sol[0].push({ x: 1104 * scale_factor, y: 156 * scale_factor, width: zijde / 2, height: zijde / 2, rotation: 315, type: 'med_triangle', solved: false });
 sol[0].push({ x: 1153 * scale_factor, y: 335 * scale_factor, width: zijde / 4, height: zijde / 2, rotation: 90, type: 'small_triangle', solved: false });
@@ -212,29 +214,37 @@ let is_mouse_in_shape = function (x, y, shape) {
 }
 
 let mouse_down = function (event) {
-
   event.preventDefault();
   //first coordinates where you click
-  clickedX = parseInt(event.clientX - offset_x);
-  clickedY = parseInt(event.clientY - offset_y);
+  positionX = parseInt(event.clientX - offset_x);
+  positionY = parseInt(event.clientY - offset_y);
   //coordinates used when dragging
-  startX = clickedX;
-  startY = clickedY;
+  startX = positionX;
+  startY = positionY;
+  set_drag(event);
+}
 
+let touch_down = function (event) {
+  event.preventDefault();
+  //first coordinates where you touch
+  positionX = parseInt(event.touches[0].clientX - offset_x);
+  positionY = parseInt(event.touches[0].clientY - offset_y);
+  //coordinates used when dragging    
+  startX = positionX;
+  startY = positionY;
+  set_drag(event);
+}
+
+function set_drag(event) {
   for (i = 6; i >= 0; i--) {
     let shape = shapes[i];
     console.log(shape);
     if (is_mouse_in_shape(startX, startY, shape) && !shape.solved) {
       current_shape_index = i;
-      
-      if (event.button == 0) { // Checks if it is left mouse button
-        console.log('yes');
-        console.log(current_shape_index);
-        drag = true;
-        return;
-      } else {
-        console.log('no');
-      }
+      console.log('yes');
+      console.log(current_shape_index);
+      drag = true;
+      return;
     }
   }
 }
@@ -249,15 +259,15 @@ let mouse_up = function (event) {
     for (i = 6; i >= 0; i--) {
       let shape = shapes[i];
       if (is_mouse_in_shape(startX, startY, shape) && !shape.solved) {
-        if (startX == clickedX && startY == clickedY) {
+        if (startX == positionX && startY == positionY) {
           rotate(shape);
           break;
         }
       }
     }
   }
-  change_draworder();
   check_correct();
+  change_draworder();
   draw_shapes();
 }
 
@@ -298,6 +308,23 @@ let mouse_out = function (event) {
   drag = false;
 }
 
+let touch_move = function (event) {
+
+  console.log("ey o let o")
+  if (!drag) {
+    return;
+  } else {
+    event.preventDefault();
+    let touchX = parseInt(event.touches[0].clientX - offset_x);
+    let touchY = parseInt(event.touches[0].clientY - offset_y);
+
+    dx = touchX - startX;
+    dy = touchY - startY;
+
+    move_shape(touchX, touchY);
+  }
+}
+
 let mouse_move = function (event) {
   if (!drag) {
     return;
@@ -306,8 +333,13 @@ let mouse_move = function (event) {
     let mouseX = parseInt(event.clientX - offset_x);
     let mouseY = parseInt(event.clientY - offset_y);
 
-    let dx = mouseX - startX;
-    let dy = mouseY - startY;
+    dx = mouseX - startX;
+    dy = mouseY - startY;
+
+    move_shape(mouseX, mouseY);
+  }
+}
+  function move_shape(posX, posY) {
 
     console.log(dx, dy);
     let current_shape = shapes[current_shape_index];
@@ -320,35 +352,34 @@ let mouse_move = function (event) {
     //clear it and redraw
     draw_shapes();
 
-    startX = mouseX;
-    startY = mouseY;
+    startX = posX;
+    startY = posY;
   }
-}
 
 function check_correct() {
-  let shape = shapes[shapes.length -1];
-    for (let solution of solutions) {
-      console.log('komen we hier ooit?')
-      if (!shape.solved && !solution.solved && shape.x <= solution.x + 25 * scale_factor && shape.x >= solution.x - 25 * scale_factor && shape.y <= solution.y + 25 * scale_factor && shape.y >= solution.y - 25 * scale_factor
-        && shape.type == solution.type && shape.rotation == solution.rotation) {
-        shape.x = solution.x; 
-        shape.y = solution.y;
+  for (let shape of shapes) {
+  for (let solution of solutions) {
+    console.log('komen we hier ooit?')
+    if (!shape.solved && !solution.solved && shape.x <= solution.x + 25 * scale_factor && shape.x >= solution.x - 25 * scale_factor && shape.y <= solution.y + 25 * scale_factor && shape.y >= solution.y - 25 * scale_factor
+      && shape.type == solution.type && shape.rotation == solution.rotation) {
+      shape.x = solution.x;
+      shape.y = solution.y;
 
-        draw_shapes();
-        shape.solved = true;
-        solution.solved = true;
-        if (solution.orientation) { 
-          solutions = solutions.filter(sol => sol.orientation==null ||sol.type != solution.type || sol.orientation == solution.orientation);
+      shape.solved = true;
+      solution.solved = true;
 
-        }
-        console.log("-----")
-        console.log(solutions)
-        check_finished();
-        sound1.play();
-        return;
+      draw_shapes();
+      if (solution.orientation) {
+        solutions = solutions.filter(sol => sol.orientation == null || sol.type != solution.type || sol.orientation == solution.orientation);
       }
+      
+      check_finished();
+      sound1.play();
+      return;
     }
   }
+}
+}
 
 function check_finished() {
   for (let shape of shapes.concat(solutions)) {
@@ -401,3 +432,7 @@ canvas.onmousedown = mouse_down;
 canvas.onmouseup = mouse_up;
 canvas.onmouseout = mouse_out;
 canvas.onmousemove = mouse_move;
+canvas.addEventListener("touchstart", touch_down);
+canvas.addEventListener("touchmove", touch_move);  
+canvas.addEventListener("touchend", mouse_up);
+
