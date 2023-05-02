@@ -44,6 +44,7 @@ let positionY;
 let dx;
 let dy;
 
+
 var zijde = 300 * scale_factor;
 var z_vierkant = zijde / (2 * Math.sqrt(2))
 
@@ -249,7 +250,7 @@ function set_drag(event) {
   }
 }
 
-let mouse_up = function (event) {
+let mouse_touch_up = function (event) {
   if (!drag) {
     return;
   }
@@ -309,7 +310,6 @@ let mouse_out = function (event) {
 }
 
 let touch_move = function (event) {
-
   console.log("ey o let o")
   if (!drag) {
     return;
@@ -339,46 +339,46 @@ let mouse_move = function (event) {
     move_shape(mouseX, mouseY);
   }
 }
-  function move_shape(posX, posY) {
+function move_shape(posX, posY) {
 
-    console.log(dx, dy);
-    let current_shape = shapes[current_shape_index];
+  console.log(dx, dy);
+  let current_shape = shapes[current_shape_index];
 
-    current_shape.x += dx;
-    current_shape.y += dy;
+  current_shape.x += dx;
+  current_shape.y += dy;
 
-    console.log(current_shape.x, current_shape.y);
+  console.log(current_shape.x, current_shape.y);
 
-    //clear it and redraw
-    draw_shapes();
+  //clear it and redraw
+  draw_shapes();
 
-    startX = posX;
-    startY = posY;
-  }
+  startX = posX;
+  startY = posY;
+}
 
 function check_correct() {
   for (let shape of shapes) {
-  for (let solution of solutions) {
-    console.log('komen we hier ooit?')
-    if (!shape.solved && !solution.solved && shape.x <= solution.x + 25 * scale_factor && shape.x >= solution.x - 25 * scale_factor && shape.y <= solution.y + 25 * scale_factor && shape.y >= solution.y - 25 * scale_factor
-      && shape.type == solution.type && shape.rotation == solution.rotation) {
-      shape.x = solution.x;
-      shape.y = solution.y;
+    for (let solution of solutions) {
+      console.log('komen we hier ooit?')
+      if (!shape.solved && !solution.solved && shape.x <= solution.x + 25 * scale_factor && shape.x >= solution.x - 25 * scale_factor && shape.y <= solution.y + 25 * scale_factor && shape.y >= solution.y - 25 * scale_factor
+        && shape.type == solution.type && shape.rotation == solution.rotation) {
+        shape.x = solution.x;
+        shape.y = solution.y;
 
-      shape.solved = true;
-      solution.solved = true;
+        shape.solved = true;
+        solution.solved = true;
 
-      draw_shapes();
-      if (solution.orientation) {
-        solutions = solutions.filter(sol => sol.orientation == null || sol.type != solution.type || sol.orientation == solution.orientation);
+        draw_shapes();
+        if (solution.orientation) {
+          solutions = solutions.filter(sol => sol.orientation == null || sol.type != solution.type || sol.orientation == solution.orientation);
+        }
+
+        check_finished();
+        sound1.play();
+        return;
       }
-      
-      check_finished();
-      sound1.play();
-      return;
     }
   }
-}
 }
 
 function check_finished() {
@@ -429,10 +429,10 @@ function check_finished() {
 
 //eventlisteners
 canvas.onmousedown = mouse_down;
-canvas.onmouseup = mouse_up;
+canvas.onmouseup = mouse_touch_up;
 canvas.onmouseout = mouse_out;
 canvas.onmousemove = mouse_move;
 canvas.addEventListener("touchstart", touch_down);
-canvas.addEventListener("touchmove", touch_move);  
-canvas.addEventListener("touchend", mouse_up);
+canvas.addEventListener("touchmove", touch_move);
+canvas.addEventListener("touchend", mouse_touch_up);
 
