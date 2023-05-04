@@ -4,12 +4,21 @@
         <title>Tangram</title>
         <link rel="stylesheet" href="../css/tangram.css">
         <script src="https://cdn.jsdelivr.net/npm/tsparticles-confetti@2.9.3/tsparticles.confetti.bundle.min.js"></script>
-    </head>
     
     <body>
 
+    
     <canvas id="myCanvas">Testcanvas</canvas>
     <script src="../js/tangram.js"></script>
+
+ 
+
+    <section class>
+
+        <img class="pijltjes" id="PijlLinks" src="arrow-circle-left-solid.svg" onclick="vorig()"> 
+        <img class="pijltjes" id="PijlRechts" src="arrow-circle-right-solid.svg" onclick="volgende()">
+            
+    </section>
 
         <!--Keuzen level-->
         <div id="start" class="dialog"  style="transform: scale(0.6);">
@@ -25,9 +34,9 @@
                 <div class="dialog-content-bottom">
                   <p class="text-small" id="login-warning">Opgelet! Vergeet niet in te loggen om je score op het <br />scoreboard te zien!</p>
                   <div class="btn-group">
-                      <a href="javascript:chose_level('easy');" class="btn easy" id = "easy_button"><div>Makkelijk</div></a>
-                      <a href="javascript:chose_level('medium');" class="btn normal" id = "normal_button"><div>Normaal</div></a>
-                      <a href="javascript:chose_level('hard');" class="btn hard" id = "hard_button"><div>Moeilijk</div></a>
+                      <a href="javascript:chose_diff('easy');" class="btn easy" id = "easy_button"><div>Makkelijk</div></a>
+                      <a href="javascript:chose_diff('normal');" class="btn normal" id = "normal_button"><div>Normaal</div></a>
+                      <a href="javascript:chose_diff('hard');" class="btn hard" id = "hard_button"><div>Moeilijk</div></a>
                   </div>
                 </div>
             </div>
@@ -36,7 +45,7 @@
 
     <!--Nieuwe game starten-->
 
-    <div id="einde" class="dialog"  style="transform: scale(0.7); visibility: hidden;">
+    <div id="einde" class="dialog"  style="transform: scale(0.5); visibility: hidden;">
         <div class="dialog-wrapper">
             <div class="dialog-content">                        
                 <div class="dialog-content-top">
@@ -52,7 +61,38 @@
         </div>
     </div>
 
+    <section id="tiles" style="visibility: hidden;">
+        <form  method="GET">
+        
+        <table>
+        
+        <tr>
+        <td><a href="" id="link0"><div id="puzzel0" class="puzzel"></div></td>
+        <td><a href="" id="link1"><div id="puzzel1" class="puzzel"></div></td>
+        <td><a href="" id="link2"><div id="puzzel2" class="puzzel"></div></td>
+        <td><a href="" id="link3"><div id="puzzel3" class="puzzel"></div></td>
+        </tr>
+        <tr>
+        <td><a href="" id="link4"><div id="puzzel4" class="puzzel"></div></td>
+        <td><a href="" id="link5"><div id="puzzel5" class="puzzel"></div></td>
+        <td><a href="" id="link6"><div id="puzzel6" class="puzzel"></div></td>
+        <td><a href="" id="link7"><div id="puzzel7" class="puzzel"></div></td>
+        </tr>
+        
+        </table>
+        
+        </form>
 
+        <div class="dialog-content-bottom" style="display: block; position:relative; right:10% ">
+            <div class="btn-group">
+                <a href="javascript:location.reload();" class="btn easy" position="left"><div>Terug</div></a>
+            </div>
+        </div>
+
+        <img class="pijltjes" id="PijlLinks"  src="arrow-circle-left-solid.svg" onclick="pagina('back')">
+        <img class="pijltjes" id="PijlRechts" src="arrow-circle-right-solid.svg" onclick="pagina('next')">
+
+    </section>  
 
     </body>
 </html>
