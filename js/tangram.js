@@ -185,7 +185,7 @@ function draw_shapes() {
 
 function easy_rotate() {
   for (i = 0; i < 7; i++) {
-    console.log(solutions);
+    //console.log(solutions);
     shapes[i].rotation = solutions[i].rotation;
   }
 }
@@ -480,11 +480,16 @@ function chose_level(index) {
 
     document.getElementById("tiles").style.visibility = "hidden";
     document.getElementById("tiles").blur();
-    if(solutions[index][0].level == 'easy') {
+    solutions = solutions[index];
+    if (solutions.length == 0) {
+      location.reload();
+    }
+    console.log(solutions)
+    if(solutions[0].level == 'easy') {
       easy_rotate();
     }
-    solutions = solutions[index];
     draw_shapes();
+      
 }
 
 
