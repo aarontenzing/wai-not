@@ -456,19 +456,25 @@ function chose_diff(diff) {   // oproepen als de pagina geladen wordt (je komt d
       case "hard":
         document.getElementById("hard_button").blur();
         solutions = hard;
+        document.getElementById("puzzel0").innerHTML = '<img src="schildpad.PNG" >';
+        document.getElementById("puzzel1").innerHTML = '<img src="kat.PNG" >';
         break;
   
       case "normal":
         document.getElementById("normal_button").blur();
         solutions = normal;
+        document.getElementById("puzzel0").innerHTML = '<img src="vliegtuig.PNG" >';
         break;
   
       case "easy":
         document.getElementById("easy_button").blur();
+        document.getElementById("puzzel0").innerHTML = '<img src="easy1.PNG" >';
         solutions = easy;
         
         break;
     }
+
+    
   
     document.getElementById("link0").href = 'javascript:chose_level(0)';
     document.getElementById("link1").href = 'javascript:chose_level(1)';
