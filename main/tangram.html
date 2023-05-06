@@ -11,14 +11,6 @@
     <canvas id="myCanvas">Testcanvas</canvas>
     <script src="../js/tangram.js"></script>
 
- 
-
-    <section class>
-
-        <img class="pijltjes" id="PijlLinks" src="arrow-circle-left-solid.svg" onclick="vorig()"> 
-        <img class="pijltjes" id="PijlRechts" src="arrow-circle-right-solid.svg" onclick="volgende()">
-            
-    </section>
 
         <!--Keuzen level-->
         <div id="start" class="dialog"  style="transform: scale(0.6);">
@@ -61,10 +53,16 @@
         </div>
     </div>
 
+    <div class="dialog-content-bottom" id="terug" style="visibility: hidden;">
+        <div class="btn-group">
+            <a href="javascript:location.reload();" class="btn easy" position="left"><div>Terug</div></a>
+        </div>
+    </div>
+
     <section id="tiles" style="visibility: hidden;">
         <form  method="GET">
         
-        <table>
+        <table id = "tegels">
         
         <tr>
         <td><a href="" id="link0"><div id="puzzel0" class="puzzel"></div></td>
@@ -83,16 +81,7 @@
         
         </form>
 
-        <div class="dialog-content-bottom" style="display: block; position:relative; right:10% ">
-            <div class="btn-group">
-                <a href="javascript:location.reload();" class="btn easy" position="left"><div>Terug</div></a>
-            </div>
-        </div>
-
-        <img class="pijltjes" id="PijlLinks"  src="arrow-circle-left-solid.svg" onclick="pagina('back')">
-        <img class="pijltjes" id="PijlRechts" src="arrow-circle-right-solid.svg" onclick="pagina('next')">
-
-    </section>  
+    </section> 
 
     </body>
 </html>

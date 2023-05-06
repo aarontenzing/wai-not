@@ -447,35 +447,30 @@ function pagina(click) {
 function chose_diff(diff) {   // oproepen als de pagina geladen wordt (je komt de eerste keer op de pagina)
 
     document.getElementById("start").style.visibility = "hidden";
+    document.getElementById("tiles").style.visibility = "visible";
+    document.getElementById("terug").style.visibility = "visible";
 
-    let tiles = document.getElementById("tiles");
-    tiles.style.visibility = "visible";
-
-    document.getElementById("start").style.visibility = "hidden";
     switch (diff) {
       case "hard":
         document.getElementById("hard_button").blur();
         solutions = hard;
-        document.getElementById("puzzel0").innerHTML = '<img src="schildpad.PNG" >';
-        document.getElementById("puzzel1").innerHTML = '<img src="kat.PNG" >';
+        document.getElementById("puzzel0").innerHTML = '<img src="svg/schildpad.svg" >';
+        document.getElementById("puzzel1").innerHTML = '<img src="svg/kat.svg" >';
         break;
   
       case "normal":
         document.getElementById("normal_button").blur();
         solutions = normal;
-        document.getElementById("puzzel0").innerHTML = '<img src="vliegtuig.PNG" >';
+        document.getElementById("puzzel0").innerHTML = '<img src="svg/vliegtuig.svg" >';
         break;
   
       case "easy":
         document.getElementById("easy_button").blur();
-        document.getElementById("puzzel0").innerHTML = '<img src="easy1.PNG" >';
+        document.getElementById("puzzel0").innerHTML = '<img src="svg/easy1.svg" >';
         solutions = easy;
-        
         break;
     }
 
-    
-  
     document.getElementById("link0").href = 'javascript:chose_level(0)';
     document.getElementById("link1").href = 'javascript:chose_level(1)';
     document.getElementById("link2").href = 'javascript:chose_level(2)';
@@ -485,8 +480,11 @@ function chose_diff(diff) {   // oproepen als de pagina geladen wordt (je komt d
 function chose_level(index) {
 
     document.getElementById("tiles").style.visibility = "hidden";
+    document.getElementById("terug").style.visibility = "hidden";
     document.getElementById("tiles").blur();
+
     solutions = solutions[index];
+
     if (solutions.length == 0) {
       location.reload();
     }
