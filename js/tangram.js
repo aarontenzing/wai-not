@@ -132,6 +132,9 @@ function draw_shapes() {
   console.log("in drawshapes")
   ctx.clearRect(0, 0, canvas_width, canvas_height);
   for (let shape of solutions.concat(shapes)) {
+    if (shape.color == null && shape.solved == true){                 //de solutions niet opnieuw tekenen als ze al ingevuld zijn
+      break;                                          
+    }
     if (shape.color == null) {
       ctx.fillStyle = "grey";
     }
