@@ -133,7 +133,7 @@ function draw_shapes() {
   ctx.clearRect(0, 0, canvas_width, canvas_height);
   for (let shape of solutions.concat(shapes)) {
     if (shape.color == null && shape.solved == true){                 //de solutions niet opnieuw tekenen als ze al ingevuld zijn
-      break;                                          
+      continue;                                          
     }
     if (shape.color == null) {
       ctx.fillStyle = "grey";
