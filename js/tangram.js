@@ -142,8 +142,8 @@ function draw_shapes() {
   console.log("in drawshapes")
   ctx.clearRect(0, 0, canvas_width, canvas_height);
   for (let shape of solutions.concat(shapes)) {
-    if (shape.color == null && shape.solved == true){                 //de solutions niet opnieuw tekenen als ze al ingevuld zijn
-      continue;                                          
+    if (shape.color == null && shape.solved == true) {                 //de solutions niet opnieuw tekenen als ze al ingevuld zijn
+      continue;
     }
     if (shape.color == null) {
       ctx.fillStyle = "grey";
@@ -445,118 +445,165 @@ var user, id, pagina, index;
 
 function pagina(click) {
 
-  switch(click) {
+  switch (click) {
 
     case "back":
-    pagina--; if (pagina < 0) {pagina = PAGINAS;}
-    break;
+      pagina--; if (pagina < 0) { pagina = PAGINAS; }
+      break;
 
     case "next":
-    pagina++; if (pagina > PAGINAS) {pagina = 0;}
-    break;
+      pagina++; if (pagina > PAGINAS) { pagina = 0; }
+      break;
 
   }
 }
-
-function check_logged_in() {
+function update_score(){
+// function check_logged_in() {
   var xhr = new XMLHttpRequest();
-  var name
   xhr.open('GET', 'https://www.wai-not.be/api/username');
-  // xhr.addEventListener("load", function() {checked_logged_in(JSON.parse(xhr.responseText)); });
-  xhr.send();
-  xhr.onreadystatechange= () => {
-    if (JSON.parse(xhr.responseText).name != null){
+  xhr.addEventListener("load", function () {
+    if (JSON.parse(xhr.responseText).name != null) {
+      console.log('signed in');
+      let score = get_score();
+      console.log(score);
       return true;
     }
     else {
+      console.log('not signed in')
       return false;
     }
-  };
-
-}
-
-function save_score(){
-  if (check_logged_in){
-  let difficulty;
-  switch(solutions[0].level){
-    case "hard":
-      difficulty =2;
-      break;
-    case "normal":
-      difficulty = 1;
-      break;
-    case "easy":
-      difficulty = 0;
-      break;
-  }
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET', 'https://www.wai-not.be/api/top_scores?game=test&difficulty='.difficulty);
+  });
   xhr.send();
-  xhr.onreadystatechange= () => {
-    
-  };
 }
-else {
-  return;
+
+function get_score() {
+  let difficulty;
+  let current_score;
+  switch (solutions[0].level) {
+      case "hard":
+        difficulty = 2;
+        break;
+      case "normal":
+        difficulty = 1;
+        break;
+      case "easy":
+        difficulty = 0;
+        break;
+    }
+    var xhr_save = new XMLHttpRequest();
+    xhr_save.open('GET', 'https://www.wai-not.be/api/top_scores?game=test&difficulty='+difficulty);
+    xhr_save.addEventListener("load", function () {
+      dict = JSON.parse(xhr_save.responseText).records;
+      console.log(dict)
+      for (let user of dict) {
+        if (user.logged_in) {
+          current_score = user.score;
+          break;
+        }
+      }
+      return current_score;
+    });
+    xhr_save.send();
 }
-}
+
+//FOR TESTING ON THEIR SITE
+// function update_score(){
+//   // function check_logged_in() {
+//     var xhr = new XMLHttpRequest();
+//     xhr.open('GET', 'https://www.wai-not.be/api/username');
+//     xhr.addEventListener("load", function () {
+//       if (JSON.parse(xhr.responseText).name != null) {
+//         console.log('signed in');
+//         let score = get_score();
+//           console.log('----------');
+//         console.log(score);
+// console.log('-----------');
+//         return true;
+//       }
+//       else {
+//         console.log('not signed in')
+//         return false;
+//       }
+//     });
+//     xhr.send();
+//   }
+  
+//   function get_score() {
+//     let current_score;
+//       var xhr_save = new XMLHttpRequest();
+//       xhr_save.open('GET', 'https://www.wai-not.be/api/top_scores?game=hv-football&difficulty='+0);
+//       xhr_save.addEventListener("load", function () {
+//         dict = JSON.parse(xhr_save.responseText).records;
+//         console.log(dict)
+//         for (let user of dict) {
+//           if (user.logged_in) {
+//             current_score = user.score;
+//             break;
+//           }
+//         }
+//         return current_score;
+//       });
+//       xhr_save.send();
+//   }
+//   update_score()
+
 
 function chose_diff(diff) {   // oproepen als de pagina geladen wordt (je komt de eerste keer op de pagina)
 
-    document.getElementById("start").style.visibility = "hidden";
-    document.getElementById("tiles").style.visibility = "visible";
-    document.getElementById("terug").style.visibility = "visible";
+  document.getElementById("start").style.visibility = "hidden";
+  document.getElementById("tiles").style.visibility = "visible";
+  document.getElementById("terug").style.visibility = "visible";
 
-    switch (diff) {
-      case "hard":
-        document.getElementById("hard_button").blur();
-        solutions = hard;
-        document.getElementById("puzzel0").innerHTML = '<img src="svg/schildpad.svg" >';
-        document.getElementById("puzzel1").innerHTML = '<img src="svg/kat.svg" >';
-        break;
-  
-      case "normal":
-        document.getElementById("normal_button").blur();
-        solutions = normal;
-        document.getElementById("puzzel0").innerHTML = '<img src="svg/vliegtuig.svg" >';
-        break;
-  
-      case "easy":
-        document.getElementById("easy_button").blur();
-        document.getElementById("puzzel0").innerHTML = '<img src="svg/easy1.svg" >';
-        solutions = easy;
-        break;
-    }
+  switch (diff) {
+    case "hard":
+      document.getElementById("hard_button").blur();
+      solutions = hard;
+      document.getElementById("puzzel0").innerHTML = '<img src="svg/schildpad.svg" >';
+      document.getElementById("puzzel1").innerHTML = '<img src="svg/kat.svg" >';
+      break;
 
-    document.getElementById("link0").href = 'javascript:chose_level(0)';
-    document.getElementById("link1").href = 'javascript:chose_level(1)';
-    document.getElementById("link2").href = 'javascript:chose_level(2)';
-    document.getElementById("link3").href = 'javascript:chose_level(4)'; 
+    case "normal":
+      document.getElementById("normal_button").blur();
+      solutions = normal;
+      document.getElementById("puzzel0").innerHTML = '<img src="svg/vliegtuig.svg" >';
+      break;
+
+    case "easy":
+      document.getElementById("easy_button").blur();
+      document.getElementById("puzzel0").innerHTML = '<img src="svg/easy1.svg" >';
+      solutions = easy;
+      break;
+  }
+
+  document.getElementById("link0").href = 'javascript:chose_level(0)';
+  document.getElementById("link1").href = 'javascript:chose_level(1)';
+  document.getElementById("link2").href = 'javascript:chose_level(2)';
+  document.getElementById("link3").href = 'javascript:chose_level(4)';
 }
 
 function chose_level(index) {
   level_index = index;
 
-    document.getElementById("tiles").style.visibility = "hidden";
-    document.getElementById("terug").style.visibility = "hidden";
-    document.getElementById("tiles").blur();
+  document.getElementById("tiles").style.visibility = "hidden";
+  document.getElementById("terug").style.visibility = "hidden";
+  document.getElementById("tiles").blur();
 
-    solutions = solutions[index];
+  solutions = solutions[index];
 
-    if (solutions.length == 0) {
-      location.reload();
-    }
-    console.log(solutions)
-    if(solutions[0].level == 'easy') {
-      easy_rotate();
-    }
-    draw_shapes();
-      
+  if (solutions.length == 0) {
+    location.reload();
+  }
+  console.log(solutions)
+  if (solutions[0].level == 'easy') {
+    easy_rotate();
+  }
+  draw_shapes();
+
 }
 
 function coordinates() {
   for (let i of shapes) {
-    console.log(i.type,i.x, i.y, i.rotation);
+    console.log(i.type, i.x, i.y, i.rotation);
   }
 }
 
