@@ -100,6 +100,15 @@ normal[0].push({ x: 667 * scale_factor, y: 327 * scale_factor, width: solution_z
 normal[0].push({ x: 1266 * scale_factor, y: 428 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 270, type: 'small_triangle', solved: false });
 normal[0].push({ x: 762 * scale_factor, y: 388 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 315, type: 'small_triangle', solved: false });
 
+//toren
+normal[1].push({ x: 843 * scale_factor, y: 179.43 * scale_factor, width: z_solution_vierkant, height: z_solution_vierkant, rotation: 0, type: 'square', solved: false, level: 'medium' });
+normal[1].push({ x: 913 * scale_factor, y: 300 * scale_factor, width: solution_zijde / 2, height: z_solution_vierkant / Math.sqrt(2), rotation: 45, type: 'parallel', solved: false });
+normal[1].push({ x: 822.86 * scale_factor, y: 380 * scale_factor, width: solution_zijde / 2, height: solution_zijde, rotation: 135, type: 'big_triangle', solved: false });
+normal[1].push({ x: 898 * scale_factor, y: 312 * scale_factor, width: solution_zijde / 2, height: solution_zijde, rotation: 315, type: 'big_triangle', solved: false });
+normal[1].push({ x: 744.97 * scale_factor, y: 305 * scale_factor, width: solution_zijde / 2, height: solution_zijde / 2, rotation: 315, type: 'med_triangle', solved: false });
+normal[1].push({ x: 906 * scale_factor, y: 70 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 135, type: 'small_triangle', solved: false });
+normal[1].push({ x: 836 * scale_factor, y: 70 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 45, type: 'small_triangle', solved: false });
+
 //vormen
 easy[0].push({ x: 977 * scale_factor, y: 131 * scale_factor, width: z_solution_vierkant, height: z_solution_vierkant, rotation: 45, type: 'square', solved: false, level: 'easy' });
 easy[0].push({ x: 966 * scale_factor, y: 525 * scale_factor, width: solution_zijde / 2, height: z_solution_vierkant / Math.sqrt(2), rotation: 0, type: 'parallel', solved: false, level: 'easy' });
@@ -340,6 +349,7 @@ function move_shape(posX, posY) {
   //clear it and redraw
   change_draworder();
   draw_shapes();
+  coordinates(); // giving me the coordinates after moving shape
 
   startX = posX;
   startY = posY;
@@ -499,7 +509,11 @@ function chose_level(index) {
       
 }
 
-
+function coordinates() {
+  for (let i of shapes) {
+    console.log(i.type,i.x, i.y, i.rotation);
+  }
+}
 
 
 
