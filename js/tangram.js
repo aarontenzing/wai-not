@@ -421,7 +421,7 @@ function check_finished() {
       })
     );
   }, 250);
-
+  update_score();
   let einde = document.getElementById("einde");
   einde.style.visibility = "visible"
   return true;
@@ -458,51 +458,70 @@ function pagina(click) {
   }
 }
 
-//FOR TESTING ON THEIR SITE
-
 function update_score() {
-  // function check_logged_in() {
+  let difficulty;
+  console.log(solutions[0])
+  switch (solutions[0].level) {
+    case "hard":
+      difficulty = 2;
+      break;
+    case "medium":
+      difficulty = 1;
+      break;
+    case "easy":
+      difficulty = 0;
+      break;
+  }
   var xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://www.wai-not.be/api/username');
   xhr.addEventListener("load", function () {
     if (JSON.parse(xhr.responseText).name != null) {
-      console.log('signed in');
-      let current_score;
-      get_score().then((score) => {
-        current_score = score;
-        console.log("success: " + current_score);
-      }).catch((score) => {
-        current_score = score;
-        console.log("no score yet: " + current_score);
-      });
-      return true;
-    }
-    else {
-      console.log('not signed in');
-      return false;
-    }
+  console.log('signed in');
+  let current_score;
+  get_score(difficulty).then((score) => {
+    current_score = score.padEnd(8, '0');
+    console.log("success: " + current_score);
+    console.log(current_score[level_index]);
+    current_score = current_score.slice(0, level_index) + "1" + current_score.slice(level_index + 1);
+    console.log(current_score);
+    var xhr_post = new XMLHttpRequest();
+    var params = "game=test&score=" + current_score + "&difficulty=" + difficulty;
+    console.log(params)
+    xhr_post.open("POST", "https://www.wai-not.be/api/save_score");
+    xhr_post.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr_post.addEventListener("load", function () {
+      console.log(xhr_post.responseText);
+    });
+    xhr_post.send(params);
+  })
+  }
+  else {
+    console.log('not signed in');
+    return false;
+  }
   });
   xhr.send();
 }
 
-function get_score() {
-  return new Promise((resolve, reject) => {
+function get_score(difficulty) {
+  return new Promise((resolve) => {
     var xhr_save = new XMLHttpRequest();
-    xhr_save.open('GET', 'https://www.wai-not.be/api/top_scores?game=hv-football&difficulty=' + 0);
+    xhr_save.open('GET', 'https://www.wai-not.be/api/top_scores?game=test&difficulty=' + difficulty);
     xhr_save.addEventListener("load", function () {
       obj = JSON.parse(xhr_save.responseText).records;
       for (let user of Object.entries(obj)) {
         if (user[1].logged_in) {
-          console.log("set")
+          console.log("set");
+          console.log(user[1].score);
           resolve(user[1].score);
         }
       }
-      reject("0")
+      resolve("0")
     });
     xhr_save.send();
   });
 }
-update_score()
+
 
 
 function chose_diff(diff) {   // oproepen als de pagina geladen wordt (je komt de eerste keer op de pagina)
