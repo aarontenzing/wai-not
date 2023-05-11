@@ -23,15 +23,7 @@ let offset_y;
 
 let get_offset = function () {
   let canvas_offsets = canvas.getBoundingClientRect();
-  offset_x = canvas_offsets.left;
-  offset_y = canvas_offsets.top;
 }
-
-console.log("black" == 0, 0, 0);
-get_offset();
-window.onscroll = function () { get_offset(); }
-window.onresize = function () { get_offset(); }
-canvas.onresize = function () { get_offset(); }
 
 //Vormen
 let shapes = [];
@@ -110,18 +102,6 @@ easy[0].push({ x: 831 * scale_factor, y: 504 * scale_factor, width: solution_zij
 easy[0].push({ x: 1130 * scale_factor, y: 502 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 135, type: 'small_triangle', solved: false, level: 'easy' });
 
 let solutions = [];
-
-
-
-/*function get_level(diff) {
-  do {
-    console.log(sol.length);
-    rand = Math.floor(Math.random() * sol.length);
-  } while (sol[rand][0].level != diff);
-  solutions = sol[rand];
-  console.log(solutions)
-  return;
-}*/
 
 let sound1 = new Audio('solved.mp3');
 let sound2 = new Audio('gewonnen.mp3');
@@ -207,8 +187,8 @@ let is_mouse_in_shape = function (x, y, shape) {
 let mouse_down = function (event) {
   event.preventDefault();
   //first coordinates where you click
-  positionX = parseInt(event.clientX - offset_x);
-  positionY = parseInt(event.clientY - offset_y);
+  positionX = parseInt(event.clientX);
+  positionY = parseInt(event.clientY);
   //coordinates used when dragging
   startX = positionX;
   startY = positionY;
@@ -218,8 +198,8 @@ let mouse_down = function (event) {
 let touch_down = function (event) {
   event.preventDefault();
   //first coordinates where you touch
-  positionX = parseInt(event.touches[0].clientX - offset_x);
-  positionY = parseInt(event.touches[0].clientY - offset_y);
+  positionX = parseInt(event.touches[0].clientX);
+  positionY = parseInt(event.touches[0].clientY);
   //coordinates used when dragging    
   startX = positionX;
   startY = positionY;
@@ -303,9 +283,8 @@ let touch_move = function (event) {
     return;
   } else {
     event.preventDefault();
-    let touchX = parseInt(event.touches[0].clientX - offset_x);
-    let touchY = parseInt(event.touches[0].clientY - offset_y);
-
+    let touchX = parseInt(event.touches[0].clientX);
+    let touchY = parseInt(event.touches[0].clientY);
     dx = touchX - startX;
     dy = touchY - startY;
 
@@ -318,9 +297,9 @@ let mouse_move = function (event) {
     return;
   } else {
     event.preventDefault();
-    let mouseX = parseInt(event.clientX - offset_x);
-    let mouseY = parseInt(event.clientY - offset_y);
-
+    let mouseX = parseInt(event.clientX);
+    let mouseY = parseInt(event.clientY);
+    
     dx = mouseX - startX;
     dy = mouseY - startY;
 
@@ -457,8 +436,16 @@ function chose_diff(diff) {   // oproepen als de pagina geladen wordt (je komt d
       case "hard":
         document.getElementById("hard_button").blur();
         solutions = hard;
-        document.getElementById("puzzel0").innerHTML = '<img src="svg/schildpad.svg" >';
-        document.getElementById("puzzel1").innerHTML = '<img src="svg/kat.svg" >';
+        document.getElementById("puzzel0").innerHTML = '<img class="image" src="svg/schildpad.svg" >';
+        document.getElementById("puzzel1").innerHTML = '<img class="image" src="svg/kat.svg" >';
+        
+        document.getElementById("puzzel2").innerHTML = '<img class="image" src="svg/kat.svg" >';
+        document.getElementById("puzzel3").innerHTML = '<img class="image" src="svg/kat.svg" >';
+        document.getElementById("puzzel4").innerHTML = '<img class="image" src="svg/kat.svg" >';
+        document.getElementById("puzzel5").innerHTML = '<img class="image" src="svg/kat.svg" >';
+        document.getElementById("puzzel6").innerHTML = '<img class="image" src="svg/kat.svg" >';
+        document.getElementById("puzzel7").innerHTML = '<img class="image" src="svg/kat.svg" >';
+        
         break;
   
       case "normal":
@@ -482,7 +469,8 @@ function chose_diff(diff) {   // oproepen als de pagina geladen wordt (je komt d
 
 function chose_level(index) {
 
-    document.getElementById("tiles").style.visibility = "hidden";
+    //document.getElementById("tiles").style.visibility = "hidden";
+    document.getElementById("tiles").style.display = "none";
     document.getElementById("terug").style.visibility = "hidden";
     document.getElementById("tiles").blur();
 
