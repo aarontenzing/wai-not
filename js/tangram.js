@@ -66,7 +66,7 @@ for (let i = 0; i < AANTAL; i++) {
 var solution_zijde = zijde - 5;
 var z_solution_vierkant = solution_zijde / (2 * Math.sqrt(2))
 //schildpad
-hard[0].push({ x: 748 * scale_factor, y: 263 * scale_factor, width: z_vierkant, height: z_vierkant, rotation: 45, type: 'square', solved: false, level: 'hard' });
+hard[0].push({ x: 748 * scale_factor, y: 263 * scale_factor, width: z_vierkant, height: z_vierkant, rotation: 45, type: 'square', solved: false, level: 'hard', name: "schildpad"});
 hard[0].push({ x: 813 * scale_factor, y: 145 * scale_factor, width: zijde / 2, height: z_vierkant / Math.sqrt(2), rotation: 45, type: 'parallel', hardved: false, level: 'hard' });
 hard[0].push({ x: 924 * scale_factor, y: 168 * scale_factor, width: zijde / 2, height: zijde, rotation: 180, type: 'big_triangle', orientation: 1, hardved: false, level: 'hard' });
 hard[0].push({ x: 1024 * scale_factor, y: 167 * scale_factor, width: zijde / 2, height: zijde, rotation: 0, type: 'big_triangle', orientation: 1, hardved: false, level: 'hard' });
@@ -76,7 +76,7 @@ hard[0].push({ x: 1104 * scale_factor, y: 156 * scale_factor, width: zijde / 2, 
 hard[0].push({ x: 1153 * scale_factor, y: 335 * scale_factor, width: zijde / 4, height: zijde / 2, rotation: 90, type: 'small_triangle', hardved: false, level: 'hard' });
 hard[0].push({ x: 895 * scale_factor, y: 388 * scale_factor, width: zijde / 4, height: zijde / 2, rotation: 180, type: 'small_triangle', solved: false, level: 'hard' });
 //kat
-hard[1].push({ x: 871 * scale_factor, y: 188 * scale_factor, width: z_vierkant, height: z_vierkant, rotation: 45, type: 'square', hardved: false, level: 'hard' });
+hard[1].push({ x: 871 * scale_factor, y: 188 * scale_factor, width: z_vierkant, height: z_vierkant, rotation: 45, type: 'square', hardved: false, level: 'hard', name: "kat"});
 hard[1].push({ x: 1168 * scale_factor, y: 576 * scale_factor, width: zijde / 2, height: z_vierkant / Math.sqrt(2), rotation: 0, type: 'parallel', hardved: false, level: 'hard' });
 hard[1].push({ x: 975 * scale_factor, y: 433 * scale_factor, width: zijde / 2, height: zijde, rotation: 45, type: 'big_triangle', hardved: false, level: 'hard' });
 hard[1].push({ x: 945 * scale_factor, y: 293 * scale_factor, width: zijde / 2, height: zijde, rotation: 0, type: 'big_triangle', hardved: false, level: 'hard' });
@@ -85,7 +85,7 @@ hard[1].push({ x: 849 * scale_factor, y: 93 * scale_factor, width: zijde / 4, he
 hard[1].push({ x: 949 * scale_factor, y: 92 * scale_factor, width: zijde / 4, height: zijde / 2, rotation: 180, type: 'small_triangle', hardved: false, level: 'hard' });
 
 //vliegtuig
-normal[0].push({ x: 823 * scale_factor, y: 427 * scale_factor, width: z_solution_vierkant, height: z_solution_vierkant, rotation: 0, type: 'square', solved: false, level: 'medium' });
+normal[0].push({ x: 823 * scale_factor, y: 427 * scale_factor, width: z_solution_vierkant, height: z_solution_vierkant, rotation: 0, type: 'square', solved: false, level: 'medium', name: "vliegtuig" });
 normal[0].push({ x: 1140 * scale_factor, y: 453 * scale_factor, width: solution_zijde / 2, height: z_solution_vierkant / Math.sqrt(2), rotation: 0, type: 'parallel', solved: false, level: 'medium' });
 normal[0].push({ x: 950 * scale_factor, y: 231 * scale_factor, width: solution_zijde / 2, height: solution_zijde, rotation: 135, type: 'big_triangle', solved: false, level: 'medium' });
 normal[0].push({ x: 950 * scale_factor, y: 372 * scale_factor, width: solution_zijde / 2, height: solution_zijde, rotation: 225, type: 'big_triangle', solved: false, level: 'medium' });
@@ -94,7 +94,7 @@ normal[0].push({ x: 1266 * scale_factor, y: 428 * scale_factor, width: solution_
 normal[0].push({ x: 762 * scale_factor, y: 388 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 315, type: 'small_triangle', solved: false, level: 'medium' });
 
 //toren
-normal[1].push({ x: 843 * scale_factor, y: 179.43 * scale_factor, width: z_solution_vierkant, height: z_solution_vierkant, rotation: 0, type: 'square', solved: false, level: 'medium' });
+normal[1].push({ x: 843 * scale_factor, y: 179.43 * scale_factor, width: z_solution_vierkant, height: z_solution_vierkant, rotation: 0, type: 'square', solved: false, level: 'medium', name: "toren" });
 normal[1].push({ x: 913 * scale_factor, y: 300 * scale_factor, width: solution_zijde / 2, height: z_solution_vierkant / Math.sqrt(2), rotation: 45, type: 'parallel', solved: false });
 normal[1].push({ x: 822.86 * scale_factor, y: 380 * scale_factor, width: solution_zijde / 2, height: solution_zijde, rotation: 135, type: 'big_triangle', solved: false });
 normal[1].push({ x: 898 * scale_factor, y: 312 * scale_factor, width: solution_zijde / 2, height: solution_zijde, rotation: 315, type: 'big_triangle', solved: false });
@@ -103,7 +103,7 @@ normal[1].push({ x: 906 * scale_factor, y: 70 * scale_factor, width: solution_zi
 normal[1].push({ x: 836 * scale_factor, y: 70 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 45, type: 'small_triangle', solved: false });
 
 //vormen
-easy[0].push({ x: 977 * scale_factor, y: 131 * scale_factor, width: z_solution_vierkant, height: z_solution_vierkant, rotation: 45, type: 'square', solved: false, level: 'easy' });
+easy[0].push({ x: 977 * scale_factor, y: 131 * scale_factor, width: z_solution_vierkant, height: z_solution_vierkant, rotation: 45, type: 'square', solved: false, level: 'easy', name: "vormen" });
 easy[0].push({ x: 966 * scale_factor, y: 525 * scale_factor, width: solution_zijde / 2, height: z_solution_vierkant / Math.sqrt(2), rotation: 0, type: 'parallel', solved: false, level: 'easy' });
 easy[0].push({ x: 847 * scale_factor, y: 264 * scale_factor, width: solution_zijde / 2, height: solution_zijde, rotation: 45, type: 'big_triangle', solved: false, level: 'easy' });
 easy[0].push({ x: 1090 * scale_factor, y: 270 * scale_factor, width: solution_zijde / 2, height: solution_zijde, rotation: 135, type: 'big_triangle', solved: false, level: 'easy' });
@@ -402,6 +402,7 @@ function check_finished() {
   }, 250);
   update_score();
   let einde = document.getElementById("einde");
+  document.getElementById("end_text").innerHTML = solutions[0].name;
   einde.style.visibility = "visible"
   return true;
 }
@@ -513,9 +514,8 @@ function chose_diff(diff) {   // oproepen als de pagina geladen wordt (je komt d
       case "hard":
         document.getElementById("hard_button").blur();
         solutions = hard;
-        document.getElementById("puzzel0").innerHTML = '<img class="image" src="svg/schildpad.svg" >';
+        document.getElementById("puzzel0").innerHTML = '<img class="image" src="svg/schildpad_nietklaar.PNG" >';
         document.getElementById("puzzel1").innerHTML = '<img class="image" src="svg/kat.svg" >';
-        
         document.getElementById("puzzel2").innerHTML = '<img class="image" src="svg/kat.svg" >';
         document.getElementById("puzzel3").innerHTML = '<img class="image" src="svg/kat.svg" >';
         document.getElementById("puzzel4").innerHTML = '<img class="image" src="svg/kat.svg" >';
