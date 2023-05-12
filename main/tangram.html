@@ -4,13 +4,41 @@
         <title>Tangram</title>
         <link rel="stylesheet" href="../css/tangram.css">
         <script src="https://cdn.jsdelivr.net/npm/tsparticles-confetti@2.9.3/tsparticles.confetti.bundle.min.js"></script>
-    
+    </head>
     <body>
 
+    
+    <!--<section id="tiles" style="visibility: hidden;">Wat is er aan de hand met de css van dit spel?</section>-->
+    
+
+    <section id="tiles" style="visibility: hidden;">
+        <form  method="GET">
+        <br><br>
+        <table id = "tegels">
+        
+        <tr>
+        <td><a href="" id="link0"><div id="puzzel0" class="puzzel"></div></a></td>
+        <td><a href="" id="link1"><div id="puzzel1" class="puzzel"></div></a></td>
+        <td><a href="" id="link2"><div id="puzzel2" class="puzzel"></div></a></td>
+        <td><a href="" id="link3"><div id="puzzel3" class="puzzel"></div></a></td>
+        </tr>
+        <tr>
+        <td><a href="" id="link4"><div id="puzzel4" class="puzzel"></div></a></td>
+        <td><a href="" id="link5"><div id="puzzel5" class="puzzel"></div></a></td>
+        <td><a href="" id="link6"><div id="puzzel6" class="puzzel"></div></a></td>
+        <td><a href="" id="link7"><div id="puzzel7" class="puzzel"></div></a></td>
+        </tr>
+        
+        </table>
+        
+        </form>
+
+    </section> 
     
     <canvas id="myCanvas">Testcanvas</canvas>
     <script src="../js/tangram.js"></script>
 
+    
 
         <!--Keuzen level-->
         <div id="start" class="dialog"  style="transform: scale(0.6);">
@@ -36,7 +64,6 @@
     </div>
 
     <!--Nieuwe game starten-->
-    
     <div id="einde" class="dialog"  style="transform: scale(0.5); visibility: hidden;">
         <div class="dialog-wrapper">
             <div class="dialog-content">                        
@@ -52,6 +79,10 @@
             </div>
         </div>
     </div>
+    <!---
+    OUDE PLAATS VAN DE SECTION
+    -->
+    
 
     <div class="dialog-content-bottom" id="terug" style="visibility: hidden;">
         <div class="btn-group">
@@ -59,29 +90,7 @@
         </div>
     </div>
 
-    <section id="tiles" style="visibility: hidden;">
-        <form  method="GET">
-        
-        <table id = "tegels">
-        
-        <tr>
-        <td><a href="" id="link0"><div id="puzzel0" class="puzzel"></div></td>
-        <td><a href="" id="link1"><div id="puzzel1" class="puzzel"></div></td>
-        <td><a href="" id="link2"><div id="puzzel2" class="puzzel"></div></td>
-        <td><a href="" id="link3"><div id="puzzel3" class="puzzel"></div></td>
-        </tr>
-        <tr>
-        <td><a href="" id="link4"><div id="puzzel4" class="puzzel"></div></td>
-        <td><a href="" id="link5"><div id="puzzel5" class="puzzel"></div></td>
-        <td><a href="" id="link6"><div id="puzzel6" class="puzzel"></div></td>
-        <td><a href="" id="link7"><div id="puzzel7" class="puzzel"></div></td>
-        </tr>
-        
-        </table>
-        
-        </form>
-
-    </section> 
+    
 
     </body>
 </html>
