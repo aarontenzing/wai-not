@@ -476,29 +476,29 @@ function update_score() {
   xhr.open('GET', 'https://www.wai-not.be/api/username');
   xhr.addEventListener("load", function () {
     if (JSON.parse(xhr.responseText).name != null) {
-  console.log('signed in');
-  let current_score;
-  get_score(difficulty).then((score) => {
-    current_score = score.padEnd(8, '0');
-    console.log("success: " + current_score);
-    console.log(current_score[level_index]);
-    current_score = current_score.slice(0, level_index) + "1" + current_score.slice(level_index + 1);
-    console.log(current_score);
-    var xhr_post = new XMLHttpRequest();
-    var params = "game=test&score=" + current_score + "&difficulty=" + difficulty;
-    console.log(params)
-    xhr_post.open("POST", "https://www.wai-not.be/api/save_score");
-    xhr_post.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhr_post.addEventListener("load", function () {
-      console.log(xhr_post.responseText);
-    });
-    xhr_post.send(params);
-  })
-  }
-  else {
-    console.log('not signed in');
-    return false;
-  }
+      console.log('signed in');
+      let current_score;
+      get_score(difficulty).then((score) => {
+        current_score = score.padEnd(8, '0');
+        console.log("success: " + current_score);
+        console.log(current_score[level_index]);
+        current_score = current_score.slice(0, level_index) + "1" + current_score.slice(level_index + 1);
+        console.log(current_score);
+        var xhr_post = new XMLHttpRequest();
+        var params = "game=tangram&score=" + current_score + "&difficulty=" + difficulty;
+        console.log(params)
+        xhr_post.open("POST", "https://www.wai-not.be/api/save_score");
+        xhr_post.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr_post.addEventListener("load", function () {
+          console.log(xhr_post.responseText);
+        });
+        xhr_post.send(params);
+      })
+    }
+    else {
+      console.log('not signed in');
+      return false;
+    }
   });
   xhr.send();
 }
@@ -506,7 +506,7 @@ function update_score() {
 function get_score(difficulty) {
   return new Promise((resolve) => {
     var xhr_save = new XMLHttpRequest();
-    xhr_save.open('GET', 'https://www.wai-not.be/api/top_scores?game=test&difficulty=' + difficulty);
+    xhr_save.open('GET', 'https://www.wai-not.be/api/top_scores?game=tangram&difficulty=' + difficulty);
     xhr_save.addEventListener("load", function () {
       obj = JSON.parse(xhr_save.responseText).records;
       for (let user of Object.entries(obj)) {
