@@ -65,6 +65,9 @@ for (let i = 0; i < AANTAL; i++) {
 //kleinere zijdes voor normal en easy
 var solution_zijde = zijde - 5;
 var z_solution_vierkant = solution_zijde / (2 * Math.sqrt(2))
+
+//HARD DIFFICULTY
+
 //schildpad
 hard[0].push({ x: 748 * scale_factor, y: 263 * scale_factor, width: z_vierkant, height: z_vierkant, rotation: 45, type: 'square', solved: false, level: 'hard', name: "schildpad"});
 hard[0].push({ x: 813 * scale_factor, y: 145 * scale_factor, width: zijde / 2, height: z_vierkant / Math.sqrt(2), rotation: 45, type: 'parallel', hardved: false, level: 'hard' });
@@ -75,6 +78,7 @@ hard[0].push({ x: 975 * scale_factor, y: 217 * scale_factor, width: zijde / 2, h
 hard[0].push({ x: 1104 * scale_factor, y: 156 * scale_factor, width: zijde / 2, height: zijde / 2, rotation: 315, type: 'med_triangle', hardved: false, level: 'hard' });
 hard[0].push({ x: 1153 * scale_factor, y: 335 * scale_factor, width: zijde / 4, height: zijde / 2, rotation: 90, type: 'small_triangle', hardved: false, level: 'hard' });
 hard[0].push({ x: 895 * scale_factor, y: 388 * scale_factor, width: zijde / 4, height: zijde / 2, rotation: 180, type: 'small_triangle', solved: false, level: 'hard' });
+
 //kat
 hard[1].push({ x: 871 * scale_factor, y: 188 * scale_factor, width: z_vierkant, height: z_vierkant, rotation: 45, type: 'square', hardved: false, level: 'hard', name: "kat"});
 hard[1].push({ x: 1168 * scale_factor, y: 576 * scale_factor, width: zijde / 2, height: z_vierkant / Math.sqrt(2), rotation: 0, type: 'parallel', hardved: false, level: 'hard' });
@@ -83,6 +87,17 @@ hard[1].push({ x: 945 * scale_factor, y: 293 * scale_factor, width: zijde / 2, h
 hard[1].push({ x: 811 * scale_factor, y: 350 * scale_factor, width: zijde / 2, height: zijde / 2, rotation: 225, type: 'med_triangle', hardved: false, level: 'hard' });
 hard[1].push({ x: 849 * scale_factor, y: 93 * scale_factor, width: zijde / 4, height: zijde / 2, rotation: 0, type: 'small_triangle', hardved: false, level: 'hard' });
 hard[1].push({ x: 949 * scale_factor, y: 92 * scale_factor, width: zijde / 4, height: zijde / 2, rotation: 180, type: 'small_triangle', hardved: false, level: 'hard' });
+
+//konijn
+hard[2].push({ x: 1093 * scale_factor, y: 168 * scale_factor, width: z_vierkant, height: z_vierkant, rotation: 45, type: 'square', hardved: false, level: 'hard', name: "kat"});
+hard[2].push({ x: 1129 * scale_factor, y: 104 * scale_factor, width: zijde / 2, height: z_vierkant / Math.sqrt(2), rotation: 90, type: 'parallel', hardved: false, level: 'hard' });
+hard[2].push({ x: 993 * scale_factor, y: 298 * scale_factor, width: zijde / 2, height: zijde, rotation: 135, type: 'big_triangle', hardved: false, level: 'hard' });
+hard[2].push({ x: 1012 * scale_factor, y: 203 * scale_factor, width: zijde / 2, height: zijde, rotation: 180, type: 'big_triangle', hardved: false, level: 'hard' });
+hard[2].push({ x: 1046 * scale_factor, y: 236 * scale_factor, width: zijde / 2, height: zijde / 2, rotation: 180, type: 'med_triangle', hardved: false, level: 'hard' });
+hard[2].push({ x: 1138 * scale_factor, y: 276 * scale_factor, width: zijde / 4, height: zijde / 2, rotation: 315, type: 'small_triangle', hardved: false, level: 'hard' });
+hard[2].push({ x: 1209 * scale_factor, y: 130 * scale_factor, width: zijde / 4, height: zijde / 2, rotation: 45, type: 'small_triangle', hardved: false, level: 'hard' });
+
+//NORMAL DIFFICULTY
 
 //vliegtuig
 normal[0].push({ x: 823 * scale_factor, y: 427 * scale_factor, width: z_solution_vierkant, height: z_solution_vierkant, rotation: 0, type: 'square', solved: false, level: 'medium', name: "vliegtuig" });
@@ -101,6 +116,8 @@ normal[1].push({ x: 898 * scale_factor, y: 312 * scale_factor, width: solution_z
 normal[1].push({ x: 744.97 * scale_factor, y: 305 * scale_factor, width: solution_zijde / 2, height: solution_zijde / 2, rotation: 315, type: 'med_triangle', solved: false });
 normal[1].push({ x: 906 * scale_factor, y: 70 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 135, type: 'small_triangle', solved: false });
 normal[1].push({ x: 836 * scale_factor, y: 70 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 45, type: 'small_triangle', solved: false });
+
+//EASY DIFFICULTY
 
 //vormen
 easy[0].push({ x: 977 * scale_factor, y: 131 * scale_factor, width: z_solution_vierkant, height: z_solution_vierkant, rotation: 45, type: 'square', solved: false, level: 'easy', name: "vormen" });
