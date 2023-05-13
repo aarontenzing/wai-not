@@ -119,7 +119,7 @@ normal[1].push({ x: 836 * scale_factor, y: 70 * scale_factor, width: solution_zi
 
 //EASY DIFFICULTY
 
-//vormen
+//vormen      let op volgorde !!!
 easy[0].push({ x: 977 * scale_factor, y: 131 * scale_factor, width: z_solution_vierkant, height: z_solution_vierkant, rotation: 45, type: 'square', solved: false, level: 'easy', name: "vormen" });
 easy[0].push({ x: 966 * scale_factor, y: 525 * scale_factor, width: solution_zijde / 2, height: z_solution_vierkant / Math.sqrt(2), rotation: 0, type: 'parallel', solved: false, level: 'easy' });
 easy[0].push({ x: 847 * scale_factor, y: 264 * scale_factor, width: solution_zijde / 2, height: solution_zijde, rotation: 45, type: 'big_triangle', solved: false, level: 'easy' });
@@ -129,13 +129,19 @@ easy[0].push({ x: 831 * scale_factor, y: 504 * scale_factor, width: solution_zij
 easy[0].push({ x: 1130 * scale_factor, y: 502 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 135, type: 'small_triangle', solved: false, level: 'easy' });
 
 //boot
-easy[1].push({ x: 1386 * scale_factor, y: 616 * scale_factor, width: solution_zijde / 2, height: solution_zijde / 2, rotation: 135, type: 'med_triangle', solved: false, level: 'easy' });
-easy[1].push({ x: 1531 * scale_factor, y: 627 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 45, type: 'small_triangle', solved: false, level: 'easy' });
 easy[1].push({ x: 1591 * scale_factor, y: 632 * scale_factor, width: z_solution_vierkant, height: z_solution_vierkant, rotation: 0, type: 'square', solved: false, level: 'easy', name: "vormen" });
-easy[1].push({ x: 1708 * scale_factor, y: 593 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 225, type: 'small_triangle', solved: false, level: 'easy' });
 easy[1].push({ x: 1341 * scale_factor, y: 647 * scale_factor, width: solution_zijde / 2, height: z_solution_vierkant / Math.sqrt(2), rotation: 45, type: 'parallel', solved: false, level: 'easy' });
 easy[1].push({ x: 1429 * scale_factor, y: 410 * scale_factor, width: solution_zijde / 2, height: solution_zijde, rotation: 45, type: 'big_triangle', solved: false, level: 'easy' });
 easy[1].push({ x: 1571 * scale_factor, y: 412 * scale_factor, width: solution_zijde / 2, height: solution_zijde, rotation: 135, type: 'big_triangle', solved: false, level: 'easy' });
+easy[1].push({ x: 1386 * scale_factor, y: 616 * scale_factor, width: solution_zijde / 2, height: solution_zijde / 2, rotation: 135, type: 'med_triangle', solved: false, level: 'easy' });
+easy[1].push({ x: 1531 * scale_factor, y: 627 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 45, type: 'small_triangle', solved: false, level: 'easy' });
+easy[1].push({ x: 1708 * scale_factor, y: 593 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 225, type: 'small_triangle', solved: false, level: 'easy' });
+
+
+for (let i = 0; i < 7; i++) {
+  easy[1][i].x = easy[1][i].x - 300;
+  easy[1][i].y = easy[1][i].y - 50;
+}
 
 
 let solutions = [];
