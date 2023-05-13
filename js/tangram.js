@@ -95,7 +95,7 @@ hard[2].push({ x: 839 * scale_factor, y: 480 * scale_factor, width: zijde / 2, h
 hard[2].push({ x: 868 * scale_factor, y: 338 * scale_factor, width: zijde / 2, height: zijde, rotation: 180, type: 'big_triangle', hardved: false, level: 'hard' });
 hard[2].push({ x: 917 * scale_factor, y: 389 * scale_factor, width: zijde / 2, height: zijde / 2, rotation: 180, type: 'med_triangle', hardved: false, level: 'hard' });
 hard[2].push({ x: 1158 * scale_factor, y: 229 * scale_factor, width: zijde / 4, height: zijde / 2, rotation: 45, type: 'small_triangle', hardved: false, level: 'hard' });
-hard[2].push({ x: 1012 * scale_factor, y: 449 * scale_factor, width: zijde / 4, height: zijde / 2, rotation: 315, type: 'small_triangle', hardved: false, level: 'hard' });
+hard[2].push({ x: 1056 * scale_factor, y: 449 * scale_factor, width: zijde / 4, height: zijde / 2, rotation: 315, type: 'small_triangle', hardved: false, level: 'hard' });
 
 //NORMAL DIFFICULTY
 
