@@ -162,8 +162,7 @@ for (let i = 0; i < 7; i++) {
   hard[3][i].x = hard[3][i].x - 300;
   hard[3][i].y = hard[3][i].y - 50;
 
-  normal[2][i].x = normal[2][i].x - 300;
-  normal[2][i].y = normal[2][i].y - 50;
+  normal[2][i].x = normal[2][i].x - 150;
 
   easy[1][i].x = easy[1][i].x - 300;
   easy[1][i].y = easy[1][i].y - 50;
