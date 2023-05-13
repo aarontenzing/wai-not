@@ -128,6 +128,16 @@ easy[0].push({ x: 911 * scale_factor, y: 628 * scale_factor, width: solution_zij
 easy[0].push({ x: 831 * scale_factor, y: 504 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 45, type: 'small_triangle', solved: false, level: 'easy' });
 easy[0].push({ x: 1130 * scale_factor, y: 502 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 135, type: 'small_triangle', solved: false, level: 'easy' });
 
+//boot
+easy[1].push({ x: 1386 * scale_factor, y: 616 * scale_factor, width: solution_zijde / 2, height: solution_zijde / 2, rotation: 135, type: 'med_triangle', solved: false, level: 'easy' });
+easy[1].push({ x: 1531 * scale_factor, y: 627 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 45, type: 'small_triangle', solved: false, level: 'easy' });
+easy[1].push({ x: 1591 * scale_factor, y: 632 * scale_factor, width: z_solution_vierkant, height: z_solution_vierkant, rotation: 0, type: 'square', solved: false, level: 'easy', name: "vormen" });
+easy[1].push({ x: 1708 * scale_factor, y: 593 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 225, type: 'small_triangle', solved: false, level: 'easy' });
+easy[1].push({ x: 1341 * scale_factor, y: 647 * scale_factor, width: solution_zijde / 2, height: z_solution_vierkant / Math.sqrt(2), rotation: 45, type: 'parallel', solved: false, level: 'easy' });
+easy[1].push({ x: 1429 * scale_factor, y: 410 * scale_factor, width: solution_zijde / 2, height: solution_zijde, rotation: 45, type: 'big_triangle', solved: false, level: 'easy' });
+easy[1].push({ x: 1571 * scale_factor, y: 412 * scale_factor, width: solution_zijde / 2, height: solution_zijde, rotation: 135, type: 'big_triangle', solved: false, level: 'easy' });
+
+
 let solutions = [];
 
 let sound1 = new Audio('solved.mp3');
@@ -533,7 +543,7 @@ function chose_diff(diff) {   // oproepen als de pagina geladen wordt (je komt d
         solutions = hard;
         document.getElementById("puzzel0").innerHTML = '<img class="image" src="svg/schildpad_nietklaar.PNG" >';
         document.getElementById("puzzel1").innerHTML = '<img class="image" src="svg/kat.svg" >';
-        document.getElementById("puzzel2").innerHTML = '<img class="image" src="svg/kat.svg" >';
+        document.getElementById("puzzel2").innerHTML = '<img class="image" src="svg/kat.svg" >';  // SVG van konijn
         document.getElementById("puzzel3").innerHTML = '<img class="image" src="svg/kat.svg" >';
         document.getElementById("puzzel4").innerHTML = '<img class="image" src="svg/kat.svg" >';
         document.getElementById("puzzel5").innerHTML = '<img class="image" src="svg/kat.svg" >';
@@ -551,6 +561,8 @@ function chose_diff(diff) {   // oproepen als de pagina geladen wordt (je komt d
       case "easy":
         document.getElementById("easy_button").blur();
         document.getElementById("puzzel0").innerHTML = '<img src="svg/easy1.svg" >';
+        document.getElementById("puzzel1").innerHTML = '<img src="svg/easy1.svg" >';  // SVG van boot
+
         solutions = easy;
         break;
     }
@@ -558,7 +570,7 @@ function chose_diff(diff) {   // oproepen als de pagina geladen wordt (je komt d
   document.getElementById("link0").href = 'javascript:chose_level(0)';
   document.getElementById("link1").href = 'javascript:chose_level(1)';
   document.getElementById("link2").href = 'javascript:chose_level(2)';
-  document.getElementById("link3").href = 'javascript:chose_level(4)';
+  document.getElementById("link3").href = 'javascript:chose_level(3)';
 }
 
 function chose_level(index) {
