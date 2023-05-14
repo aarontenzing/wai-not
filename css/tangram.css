@@ -538,9 +538,3 @@
 }
 
 .puzzel:hover{border-color:rgb(255, 0, 0);}
-
-#boodschap{
-  text-align: center;
-  font-family: "varela", "Arial", sans-serif;
-  color: #ffffff;
-}
