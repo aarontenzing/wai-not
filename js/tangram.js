@@ -101,9 +101,9 @@ hard[2].push({ x: 1056 * scale_factor, y: 449 * scale_factor, width: zijde / 4, 
 hard[3].push({ x: 1503 * scale_factor, y: 515 * scale_factor, width: zijde / 2, height: z_vierkant / Math.sqrt(2), rotation: 135, type: 'parallel', hardved: false, level: 'hard', name: 'vis' });
 hard[3].push({ x: 1423 * scale_factor, y: 399 * scale_factor, width: zijde / 2, height: zijde / 2, rotation: 45, type: 'med_triangle', hardved: false, level: 'hard' });
 hard[3].push({ x: 1513 * scale_factor, y: 269 * scale_factor, width: zijde / 4, height: zijde / 2, rotation: 180, type: 'small_triangle', hardved: false, level: 'hard' });
-hard[3].push({ x: 1515 * scale_factor, y: 580 * scale_factor, width: zijde / 4, height: zijde / 2, rotation: 180, type: 'small_triangle', hardved: false, level: 'hard' });
+hard[3].push({ x: 1513 * scale_factor, y: 582 * scale_factor, width: zijde / 4, height: zijde / 2, rotation: 180, type: 'small_triangle', hardved: false, level: 'hard' });
 hard[3].push({ x: 1367 * scale_factor, y: 416 * scale_factor, width: zijde / 2, height: zijde, rotation: 315, type: 'big_triangle', hardved: false, level: 'hard' });
-hard[3].push({ x: 1616 * scale_factor, y: 446 * scale_factor, width: z_vierkant, height: z_vierkant, rotation: 45, type: 'square', hardved: false, level: 'hard', name: "kat"});
+hard[3].push({ x: 1615 * scale_factor, y: 446 * scale_factor, width: z_vierkant, height: z_vierkant, rotation: 45, type: 'square', hardved: false, level: 'hard', name: "kat"});
 hard[3].push({ x: 1367 * scale_factor, y: 276 * scale_factor, width: zijde / 2, height: zijde, rotation: 45, type: 'big_triangle', hardved: false, level: 'hard' });
 
 //haai
