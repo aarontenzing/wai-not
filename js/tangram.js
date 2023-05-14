@@ -212,13 +212,22 @@ easy[2].push({ x: 1154 * scale_factor, y: 233 * scale_factor, width: solution_zi
 easy[2].push({ x: 1189 * scale_factor, y: 409 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 315, type: 'small_triangle', solved: false, level: 'easy' });
 
 //kameel
-easy[3].push({ x: 915 * scale_factor, y: 255 * scale_factor, width: z_solution_vierkant, height: z_solution_vierkant, rotation: 45, type: 'square', solved: false, level: 'easy'});
-easy[3].push({ x: 818 * scale_factor, y: 284 * scale_factor, width: solution_zijde / 2, height: z_solution_vierkant / Math.sqrt(2), rotation: 90, type: 'parallel', solved: false, level: 'easy', name: 'eend'});
+easy[3].push({ x: 915 * scale_factor, y: 255 * scale_factor, width: z_solution_vierkant, height: z_solution_vierkant, rotation: 45, type: 'square', solved: false, level: 'easy', name: 'kameel'});
+easy[3].push({ x: 818 * scale_factor, y: 284 * scale_factor, width: solution_zijde / 2, height: z_solution_vierkant / Math.sqrt(2), rotation: 90, type: 'parallel', solved: false, level: 'easy'});
 easy[3].push({ x: 894 * scale_factor, y: 311 * scale_factor, width: solution_zijde / 2, height: solution_zijde, rotation: 0, type: 'big_triangle', solved: false, level: 'easy' });
 easy[3].push({ x: 1060 * scale_factor, y: 306 * scale_factor, width: solution_zijde / 2, height: solution_zijde, rotation: 315, type: 'big_triangle', solved: false, level: 'easy' });
 easy[3].push({ x: 974 * scale_factor, y: 298 * scale_factor, width: solution_zijde / 2, height: solution_zijde / 2, rotation: 315, type: 'med_triangle', solved: false, level: 'easy' });
 easy[3].push({ x: 843 * scale_factor, y: 135 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 180, type: 'small_triangle', solved: false, level: 'easy' });
 easy[3].push({ x: 793 * scale_factor, y: 84 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 90, type: 'small_triangle', solved: false, level: 'easy' });
+
+//helikopter
+easy[4].push({ x: 1194 * scale_factor, y: 336 * scale_factor, width: z_solution_vierkant, height: z_solution_vierkant, rotation: 45, type: 'square', solved: false, level: 'easy', name: 'helikopter'});
+easy[4].push({ x: 983 * scale_factor, y: 203 * scale_factor, width: solution_zijde / 2, height: z_solution_vierkant / Math.sqrt(2), rotation: 0, type: 'parallel', solved: false, level: 'easy'});
+easy[4].push({ x: 909 * scale_factor, y: 277 * scale_factor, width: solution_zijde / 2, height: solution_zijde, rotation: 0, type: 'big_triangle', solved: false, level: 'easy' });
+easy[4].push({ x: 808 * scale_factor, y: 277 * scale_factor, width: solution_zijde / 2, height: solution_zijde, rotation: 180, type: 'big_triangle', solved: false, level: 'easy' });
+easy[4].push({ x: 701 * scale_factor, y: 193 * scale_factor, width: solution_zijde / 2, height: solution_zijde / 2, rotation: 315, type: 'med_triangle', solved: false, level: 'easy' });
+easy[4].push({ x: 1034 * scale_factor, y: 402 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 270, type: 'small_triangle', solved: false, level: 'easy' });
+easy[4].push({ x: 1113 * scale_factor, y: 378 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 90, type: 'small_triangle', solved: false, level: 'easy' });
 
 
 //  Correctie positionering oplossing
@@ -582,7 +591,7 @@ function update_score() {
       console.log('signed in');
       let current_score;
       get_score(difficulty).then((score) => {
-        current_score = score.padEnd(8, '0');
+        current_score = score;
         console.log("success: " + current_score);
         console.log(current_score[level_index]);
         current_score = current_score.slice(0, level_index) + "1" + current_score.slice(level_index + 1);
@@ -619,34 +628,23 @@ function get_score(difficulty) {
           resolve(user[1].score);
         }
       }
-      resolve("0")
+      resolve("0".padEnd(8, '0'))
     });
     xhr_save.send();
   });
 }
-
-
 
 function chose_diff(diff) {   // oproepen als de pagina geladen wordt (je komt de eerste keer op de pagina)
 
   document.getElementById("start").style.visibility = "hidden";
   document.getElementById("tiles").style.visibility = "visible";
   document.getElementById("terug").style.visibility = "visible";
-
+  let difficulty;
     switch (diff) {
       case "hard":
-        document.getElementById("hard_button").blur();
         solutions = hard;
-        document.getElementById("puzzel0").innerHTML = '<img class="image" src="png/schildpad.png" >';
-        document.getElementById("puzzel1").innerHTML = '<img class="image" src="png/kat.png" >';
-        document.getElementById("puzzel2").innerHTML = '<img class="image" src="png/konijn.png" >';  
-        document.getElementById("puzzel3").innerHTML = '<img class="image" src="png/vis.png" >';  
-        /*
-        document.getElementById("puzzel4").innerHTML = '<img class="image" src="svg/kat.svg" >';
-        document.getElementById("puzzel5").innerHTML = '<img class="image" src="svg/kat.svg" >';
-        document.getElementById("puzzel6").innerHTML = '<img class="image" src="svg/kat.svg" >';
-        document.getElementById("puzzel7").innerHTML = '<img class="image" src="svg/kat.svg" >';
-        */
+        document.getElementById("hard_button").blur();
+        difficulty = 2;
         break;
   
       case "normal":
@@ -662,19 +660,28 @@ function chose_diff(diff) {   // oproepen als de pagina geladen wordt (je komt d
         document.getElementById("puzzel6").innerHTML = '<img class="image" src="png/leeuw.png" >';
         document.getElementById("puzzel7").innerHTML = '<img class="image" src="png/paard.png" >';
 
+        difficulty = 1;
 
         break;
   
       case "easy":
         document.getElementById("easy_button").blur();
-        document.getElementById("puzzel0").innerHTML = '<img src="png/huis.png" >';
-        document.getElementById("puzzel1").innerHTML = '<img src="png/boot.png" >';  // SVG van boot
-        document.getElementById("puzzel2").innerHTML = '<img src="png/eend.png" >';  
-        document.getElementById("puzzel3").innerHTML = '<img src="png/kameel.png" >';  
-
         solutions = easy;
+        difficulty = 0;
         break;
     }
+    for(let i = 0; i<4; i++){
+      console.log(solutions.length);
+      document.getElementById("puzzel"+i).innerHTML ='<img class="image" src=png/'+solutions[i][0].name +'.png >'
+    }
+    get_score(difficulty).then((score)=>{
+      for(let i = 0; i<score.length; i++){
+        score = "0100101"
+        if(score[i] ==1){
+          document.getElementById("puzzel"+i).innerHTML ='<img class="image" src=png/'+solutions[i][0].name +'_solved.png >'
+        }
+      }
+    });
 
   document.getElementById("link0").href = 'javascript:chose_level(0)';
   document.getElementById("link1").href = 'javascript:chose_level(1)';
