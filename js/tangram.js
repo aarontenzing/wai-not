@@ -184,6 +184,15 @@ easy[3].push({ x: 974 * scale_factor, y: 298 * scale_factor, width: solution_zij
 easy[3].push({ x: 843 * scale_factor, y: 135 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 180, type: 'small_triangle', solved: false, level: 'easy' });
 easy[3].push({ x: 793 * scale_factor, y: 84 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 90, type: 'small_triangle', solved: false, level: 'easy' });
 
+//helikopter
+easy[4].push({ x: 1194 * scale_factor, y: 336 * scale_factor, width: z_solution_vierkant, height: z_solution_vierkant, rotation: 45, type: 'square', solved: false, level: 'easy', name: 'helikopter'});
+easy[4].push({ x: 983 * scale_factor, y: 203 * scale_factor, width: solution_zijde / 2, height: z_solution_vierkant / Math.sqrt(2), rotation: 0, type: 'parallel', solved: false, level: 'easy'});
+easy[4].push({ x: 909 * scale_factor, y: 277 * scale_factor, width: solution_zijde / 2, height: solution_zijde, rotation: 0, type: 'big_triangle', solved: false, level: 'easy' });
+easy[4].push({ x: 808 * scale_factor, y: 277 * scale_factor, width: solution_zijde / 2, height: solution_zijde, rotation: 180, type: 'big_triangle', solved: false, level: 'easy' });
+easy[4].push({ x: 701 * scale_factor, y: 193 * scale_factor, width: solution_zijde / 2, height: solution_zijde / 2, rotation: 315, type: 'med_triangle', solved: false, level: 'easy' });
+easy[4].push({ x: 1034 * scale_factor, y: 402 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 270, type: 'small_triangle', solved: false, level: 'easy' });
+easy[4].push({ x: 1113 * scale_factor, y: 378 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 90, type: 'small_triangle', solved: false, level: 'easy' });
+
 
 //  Correctie positionering oplossing
 for (let i = 0; i < 7; i++) {
@@ -615,7 +624,7 @@ function chose_diff(diff) {   // oproepen als de pagina geladen wordt (je komt d
         difficulty = 0;
         break;
     }
-    for(let i = 0; i<solutions.length; i++){
+    for(let i = 0; i<4; i++){
       console.log(solutions.length);
       document.getElementById("puzzel"+i).innerHTML ='<img class="image" src=png/'+solutions[i][0].name +'.png >'
     }
@@ -632,6 +641,10 @@ function chose_diff(diff) {   // oproepen als de pagina geladen wordt (je komt d
   document.getElementById("link1").href = 'javascript:chose_level(1)';
   document.getElementById("link2").href = 'javascript:chose_level(2)';
   document.getElementById("link3").href = 'javascript:chose_level(3)';
+  document.getElementById("link4").href = 'javascript:chose_level(4)';
+  document.getElementById("link5").href = 'javascript:chose_level(5)';
+  document.getElementById("link6").href = 'javascript:chose_level(6)';
+  document.getElementById("link7").href = 'javascript:chose_level(7)';
 }
 
 function chose_level(index) {
