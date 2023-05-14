@@ -546,7 +546,7 @@ function update_score() {
       console.log('signed in');
       let current_score;
       get_score(difficulty).then((score) => {
-        current_score = score.padEnd(8, '0');
+        current_score = score;
         console.log("success: " + current_score);
         console.log(current_score[level_index]);
         current_score = current_score.slice(0, level_index) + "1" + current_score.slice(level_index + 1);
@@ -583,7 +583,7 @@ function get_score(difficulty) {
           resolve(user[1].score);
         }
       }
-      resolve("0")
+      resolve("0".padEnd(8, '0'))
     });
     xhr_save.send();
   });
@@ -634,6 +634,51 @@ function chose_diff(diff) {   // oproepen als de pagina geladen wordt (je komt d
         solutions = easy;
         break;
     }
+
+  document.getElementById("link0").href = 'javascript:chose_level(0)';
+  document.getElementById("link1").href = 'javascript:chose_level(1)';
+  document.getElementById("link2").href = 'javascript:chose_level(2)';
+  document.getElementById("link3").href = 'javascript:chose_level(3)';
+}
+
+//TESTING SOME STUFF
+function chose_diff_test(diff) {   // oproepen als de pagina geladen wordt (je komt de eerste keer op de pagina)
+
+  document.getElementById("start").style.visibility = "hidden";
+  document.getElementById("tiles").style.visibility = "visible";
+  document.getElementById("terug").style.visibility = "visible";
+  let difficulty;
+    switch (diff) {
+      case "hard":
+        solutions = hard;
+        document.getElementById("hard_button").blur();
+        difficulty = 2;
+        break;
+  
+      case "normal":
+        document.getElementById("normal_button").blur();
+        solutions = normal;
+        difficulty = 1;
+
+        break;
+  
+      case "easy":
+        document.getElementById("easy_button").blur();
+        solutions = easy;
+        difficulty = 0;
+        break;
+    }
+    get_score(difficulty).then((score)=>{
+      for(let i = 0; i<score.length; i++){
+        if(score[i] ==1){
+          document.getElementById("puzzel"+i).innerHTML ='<img class="image" src=png/'+solutions[i][0].name +'_solved.png >'
+        }
+        else{
+          document.getElementById("puzzel"+i).innerHTML ='<img class="image" src=png/'+solutions[i][0].name +'.png >'
+        }
+
+      }
+    });
 
   document.getElementById("link0").href = 'javascript:chose_level(0)';
   document.getElementById("link1").href = 'javascript:chose_level(1)';
