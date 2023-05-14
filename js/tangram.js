@@ -176,8 +176,8 @@ easy[2].push({ x: 1154 * scale_factor, y: 233 * scale_factor, width: solution_zi
 easy[2].push({ x: 1189 * scale_factor, y: 409 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 315, type: 'small_triangle', solved: false, level: 'easy' });
 
 //kameel
-easy[3].push({ x: 915 * scale_factor, y: 255 * scale_factor, width: z_solution_vierkant, height: z_solution_vierkant, rotation: 45, type: 'square', solved: false, level: 'easy'});
-easy[3].push({ x: 818 * scale_factor, y: 284 * scale_factor, width: solution_zijde / 2, height: z_solution_vierkant / Math.sqrt(2), rotation: 90, type: 'parallel', solved: false, level: 'easy', name: 'eend'});
+easy[3].push({ x: 915 * scale_factor, y: 255 * scale_factor, width: z_solution_vierkant, height: z_solution_vierkant, rotation: 45, type: 'square', solved: false, level: 'easy', name: 'kameel'});
+easy[3].push({ x: 818 * scale_factor, y: 284 * scale_factor, width: solution_zijde / 2, height: z_solution_vierkant / Math.sqrt(2), rotation: 90, type: 'parallel', solved: false, level: 'easy'});
 easy[3].push({ x: 894 * scale_factor, y: 311 * scale_factor, width: solution_zijde / 2, height: solution_zijde, rotation: 0, type: 'big_triangle', solved: false, level: 'easy' });
 easy[3].push({ x: 1060 * scale_factor, y: 306 * scale_factor, width: solution_zijde / 2, height: solution_zijde, rotation: 315, type: 'big_triangle', solved: false, level: 'easy' });
 easy[3].push({ x: 974 * scale_factor, y: 298 * scale_factor, width: solution_zijde / 2, height: solution_zijde / 2, rotation: 315, type: 'med_triangle', solved: false, level: 'easy' });
@@ -589,60 +589,7 @@ function get_score(difficulty) {
   });
 }
 
-
-
 function chose_diff(diff) {   // oproepen als de pagina geladen wordt (je komt de eerste keer op de pagina)
-
-  document.getElementById("start").style.visibility = "hidden";
-  document.getElementById("tiles").style.visibility = "visible";
-  document.getElementById("terug").style.visibility = "visible";
-
-    switch (diff) {
-      case "hard":
-        document.getElementById("hard_button").blur();
-        solutions = hard;
-        document.getElementById("puzzel0").innerHTML = '<img class="image" src="png/schildpad.png" >';
-        document.getElementById("puzzel1").innerHTML = '<img class="image" src="png/kat.png" >';
-        document.getElementById("puzzel2").innerHTML = '<img class="image" src="png/konijn.png" >';  
-        document.getElementById("puzzel3").innerHTML = '<img class="image" src="png/vis.png" >';  
-        /*
-        document.getElementById("puzzel4").innerHTML = '<img class="image" src="svg/kat.svg" >';
-        document.getElementById("puzzel5").innerHTML = '<img class="image" src="svg/kat.svg" >';
-        document.getElementById("puzzel6").innerHTML = '<img class="image" src="svg/kat.svg" >';
-        document.getElementById("puzzel7").innerHTML = '<img class="image" src="svg/kat.svg" >';
-        */
-        break;
-  
-      case "normal":
-        document.getElementById("normal_button").blur();
-        solutions = normal;
-        document.getElementById("puzzel0").innerHTML = '<img src="png/vliegtuig.png" >';
-        document.getElementById("puzzel1").innerHTML = '<img src="png/toren.png" >';
-        document.getElementById("puzzel2").innerHTML = '<img src="png/gans.png" >';  
-        document.getElementById("puzzel3").innerHTML = '<img src="png/koe.png" >';  
-
-
-        break;
-  
-      case "easy":
-        document.getElementById("easy_button").blur();
-        document.getElementById("puzzel0").innerHTML = '<img src="png/huis.png" >';
-        document.getElementById("puzzel1").innerHTML = '<img src="png/boot.png" >';  // SVG van boot
-        document.getElementById("puzzel2").innerHTML = '<img src="png/eend.png" >';  
-        document.getElementById("puzzel3").innerHTML = '<img src="png/kameel.png" >';  
-
-        solutions = easy;
-        break;
-    }
-
-  document.getElementById("link0").href = 'javascript:chose_level(0)';
-  document.getElementById("link1").href = 'javascript:chose_level(1)';
-  document.getElementById("link2").href = 'javascript:chose_level(2)';
-  document.getElementById("link3").href = 'javascript:chose_level(3)';
-}
-
-//TESTING SOME STUFF
-function chose_diff_test(diff) {   // oproepen als de pagina geladen wordt (je komt de eerste keer op de pagina)
 
   document.getElementById("start").style.visibility = "hidden";
   document.getElementById("tiles").style.visibility = "visible";
@@ -669,6 +616,7 @@ function chose_diff_test(diff) {   // oproepen als de pagina geladen wordt (je k
         break;
     }
     get_score(difficulty).then((score)=>{
+      score = "01100101"
       for(let i = 0; i<score.length; i++){
         if(score[i] ==1){
           document.getElementById("puzzel"+i).innerHTML ='<img class="image" src=png/'+solutions[i][0].name +'_solved.png >'
@@ -676,7 +624,6 @@ function chose_diff_test(diff) {   // oproepen als de pagina geladen wordt (je k
         else{
           document.getElementById("puzzel"+i).innerHTML ='<img class="image" src=png/'+solutions[i][0].name +'.png >'
         }
-
       }
     });
 
