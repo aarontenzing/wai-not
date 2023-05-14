@@ -714,18 +714,27 @@ function chose_diff(diff) {   // oproepen als de pagina geladen wordt (je komt d
   let difficulty;
     switch (diff) {
       case "hard":
-        solutions = hard;
         document.getElementById("hard_button").blur();
+        solutions = hard;
+        document.getElementById("puzzel0").innerHTML = '<img class="image" src="png/schildpad.png" >';
+        document.getElementById("puzzel1").innerHTML = '<img class="image" src="png/kat.png" >';
+        document.getElementById("puzzel2").innerHTML = '<img class="image" src="png/konijn.png" >';  
+        document.getElementById("puzzel3").innerHTML = '<img class="image" src="png/vis.png" >';  
+        
+        document.getElementById("puzzel4").innerHTML = '<img class="image" src="png/haai.png" >';
+        document.getElementById("puzzel5").innerHTML = '<img class="image" src="png/beer.png" >';
+        document.getElementById("puzzel6").innerHTML = '<img class="image" src="png/giraf.png" >';
+        document.getElementById("puzzel7").innerHTML = '<img class="image" src="png/hond.png" >';
         difficulty = 2;
         break;
   
       case "normal":
         document.getElementById("normal_button").blur();
         solutions = normal;
-        document.getElementById("puzzel0").innerHTML = '<img src="png/vliegtuig.png" >';
-        document.getElementById("puzzel1").innerHTML = '<img src="png/toren.png" >';
-        document.getElementById("puzzel2").innerHTML = '<img src="png/gans.png" >';  
-        document.getElementById("puzzel3").innerHTML = '<img src="png/koe.png" >';  
+        document.getElementById("puzzel0").innerHTML = '<img class="image" src="png/vliegtuig.png" >';
+        document.getElementById("puzzel1").innerHTML = '<img class="image" src="png/toren.png" >';
+        document.getElementById("puzzel2").innerHTML = '<img class="image" src="png/gans.png" >';  
+        document.getElementById("puzzel3").innerHTML = '<img class="image" src="png/koe.png" >';  
         
         document.getElementById("puzzel4").innerHTML = '<img class="image" src="png/kangoeroe.png" >';
         document.getElementById("puzzel5").innerHTML = '<img class="image" src="png/krab.png" >';
@@ -738,6 +747,15 @@ function chose_diff(diff) {   // oproepen als de pagina geladen wordt (je komt d
       case "easy":
         document.getElementById("easy_button").blur();
         solutions = easy;
+        document.getElementById("puzzel0").innerHTML = '<img class="image" src="png/huis.png" >';
+        document.getElementById("puzzel1").innerHTML = '<img class="image" src="png/boot.png" >';
+        document.getElementById("puzzel2").innerHTML = '<img class="image" src="png/eend.png" >';  
+        document.getElementById("puzzel3").innerHTML = '<img class="image" src="png/kameel.png" >';  
+        
+        document.getElementById("puzzel4").innerHTML = '<img class="image" src="png/helikopter.png" >';
+        document.getElementById("puzzel5").innerHTML = '<img class="image" src="png/hart.png" >';
+        document.getElementById("puzzel6").innerHTML = '<img class="image" src="png/vlinder.png" >';
+        document.getElementById("puzzel7").innerHTML = '<img class="image" src="png/boom.png" >';
         difficulty = 0;
         break;
     }
