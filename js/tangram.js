@@ -282,14 +282,14 @@ easy[6].push({ x: 776 * scale_factor, y: 337 * scale_factor, width: solution_zij
 easy[6].push({ x: 1032 * scale_factor, y: 417 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 315, type: 'small_triangle', solved: false, level: 'easy' });
 easy[6].push({ x: 1103 * scale_factor, y: 311 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 225, type: 'small_triangle', solved: false, level: 'easy' });
 
-//hart
-easy[7].push({ x: 744 * scale_factor, y: 449 * scale_factor, width: z_solution_vierkant, height: z_solution_vierkant, rotation: 45, type: 'square', solved: false, level: 'easy', name: 'hart'});
-easy[7].push({ x: 646 * scale_factor, y: 274 * scale_factor, width: solution_zijde / 2, height: z_solution_vierkant / Math.sqrt(2), rotation: 0, type: 'parallel', solved: false, level: 'easy'});
-easy[7].push({ x: 671 * scale_factor, y: 251 * scale_factor, width: solution_zijde / 2, height: solution_zijde, rotation: 90, type: 'big_triangle', solved: false, level: 'easy' });
-easy[7].push({ x: 822 * scale_factor, y: 150 * scale_factor, width: solution_zijde / 2, height: solution_zijde, rotation: 270, type: 'big_triangle', solved: false, level: 'easy' });
-easy[7].push({ x: 823 * scale_factor, y: 351 * scale_factor, width: solution_zijde / 2, height: solution_zijde / 2, rotation: 270, type: 'med_triangle', solved: false, level: 'easy' });
-easy[7].push({ x: 822 * scale_factor, y: 351 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 180, type: 'small_triangle', solved: false, level: 'easy' });
-easy[7].push({ x: 997 * scale_factor, y: 172 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 270, type: 'small_triangle', solved: false, level: 'easy' });
+//boom
+easy[7].push({ x: 968 * scale_factor, y: 553 * scale_factor, width: z_solution_vierkant, height: z_solution_vierkant, rotation: 0, type: 'square', solved: false, level: 'easy', name: 'boom'});
+easy[7].push({ x: 1091 * scale_factor, y: 358 * scale_factor, width: solution_zijde / 2, height: z_solution_vierkant / Math.sqrt(2), rotation: 45, type: 'parallel', solved: false, level: 'easy'});
+easy[7].push({ x: 898 * scale_factor, y: 333 * scale_factor, width: solution_zijde / 2, height: solution_zijde, rotation: 45, type: 'big_triangle', solved: false, level: 'easy' });
+easy[7].push({ x: 1040 * scale_factor, y: 333 * scale_factor, width: solution_zijde / 2, height: solution_zijde, rotation: 135, type: 'big_triangle', solved: false, level: 'easy' });
+easy[7].push({ x: 918 * scale_factor, y: 257 * scale_factor, width: solution_zijde / 2, height: solution_zijde / 2, rotation: 315, type: 'med_triangle', solved: false, level: 'easy' });
+easy[7].push({ x: 920 * scale_factor, y: 303 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 225, type: 'small_triangle', solved: false, level: 'easy' });
+easy[7].push({ x: 849 * scale_factor, y: 339 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 45, type: 'small_triangle', solved: false, level: 'easy' });
 
 
 //  Correctie positionering oplossing
