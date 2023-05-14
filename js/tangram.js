@@ -18,12 +18,7 @@ var scale_factor = canvas_width / abs_width;
 // Solutions
 var AANTAL = 8;
 
-let offset_x;
-let offset_y;
 
-let get_offset = function () {
-  let canvas_offsets = canvas.getBoundingClientRect();
-}
 
 //Vormen
 let shapes = [];
@@ -290,29 +285,6 @@ easy[7].push({ x: 1040 * scale_factor, y: 333 * scale_factor, width: solution_zi
 easy[7].push({ x: 918 * scale_factor, y: 257 * scale_factor, width: solution_zijde / 2, height: solution_zijde / 2, rotation: 315, type: 'med_triangle', solved: false, level: 'easy' });
 easy[7].push({ x: 920 * scale_factor, y: 303 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 225, type: 'small_triangle', solved: false, level: 'easy' });
 easy[7].push({ x: 849 * scale_factor, y: 339 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 45, type: 'small_triangle', solved: false, level: 'easy' });
-
-
-//  Correctie positionering oplossing
-for (let i = 0; i < 7; i++) {
-
-  normal[2][i].x = normal[2][i].x - 150;
-
-  //easy[1][i].x = easy[1][i].x - 550;
-  //easy[1][i].y = easy[1][i].y - 150;
-
-  hard[4][i].x = hard[4][i].x - 250;
-  hard[4][i].y = hard[4][i].y - 50;
-
-  hard[5][i].x = hard[5][i].x - 250;
-  hard[5][i].y = hard[5][i].y - 50;
-
-  hard[6][i].x = hard[6][i].x - 250;
-  hard[6][i].y = hard[6][i].y + 50;
-
-  hard[7][i].x = hard[7][i].x - 250;
-  //hard[7][i].y = hard[7][i].y;
-
-}
 
 
 let solutions = [];
