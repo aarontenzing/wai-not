@@ -615,14 +615,15 @@ function chose_diff(diff) {   // oproepen als de pagina geladen wordt (je komt d
         difficulty = 0;
         break;
     }
+    for(let i = 0; i<solutions.length; i++){
+      console.log(solutions.length);
+      document.getElementById("puzzel"+i).innerHTML ='<img class="image" src=png/'+solutions[i][0].name +'.png >'
+    }
     get_score(difficulty).then((score)=>{
-      score = "01100101"
       for(let i = 0; i<score.length; i++){
+        score = "0100101"
         if(score[i] ==1){
           document.getElementById("puzzel"+i).innerHTML ='<img class="image" src=png/'+solutions[i][0].name +'_solved.png >'
-        }
-        else{
-          document.getElementById("puzzel"+i).innerHTML ='<img class="image" src=png/'+solutions[i][0].name +'.png >'
         }
       }
     });
