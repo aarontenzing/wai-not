@@ -681,74 +681,43 @@ function chose_diff(diff) {   // oproepen als de pagina geladen wordt (je komt d
   document.getElementById("tiles").style.visibility = "visible";
   document.getElementById("terug").style.visibility = "visible";
   let difficulty;
-  switch (diff) {
-    case "hard":
-      document.getElementById("hard_button").blur();
-      solutions = hard;
-      document.getElementById("puzzel0").innerHTML = '<img class="image" src="png/schildpad.png" >';
-      document.getElementById("puzzel1").innerHTML = '<img class="image" src="png/kat.png" >';
-      document.getElementById("puzzel2").innerHTML = '<img class="image" src="png/konijn.png" >';
-      document.getElementById("puzzel3").innerHTML = '<img class="image" src="png/vis.png" >';
+    switch (diff) {
+      case "hard":
+        solutions = hard;
+        document.getElementById("hard_button").blur();
+        difficulty = 2;
+        break;
+  
+      case "normal":
+        document.getElementById("normal_button").blur();
+        solutions = normal;
+        difficulty = 1;
 
-      document.getElementById("puzzel4").innerHTML = '<img class="image" src="png/haai.png" >';
-      document.getElementById("puzzel5").innerHTML = '<img class="image" src="png/beer.png" >';
-      document.getElementById("puzzel6").innerHTML = '<img class="image" src="png/giraf.png" >';
-      document.getElementById("puzzel7").innerHTML = '<img class="image" src="png/hond.png" >';
-      difficulty = 2;
-      break;
-
-    case "normal":
-      document.getElementById("normal_button").blur();
-      solutions = normal;
-      document.getElementById("puzzel0").innerHTML = '<img class="image" src="png/vliegtuig.png" >';
-      document.getElementById("puzzel1").innerHTML = '<img class="image" src="png/toren.png" >';
-      document.getElementById("puzzel2").innerHTML = '<img class="image" src="png/gans.png" >';
-      document.getElementById("puzzel3").innerHTML = '<img class="image" src="png/koe.png" >';
-
-      document.getElementById("puzzel4").innerHTML = '<img class="image" src="png/kangoeroe.png" >';
-      document.getElementById("puzzel5").innerHTML = '<img class="image" src="png/krab.png" >';
-      document.getElementById("puzzel6").innerHTML = '<img class="image" src="png/leeuw.png" >';
-      document.getElementById("puzzel7").innerHTML = '<img class="image" src="png/paard.png" >';
-      difficulty = 1;
-
-      break;
-
-    case "easy":
-      document.getElementById("easy_button").blur();
-      solutions = easy;
-      document.getElementById("puzzel0").innerHTML = '<img class="image" src="png/huis.png" >';
-      document.getElementById("puzzel1").innerHTML = '<img class="image" src="png/boot.png" >';
-      document.getElementById("puzzel2").innerHTML = '<img class="image" src="png/eend.png" >';
-      document.getElementById("puzzel3").innerHTML = '<img class="image" src="png/kameel.png" >';
-
-      document.getElementById("puzzel4").innerHTML = '<img class="image" src="png/helikopter.png" >';
-      document.getElementById("puzzel5").innerHTML = '<img class="image" src="png/hart.png" >';
-      document.getElementById("puzzel6").innerHTML = '<img class="image" src="png/vlinder.png" >';
-      document.getElementById("puzzel7").innerHTML = '<img class="image" src="png/boom.png" >';
-      difficulty = 0;
-      break;
-  }
-  for (let i = 0; i < 4; i++) {
-    console.log(solutions.length);
-    document.getElementById("puzzel" + i).innerHTML = '<img class="image" src=png/' + solutions[i][0].name + '.png >'
-  }
-  get_score(difficulty).then((score) => {
-    for (let i = 0; i < score.length; i++) {
-      score = "0100101"
-      if (score[i] == 1) {
-        document.getElementById("puzzel" + i).innerHTML = '<img class="image" src=png/' + solutions[i][0].name + '_solved.png >'
-      }
+        break;
+  
+      case "easy":
+        document.getElementById("easy_button").blur();
+        solutions = easy;
+        difficulty = 0;
+        break;
     }
-  });
+    for(let i = 0; i<solutions.length; i++){
+      console.log(solutions.length);
+      document.getElementById("puzzel"+i).innerHTML ='<img class="image" src=png/'+solutions[i][0].name +'.png >'
+    }
+    get_score(difficulty).then((score)=>{
+      for(let i = 0; i<score.length; i++){
+        score = "0100101"
+        if(score[i] ==1){
+          document.getElementById("puzzel"+i).innerHTML ='<img class="image" src=png/'+solutions[i][0].name +'_solved.png >'
+        }
+      }
+    });
 
   document.getElementById("link0").href = 'javascript:chose_level(0)';
   document.getElementById("link1").href = 'javascript:chose_level(1)';
   document.getElementById("link2").href = 'javascript:chose_level(2)';
   document.getElementById("link3").href = 'javascript:chose_level(3)';
-  document.getElementById("link4").href = 'javascript:chose_level(4)';
-  document.getElementById("link5").href = 'javascript:chose_level(5)';
-  document.getElementById("link6").href = 'javascript:chose_level(6)';
-  document.getElementById("link7").href = 'javascript:chose_level(7)';
 }
 
 function chose_level(index) {
