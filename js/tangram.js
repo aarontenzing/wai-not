@@ -89,12 +89,12 @@ hard[1].push({ x: 849 * scale_factor, y: 93 * scale_factor, width: zijde / 4, he
 hard[1].push({ x: 949 * scale_factor, y: 92 * scale_factor, width: zijde / 4, height: zijde / 2, rotation: 180, type: 'small_triangle', solved: false, level: 'hard' });
 
 //konijn
-hard[2].push({ x: 989 * scale_factor, y: 286 * scale_factor, width: z_vierkant, height: z_vierkant, rotation: 45, type: 'square', solved: false, level: 'hard', name: 'konijn'});
-hard[2].push({ x: 1041 * scale_factor, y: 189 * scale_factor, width: zijde / 2, height: z_vierkant / Math.sqrt(2), rotation: 90, type: 'parallel', solved: false, level: 'hard' });
-hard[2].push({ x: 839 * scale_factor, y: 480 * scale_factor, width: zijde / 2, height: zijde, rotation: 135, type: 'big_triangle', solved: false, level: 'hard' });
+hard[2].push({ x: 988 * scale_factor, y: 287 * scale_factor, width: z_vierkant, height: z_vierkant, rotation: 45, type: 'square', solved: false, level: 'hard', name: 'konijn'});
+hard[2].push({ x: 1040 * scale_factor, y: 190 * scale_factor, width: zijde / 2, height: z_vierkant / Math.sqrt(2), rotation: 90, type: 'parallel', solved: false, level: 'hard' });
+hard[2].push({ x: 840 * scale_factor, y: 480 * scale_factor, width: zijde / 2, height: zijde, rotation: 135, type: 'big_triangle', solved: false, level: 'hard' });
 hard[2].push({ x: 868 * scale_factor, y: 338 * scale_factor, width: zijde / 2, height: zijde, rotation: 180, type: 'big_triangle', solved: false, level: 'hard' });
 hard[2].push({ x: 917 * scale_factor, y: 389 * scale_factor, width: zijde / 2, height: zijde / 2, rotation: 180, type: 'med_triangle', solved: false, level: 'hard' });
-hard[2].push({ x: 1158 * scale_factor, y: 229 * scale_factor, width: zijde / 4, height: zijde / 2, rotation: 45, type: 'small_triangle', solved: false, level: 'hard' });
+hard[2].push({ x: 1159 * scale_factor, y: 230 * scale_factor, width: zijde / 4, height: zijde / 2, rotation: 45, type: 'small_triangle', solved: false, level: 'hard' });
 hard[2].push({ x: 1056 * scale_factor, y: 449 * scale_factor, width: zijde / 4, height: zijde / 2, rotation: 315, type: 'small_triangle', solved: false, level: 'hard' });
 
 //vis
