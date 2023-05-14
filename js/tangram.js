@@ -81,7 +81,7 @@ hard[0].push({ x: 895 * scale_factor, y: 388 * scale_factor, width: zijde / 4, h
 
 //kat
 hard[1].push({ x: 871 * scale_factor, y: 188 * scale_factor, width: z_vierkant, height: z_vierkant, rotation: 45, type: 'square', solved: false, level: 'hard', name: "kat"});
-hard[1].push({ x: 1168 * scale_factor, y: 576 * scale_factor, width: zijde / 2, height: z_vierkant / Math.sqrt(2), rotation: 0, type: 'parallel', solved: false, level: 'hard' });
+hard[1].push({ x: 1169 * scale_factor, y: 579 * scale_factor, width: zijde / 2, height: z_vierkant / Math.sqrt(2), rotation: 0, type: 'parallel', solved: false, level: 'hard' });
 hard[1].push({ x: 975 * scale_factor, y: 433 * scale_factor, width: zijde / 2, height: zijde, rotation: 45, type: 'big_triangle', solved: false, level: 'hard' });
 hard[1].push({ x: 945 * scale_factor, y: 293 * scale_factor, width: zijde / 2, height: zijde, rotation: 0, type: 'big_triangle', solved: false, level: 'hard' });
 hard[1].push({ x: 811 * scale_factor, y: 350 * scale_factor, width: zijde / 2, height: zijde / 2, rotation: 225, type: 'med_triangle', solved: false, level: 'hard' });
@@ -176,8 +176,8 @@ easy[2].push({ x: 1154 * scale_factor, y: 233 * scale_factor, width: solution_zi
 easy[2].push({ x: 1189 * scale_factor, y: 409 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 315, type: 'small_triangle', solved: false, level: 'easy' });
 
 //kameel
-easy[3].push({ x: 818 * scale_factor, y: 284 * scale_factor, width: solution_zijde / 2, height: z_solution_vierkant / Math.sqrt(2), rotation: 90, type: 'parallel', solved: false, level: 'easy', name: 'eend'});
 easy[3].push({ x: 915 * scale_factor, y: 255 * scale_factor, width: z_solution_vierkant, height: z_solution_vierkant, rotation: 45, type: 'square', solved: false, level: 'easy'});
+easy[3].push({ x: 818 * scale_factor, y: 284 * scale_factor, width: solution_zijde / 2, height: z_solution_vierkant / Math.sqrt(2), rotation: 90, type: 'parallel', solved: false, level: 'easy', name: 'eend'});
 easy[3].push({ x: 894 * scale_factor, y: 311 * scale_factor, width: solution_zijde / 2, height: solution_zijde, rotation: 0, type: 'big_triangle', solved: false, level: 'easy' });
 easy[3].push({ x: 1060 * scale_factor, y: 306 * scale_factor, width: solution_zijde / 2, height: solution_zijde, rotation: 315, type: 'big_triangle', solved: false, level: 'easy' });
 easy[3].push({ x: 974 * scale_factor, y: 298 * scale_factor, width: solution_zijde / 2, height: solution_zijde / 2, rotation: 315, type: 'med_triangle', solved: false, level: 'easy' });
