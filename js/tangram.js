@@ -85,8 +85,8 @@ hard[1].push({ x: 1169 * scale_factor, y: 579 * scale_factor, width: zijde / 2, 
 hard[1].push({ x: 975 * scale_factor, y: 433 * scale_factor, width: zijde / 2, height: zijde, rotation: 45, type: 'big_triangle', solved: false, level: 'hard' });
 hard[1].push({ x: 945 * scale_factor, y: 293 * scale_factor, width: zijde / 2, height: zijde, rotation: 0, type: 'big_triangle', solved: false, level: 'hard' });
 hard[1].push({ x: 811 * scale_factor, y: 350 * scale_factor, width: zijde / 2, height: zijde / 2, rotation: 225, type: 'med_triangle', solved: false, level: 'hard' });
-hard[1].push({ x: 850 * scale_factor, y: 93 * scale_factor, width: zijde / 4, height: zijde / 2, rotation: 0, type: 'small_triangle', solved: false, level: 'hard' });
-hard[1].push({ x: 950 * scale_factor, y: 92 * scale_factor, width: zijde / 4, height: zijde / 2, rotation: 180, type: 'small_triangle', solved: false, level: 'hard' });
+hard[1].push({ x: 850 * scale_factor, y: 92 * scale_factor, width: zijde / 4, height: zijde / 2, rotation: 0, type: 'small_triangle', solved: false, level: 'hard' });
+hard[1].push({ x: 950 * scale_factor, y: 92  * scale_factor, width: zijde / 4, height: zijde / 2, rotation: 180, type: 'small_triangle', solved: false, level: 'hard' });
 
 //konijn
 hard[2].push({ x: 988 * scale_factor, y: 287 * scale_factor, width: z_vierkant, height: z_vierkant, rotation: 45, type: 'square', solved: false, level: 'hard', name: 'konijn'});
