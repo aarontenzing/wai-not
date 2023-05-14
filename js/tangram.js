@@ -30,7 +30,6 @@ let dx;
 let dy;
 let level_index
 
-
 var zijde = 300 * scale_factor;
 var z_vierkant = zijde / (2 * Math.sqrt(2))
 
@@ -52,7 +51,6 @@ for (let i = 0; i < AANTAL; i++) {
   normal.push([]);
   hard.push([]);
 }
-
 
 //kleinere zijdes voor normal en easy
 var solution_zijde = zijde - 5;
@@ -590,7 +588,6 @@ canvas.addEventListener("touchmove", touch_move);
 canvas.addEventListener("touchend", mouse_touch_up);
 
 // Databank gedeelte
-
 const PAGINAS = 1;
 const PUZZELS = 8;
 
@@ -681,49 +678,43 @@ function chose_diff(diff) {   // oproepen als de pagina geladen wordt (je komt d
   document.getElementById("tiles").style.visibility = "visible";
   document.getElementById("terug").style.visibility = "visible";
   let difficulty;
-    switch (diff) {
-      case "hard":
-        solutions = hard;
-        document.getElementById("hard_button").blur();
-        difficulty = 2;
-        break;
-  
-      case "normal":
-        document.getElementById("normal_button").blur();
-        solutions = normal;
-        difficulty = 1;
+  switch (diff) {
+    case "hard":
+      solutions = hard;
+      document.getElementById("hard_button").blur();
+      difficulty = 2;
+      break;
 
-        break;
-  
-      case "easy":
-        document.getElementById("easy_button").blur();
-        solutions = easy;
-        difficulty = 0;
-        break;
-    }
-    for(let i = 0; i<solutions.length; i++){
-      console.log(solutions.length);
-      document.getElementById("puzzel"+i).innerHTML ='<img class="image" src=png/'+solutions[i][0].name +'.png >'
-    }
-    get_score(difficulty).then((score)=>{
-      for(let i = 0; i<score.length; i++){
-        score = "0100101"
-        if(score[i] ==1){
-          document.getElementById("puzzel"+i).innerHTML ='<img class="image" src=png/'+solutions[i][0].name +'_solved.png >'
-        }
+    case "normal":
+      document.getElementById("normal_button").blur();
+      solutions = normal;
+      difficulty = 1;
+
+      break;
+
+    case "easy":
+      document.getElementById("easy_button").blur();
+      solutions = easy;
+      difficulty = 0;
+      break;
+  }
+  for (let i = 0; i < AANTAL; i++) {
+    document.getElementById("link"+i).href = 'javascript:chose_level('+i+')';
+    document.getElementById("puzzel" + i).innerHTML = '<img class="image" src=png/' + solutions[i][0].name + '.png >'
+  }
+  get_score(difficulty).then((score) => {
+    for (let i = 0; i < score.length; i++) {
+      score = "0100101"
+      if (score[i] == 1) {
+        document.getElementById("puzzel" + i).innerHTML = '<img class="image" src=png/' + solutions[i][0].name + '_solved.png >'
       }
-    });
-
-  document.getElementById("link0").href = 'javascript:chose_level(0)';
-  document.getElementById("link1").href = 'javascript:chose_level(1)';
-  document.getElementById("link2").href = 'javascript:chose_level(2)';
-  document.getElementById("link3").href = 'javascript:chose_level(3)';
+    }
+  });
 }
 
 function chose_level(index) {
   level_index = index;
 
-  //document.getElementById("tiles").style.visibility = "hidden";
   document.getElementById("tiles").style.display = "none";
   document.getElementById("terug").style.visibility = "hidden";
   document.getElementById("tiles").blur();
