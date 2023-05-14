@@ -145,6 +145,42 @@ normal[3].push({ x: 1033 * scale_factor, y: 410 * scale_factor, width: solution_
 normal[3].push({ x: 966 * scale_factor, y: 219 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 0, type: 'small_triangle',  level: 'medium' });
 normal[3].push({ x: 809 * scale_factor, y: 219 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 180, type: 'small_triangle',  level: 'medium' });
 
+//kangoeroe
+normal[4].push({ x: 928 * scale_factor, y: 473 * scale_factor, width:z_solution_vierkant, height: z_solution_vierkant, rotation: 45, type: 'square',  level: 'medium', name: 'kangoeroe' });
+normal[4].push({ x: 832 * scale_factor, y: 600 * scale_factor,width: solution_zijde / 2, height: z_solution_vierkant / Math.sqrt(2), rotation: 0, type: 'parallel',  level: 'medium' });
+normal[4].push({ x: 1071 * scale_factor, y: 231 * scale_factor,width: solution_zijde / 2, height: solution_zijde, rotation: 45, type: 'big_triangle',  level: 'medium'});
+normal[4].push({ x: 1007 * scale_factor, y: 478 * scale_factor, width: solution_zijde / 2, height: solution_zijde, rotation: 270, type: 'big_triangle',  level: 'medium' });
+normal[4].push({ x: 983 * scale_factor, y: 450 * scale_factor, width: solution_zijde / 2, height: solution_zijde / 2, rotation: 0, type: 'med_triangle',  level: 'medium' });
+normal[4].push({ x: 1199 * scale_factor, y: 133 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 135, type: 'small_triangle',  level: 'medium' });
+normal[4].push({ x: 1191 * scale_factor, y: 371 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 0, type: 'small_triangle',  level: 'medium' });
+
+//krab
+normal[5].push({ x: 922 * scale_factor, y: 322 * scale_factor, width:z_solution_vierkant, height: z_solution_vierkant, rotation: 0, type: 'square',  level: 'medium', name: 'krab' });
+normal[5].push({ x: 780 * scale_factor, y: 337 * scale_factor,width: solution_zijde / 2, height: z_solution_vierkant / Math.sqrt(2), rotation: 45, type: 'parallel',  level: 'medium' });
+normal[5].push({ x: 838 * scale_factor, y: 349 * scale_factor,width: solution_zijde / 2, height: solution_zijde, rotation: 225, type: 'big_triangle',  level: 'medium'});
+normal[5].push({ x: 1010 * scale_factor, y: 318 * scale_factor, width: solution_zijde / 2, height: solution_zijde, rotation: 45, type: 'big_triangle',  level: 'medium' });
+normal[5].push({ x: 1066 * scale_factor, y: 275 * scale_factor, width: solution_zijde / 2, height: solution_zijde / 2, rotation: 45, type: 'med_triangle',  level: 'medium' });
+normal[5].push({ x: 1070 * scale_factor, y: 499 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 315, type: 'small_triangle',  level: 'medium' });
+normal[5].push({ x: 757 * scale_factor, y: 212 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 45, type: 'small_triangle',  level: 'medium' });
+
+//leeuw
+normal[6].push({ x: 1121 * scale_factor, y: 325 * scale_factor, width:z_solution_vierkant, height: z_solution_vierkant, rotation: 45, type: 'square',  level: 'medium', name: 'leeuw' });
+normal[6].push({ x: 589 * scale_factor, y: 382 * scale_factor,width: solution_zijde / 2, height: z_solution_vierkant / Math.sqrt(2), rotation: 45, type: 'parallel',  level: 'medium' });
+normal[6].push({ x: 1050 * scale_factor, y: 156 * scale_factor,width: solution_zijde / 2, height: solution_zijde, rotation: 225, type: 'big_triangle',  level: 'medium'});
+normal[6].push({ x: 753 * scale_factor, y: 303 * scale_factor, width: solution_zijde / 2, height: solution_zijde, rotation: 225, type: 'big_triangle',  level: 'medium' });
+normal[6].push({ x: 880 * scale_factor, y: 346 * scale_factor, width: solution_zijde / 2, height: solution_zijde / 2, rotation: 90, type: 'med_triangle',  level: 'medium' });
+normal[6].push({ x: 1002 * scale_factor, y: 406 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 315, type: 'small_triangle',  level: 'medium' });
+normal[6].push({ x: 782 * scale_factor, y: 495 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 270, type: 'small_triangle',  level: 'medium' });
+
+//paard
+normal[7].push({ x: 811 * scale_factor, y: 196 * scale_factor, width:z_solution_vierkant, height: z_solution_vierkant, rotation: 0, type: 'square',  level: 'medium', name: 'paard' });
+normal[7].push({ x: 1135 * scale_factor, y: 503 * scale_factor,width: solution_zijde / 2, height: z_solution_vierkant / Math.sqrt(2), rotation: 45, type: 'parallel',  level: 'medium' });
+normal[7].push({ x: 797 * scale_factor, y: 223 * scale_factor,width: solution_zijde / 2, height: solution_zijde, rotation: 315, type: 'big_triangle',  level: 'medium'});
+normal[7].push({ x: 917 * scale_factor, y: 338 * scale_factor, width: solution_zijde / 2, height: solution_zijde, rotation: 0, type: 'big_triangle',  level: 'medium' });
+normal[7].push({ x: 711 * scale_factor, y: 111 * scale_factor, width: solution_zijde / 2, height: solution_zijde / 2, rotation: 315, type: 'med_triangle',  level: 'medium' });
+normal[7].push({ x: 856 * scale_factor, y: 551 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 45, type: 'small_triangle',  level: 'medium' });
+normal[7].push({ x: 680 * scale_factor, y: 277 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 270, type: 'small_triangle',  level: 'medium' });
+
 
 //EASY DIFFICULTY
 
@@ -620,6 +656,11 @@ function chose_diff(diff) {   // oproepen als de pagina geladen wordt (je komt d
         document.getElementById("puzzel1").innerHTML = '<img src="png/toren.png" >';
         document.getElementById("puzzel2").innerHTML = '<img src="png/gans.png" >';  
         document.getElementById("puzzel3").innerHTML = '<img src="png/koe.png" >';  
+        
+        document.getElementById("puzzel4").innerHTML = '<img class="image" src="png/kangoeroe.png" >';
+        document.getElementById("puzzel5").innerHTML = '<img class="image" src="png/krab.png" >';
+        document.getElementById("puzzel6").innerHTML = '<img class="image" src="png/leeuw.png" >';
+        document.getElementById("puzzel7").innerHTML = '<img class="image" src="png/paard.png" >';
 
 
         break;
@@ -639,6 +680,10 @@ function chose_diff(diff) {   // oproepen als de pagina geladen wordt (je komt d
   document.getElementById("link1").href = 'javascript:chose_level(1)';
   document.getElementById("link2").href = 'javascript:chose_level(2)';
   document.getElementById("link3").href = 'javascript:chose_level(3)';
+  document.getElementById("link4").href = 'javascript:chose_level(4)';
+  document.getElementById("link5").href = 'javascript:chose_level(5)';
+  document.getElementById("link6").href = 'javascript:chose_level(6)';
+  document.getElementById("link7").href = 'javascript:chose_level(7)';
 }
 
 function chose_level(index) {
