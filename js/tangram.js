@@ -704,7 +704,6 @@ function chose_diff(diff) {   // oproepen als de pagina geladen wordt (je komt d
         document.getElementById("puzzel5").innerHTML = '<img class="image" src="png/krab.png" >';
         document.getElementById("puzzel6").innerHTML = '<img class="image" src="png/leeuw.png" >';
         document.getElementById("puzzel7").innerHTML = '<img class="image" src="png/paard.png" >';
-
         difficulty = 1;
 
         break;
