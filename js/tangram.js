@@ -81,7 +81,7 @@ hard[0].push({ x: 895 * scale_factor, y: 388 * scale_factor, width: zijde / 4, h
 
 //kat
 hard[1].push({ x: 871 * scale_factor, y: 188 * scale_factor, width: z_vierkant, height: z_vierkant, rotation: 45, type: 'square', solved: false, level: 'hard', name: "kat"});
-hard[1].push({ x: 1168 * scale_factor, y: 576 * scale_factor, width: zijde / 2, height: z_vierkant / Math.sqrt(2), rotation: 0, type: 'parallel', solved: false, level: 'hard' });
+hard[1].push({ x: 1169 * scale_factor, y: 579 * scale_factor, width: zijde / 2, height: z_vierkant / Math.sqrt(2), rotation: 0, type: 'parallel', solved: false, level: 'hard' });
 hard[1].push({ x: 975 * scale_factor, y: 433 * scale_factor, width: zijde / 2, height: zijde, rotation: 45, type: 'big_triangle', solved: false, level: 'hard' });
 hard[1].push({ x: 945 * scale_factor, y: 293 * scale_factor, width: zijde / 2, height: zijde, rotation: 0, type: 'big_triangle', solved: false, level: 'hard' });
 hard[1].push({ x: 811 * scale_factor, y: 350 * scale_factor, width: zijde / 2, height: zijde / 2, rotation: 225, type: 'med_triangle', solved: false, level: 'hard' });
@@ -180,6 +180,42 @@ normal[3].push({ x: 1033 * scale_factor, y: 410 * scale_factor, width: solution_
 normal[3].push({ x: 966 * scale_factor, y: 219 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 0, type: 'small_triangle',  level: 'medium' });
 normal[3].push({ x: 809 * scale_factor, y: 219 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 180, type: 'small_triangle',  level: 'medium' });
 
+//kangoeroe
+normal[4].push({ x: 928 * scale_factor, y: 473 * scale_factor, width:z_solution_vierkant, height: z_solution_vierkant, rotation: 45, type: 'square',  level: 'medium', name: 'kangoeroe' });
+normal[4].push({ x: 832 * scale_factor, y: 600 * scale_factor,width: solution_zijde / 2, height: z_solution_vierkant / Math.sqrt(2), rotation: 0, type: 'parallel',  level: 'medium' });
+normal[4].push({ x: 1071 * scale_factor, y: 231 * scale_factor,width: solution_zijde / 2, height: solution_zijde, rotation: 45, type: 'big_triangle',  level: 'medium'});
+normal[4].push({ x: 1007 * scale_factor, y: 478 * scale_factor, width: solution_zijde / 2, height: solution_zijde, rotation: 270, type: 'big_triangle',  level: 'medium' });
+normal[4].push({ x: 983 * scale_factor, y: 450 * scale_factor, width: solution_zijde / 2, height: solution_zijde / 2, rotation: 0, type: 'med_triangle',  level: 'medium' });
+normal[4].push({ x: 1199 * scale_factor, y: 133 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 135, type: 'small_triangle',  level: 'medium' });
+normal[4].push({ x: 1191 * scale_factor, y: 371 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 0, type: 'small_triangle',  level: 'medium' });
+
+//krab
+normal[5].push({ x: 922 * scale_factor, y: 322 * scale_factor, width:z_solution_vierkant, height: z_solution_vierkant, rotation: 0, type: 'square',  level: 'medium', name: 'krab' });
+normal[5].push({ x: 780 * scale_factor, y: 337 * scale_factor,width: solution_zijde / 2, height: z_solution_vierkant / Math.sqrt(2), rotation: 45, type: 'parallel',  level: 'medium' });
+normal[5].push({ x: 838 * scale_factor, y: 349 * scale_factor,width: solution_zijde / 2, height: solution_zijde, rotation: 225, type: 'big_triangle',  level: 'medium'});
+normal[5].push({ x: 1010 * scale_factor, y: 318 * scale_factor, width: solution_zijde / 2, height: solution_zijde, rotation: 45, type: 'big_triangle',  level: 'medium' });
+normal[5].push({ x: 1066 * scale_factor, y: 275 * scale_factor, width: solution_zijde / 2, height: solution_zijde / 2, rotation: 45, type: 'med_triangle',  level: 'medium' });
+normal[5].push({ x: 1070 * scale_factor, y: 499 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 315, type: 'small_triangle',  level: 'medium' });
+normal[5].push({ x: 757 * scale_factor, y: 212 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 45, type: 'small_triangle',  level: 'medium' });
+
+//leeuw
+normal[6].push({ x: 1121 * scale_factor, y: 325 * scale_factor, width:z_solution_vierkant, height: z_solution_vierkant, rotation: 45, type: 'square',  level: 'medium', name: 'leeuw' });
+normal[6].push({ x: 589 * scale_factor, y: 382 * scale_factor,width: solution_zijde / 2, height: z_solution_vierkant / Math.sqrt(2), rotation: 45, type: 'parallel',  level: 'medium' });
+normal[6].push({ x: 1050 * scale_factor, y: 156 * scale_factor,width: solution_zijde / 2, height: solution_zijde, rotation: 225, type: 'big_triangle',  level: 'medium'});
+normal[6].push({ x: 753 * scale_factor, y: 303 * scale_factor, width: solution_zijde / 2, height: solution_zijde, rotation: 225, type: 'big_triangle',  level: 'medium' });
+normal[6].push({ x: 880 * scale_factor, y: 346 * scale_factor, width: solution_zijde / 2, height: solution_zijde / 2, rotation: 90, type: 'med_triangle',  level: 'medium' });
+normal[6].push({ x: 1002 * scale_factor, y: 406 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 315, type: 'small_triangle',  level: 'medium' });
+normal[6].push({ x: 782 * scale_factor, y: 495 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 270, type: 'small_triangle',  level: 'medium' });
+
+//paard
+normal[7].push({ x: 811 * scale_factor, y: 196 * scale_factor, width:z_solution_vierkant, height: z_solution_vierkant, rotation: 0, type: 'square',  level: 'medium', name: 'paard' });
+normal[7].push({ x: 1135 * scale_factor, y: 503 * scale_factor,width: solution_zijde / 2, height: z_solution_vierkant / Math.sqrt(2), rotation: 45, type: 'parallel',  level: 'medium' });
+normal[7].push({ x: 797 * scale_factor, y: 223 * scale_factor,width: solution_zijde / 2, height: solution_zijde, rotation: 315, type: 'big_triangle',  level: 'medium'});
+normal[7].push({ x: 917 * scale_factor, y: 338 * scale_factor, width: solution_zijde / 2, height: solution_zijde, rotation: 0, type: 'big_triangle',  level: 'medium' });
+normal[7].push({ x: 711 * scale_factor, y: 111 * scale_factor, width: solution_zijde / 2, height: solution_zijde / 2, rotation: 315, type: 'med_triangle',  level: 'medium' });
+normal[7].push({ x: 856 * scale_factor, y: 551 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 45, type: 'small_triangle',  level: 'medium' });
+normal[7].push({ x: 680 * scale_factor, y: 277 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 270, type: 'small_triangle',  level: 'medium' });
+
 
 //EASY DIFFICULTY
 
@@ -211,13 +247,22 @@ easy[2].push({ x: 1154 * scale_factor, y: 233 * scale_factor, width: solution_zi
 easy[2].push({ x: 1189 * scale_factor, y: 409 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 315, type: 'small_triangle', solved: false, level: 'easy' });
 
 //kameel
-easy[3].push({ x: 818 * scale_factor, y: 284 * scale_factor, width: solution_zijde / 2, height: z_solution_vierkant / Math.sqrt(2), rotation: 90, type: 'parallel', solved: false, level: 'easy', name: 'eend'});
-easy[3].push({ x: 915 * scale_factor, y: 255 * scale_factor, width: z_solution_vierkant, height: z_solution_vierkant, rotation: 45, type: 'square', solved: false, level: 'easy'});
+easy[3].push({ x: 915 * scale_factor, y: 255 * scale_factor, width: z_solution_vierkant, height: z_solution_vierkant, rotation: 45, type: 'square', solved: false, level: 'easy', name: 'kameel'});
+easy[3].push({ x: 818 * scale_factor, y: 284 * scale_factor, width: solution_zijde / 2, height: z_solution_vierkant / Math.sqrt(2), rotation: 90, type: 'parallel', solved: false, level: 'easy'});
 easy[3].push({ x: 894 * scale_factor, y: 311 * scale_factor, width: solution_zijde / 2, height: solution_zijde, rotation: 0, type: 'big_triangle', solved: false, level: 'easy' });
 easy[3].push({ x: 1060 * scale_factor, y: 306 * scale_factor, width: solution_zijde / 2, height: solution_zijde, rotation: 315, type: 'big_triangle', solved: false, level: 'easy' });
 easy[3].push({ x: 974 * scale_factor, y: 298 * scale_factor, width: solution_zijde / 2, height: solution_zijde / 2, rotation: 315, type: 'med_triangle', solved: false, level: 'easy' });
 easy[3].push({ x: 843 * scale_factor, y: 135 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 180, type: 'small_triangle', solved: false, level: 'easy' });
 easy[3].push({ x: 793 * scale_factor, y: 84 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 90, type: 'small_triangle', solved: false, level: 'easy' });
+
+//helikopter
+easy[4].push({ x: 1194 * scale_factor, y: 336 * scale_factor, width: z_solution_vierkant, height: z_solution_vierkant, rotation: 45, type: 'square', solved: false, level: 'easy', name: 'helikopter'});
+easy[4].push({ x: 983 * scale_factor, y: 203 * scale_factor, width: solution_zijde / 2, height: z_solution_vierkant / Math.sqrt(2), rotation: 0, type: 'parallel', solved: false, level: 'easy'});
+easy[4].push({ x: 909 * scale_factor, y: 277 * scale_factor, width: solution_zijde / 2, height: solution_zijde, rotation: 0, type: 'big_triangle', solved: false, level: 'easy' });
+easy[4].push({ x: 808 * scale_factor, y: 277 * scale_factor, width: solution_zijde / 2, height: solution_zijde, rotation: 180, type: 'big_triangle', solved: false, level: 'easy' });
+easy[4].push({ x: 701 * scale_factor, y: 193 * scale_factor, width: solution_zijde / 2, height: solution_zijde / 2, rotation: 315, type: 'med_triangle', solved: false, level: 'easy' });
+easy[4].push({ x: 1034 * scale_factor, y: 402 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 270, type: 'small_triangle', solved: false, level: 'easy' });
+easy[4].push({ x: 1113 * scale_factor, y: 378 * scale_factor, width: solution_zijde / 4, height: solution_zijde / 2, rotation: 90, type: 'small_triangle', solved: false, level: 'easy' });
 
 
 //  Correctie positionering oplossing
@@ -591,7 +636,7 @@ function update_score() {
       console.log('signed in');
       let current_score;
       get_score(difficulty).then((score) => {
-        current_score = score.padEnd(8, '0');
+        current_score = score;
         console.log("success: " + current_score);
         console.log(current_score[level_index]);
         current_score = current_score.slice(0, level_index) + "1" + current_score.slice(level_index + 1);
@@ -628,33 +673,23 @@ function get_score(difficulty) {
           resolve(user[1].score);
         }
       }
-      resolve("0")
+      resolve("0".padEnd(8, '0'))
     });
     xhr_save.send();
   });
 }
-
-
 
 function chose_diff(diff) {   // oproepen als de pagina geladen wordt (je komt de eerste keer op de pagina)
 
   document.getElementById("start").style.visibility = "hidden";
   document.getElementById("tiles").style.visibility = "visible";
   document.getElementById("terug").style.visibility = "visible";
-
+  let difficulty;
     switch (diff) {
       case "hard":
-        document.getElementById("hard_button").blur();
         solutions = hard;
-        document.getElementById("puzzel0").innerHTML = '<img class="image" src="png/schildpad.png" >';
-        document.getElementById("puzzel1").innerHTML = '<img class="image" src="png/kat.png" >';
-        document.getElementById("puzzel2").innerHTML = '<img class="image" src="png/konijn.png" >';  
-        document.getElementById("puzzel3").innerHTML = '<img class="image" src="png/vis.png" >';  
-        document.getElementById("puzzel4").innerHTML = '<img class="image" src="png/vis.png" >';  // png voor haai
-        document.getElementById("puzzel5").innerHTML = '<img class="image" src="png/vis.png" >';  // png voor beer
-        document.getElementById("puzzel6").innerHTML = '<img class="image" src="png/vis.png" >';  // png voor giraf
-        document.getElementById("puzzel7").innerHTML = '<img class="image" src="png/vis.png" >';  // png voor hond
-        
+        document.getElementById("hard_button").blur();
+        difficulty = 2;
         break;
   
       case "normal":
@@ -664,20 +699,34 @@ function chose_diff(diff) {   // oproepen als de pagina geladen wordt (je komt d
         document.getElementById("puzzel1").innerHTML = '<img src="png/toren.png" >';
         document.getElementById("puzzel2").innerHTML = '<img src="png/gans.png" >';  
         document.getElementById("puzzel3").innerHTML = '<img src="png/koe.png" >';  
+        
+        document.getElementById("puzzel4").innerHTML = '<img class="image" src="png/kangoeroe.png" >';
+        document.getElementById("puzzel5").innerHTML = '<img class="image" src="png/krab.png" >';
+        document.getElementById("puzzel6").innerHTML = '<img class="image" src="png/leeuw.png" >';
+        document.getElementById("puzzel7").innerHTML = '<img class="image" src="png/paard.png" >';
 
+        difficulty = 1;
 
         break;
   
       case "easy":
         document.getElementById("easy_button").blur();
-        document.getElementById("puzzel0").innerHTML = '<img src="png/huis.png" >';
-        document.getElementById("puzzel1").innerHTML = '<img src="png/boot.png" >';  
-        document.getElementById("puzzel2").innerHTML = '<img src="png/eend.png" >';  
-        document.getElementById("puzzel3").innerHTML = '<img src="png/kameel.png" >';  
-
         solutions = easy;
+        difficulty = 0;
         break;
     }
+    for(let i = 0; i<4; i++){
+      console.log(solutions.length);
+      document.getElementById("puzzel"+i).innerHTML ='<img class="image" src=png/'+solutions[i][0].name +'.png >'
+    }
+    get_score(difficulty).then((score)=>{
+      for(let i = 0; i<score.length; i++){
+        score = "0100101"
+        if(score[i] ==1){
+          document.getElementById("puzzel"+i).innerHTML ='<img class="image" src=png/'+solutions[i][0].name +'_solved.png >'
+        }
+      }
+    });
 
   document.getElementById("link0").href = 'javascript:chose_level(0)';
   document.getElementById("link1").href = 'javascript:chose_level(1)';
@@ -687,7 +736,6 @@ function chose_diff(diff) {   // oproepen als de pagina geladen wordt (je komt d
   document.getElementById("link5").href = 'javascript:chose_level(5)';
   document.getElementById("link6").href = 'javascript:chose_level(6)';
   document.getElementById("link7").href = 'javascript:chose_level(7)';
-
 }
 
 function chose_level(index) {
