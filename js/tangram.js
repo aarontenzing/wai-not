@@ -28,10 +28,10 @@ let positionX;
 let positionY;
 let dx;
 let dy;
-let level_index
+let level_index;
 
 var zijde = 300 * scale_factor;
-var z_vierkant = zijde / (2 * Math.sqrt(2))
+var z_vierkant = zijde / (2 * Math.sqrt(2));
 
 shapes.push({ x: 700 * scale_factor, y: 750 * scale_factor, width: z_vierkant, height: z_vierkant, rotation: 0, color: 'red', type: 'square', solved: false });
 shapes.push({ x: 1150 * scale_factor, y: 730 * scale_factor, width: zijde / 2, height: z_vierkant / Math.sqrt(2), rotation: 0, color: 'yellow', type: 'parallel', solved: false });
@@ -54,7 +54,7 @@ for (let i = 0; i < AANTAL; i++) {
 
 //kleinere zijdes voor normal en easy
 var solution_zijde = zijde - 5;
-var z_solution_vierkant = solution_zijde / (2 * Math.sqrt(2))
+var z_solution_vierkant = solution_zijde / (2 * Math.sqrt(2));
 
 //HARD DIFFICULTY
 
@@ -384,10 +384,10 @@ let touch_down = function (event) {
   //coordinates used when dragging    
   startX = positionX;
   startY = positionY;
-  set_drag(event);
+  set_drag();
 }
 
-function set_drag(event) {
+function set_drag() {
   for (i = 6; i >= 0; i--) {
     let shape = shapes[i];
     console.log(shape);
@@ -459,13 +459,13 @@ let mouse_out = function (event) {
 }
 
 let touch_move = function (event) {
-  console.log("ey o let o")
   if (!drag) {
     return;
   } else {
     event.preventDefault();
     let touchX = parseInt(event.touches[0].clientX);
     let touchY = parseInt(event.touches[0].clientY);
+
     dx = touchX - startX;
     dy = touchY - startY;
 
@@ -500,7 +500,7 @@ function move_shape(posX, posY) {
   //clear it and redraw
   change_draworder();
   draw_shapes();
-  coordinates(); // giving me the coordinates after moving shape
+  //coordinates(); // giving me the coordinates after moving shape
 
   startX = posX;
   startY = posY;
@@ -574,7 +574,7 @@ function check_finished() {
   update_score();
   let einde = document.getElementById("einde");
   document.getElementById("end_text").innerHTML = solutions[0].name;
-  einde.style.visibility = "visible"
+  einde.style.visibility = "visible";
   return true;
 }
 
@@ -588,25 +588,6 @@ canvas.addEventListener("touchmove", touch_move);
 canvas.addEventListener("touchend", mouse_touch_up);
 
 // Databank gedeelte
-const PAGINAS = 1;
-const PUZZELS = 8;
-
-var user, id, pagina, index;
-
-function pagina(click) {
-
-  switch (click) {
-
-    case "back":
-      pagina--; if (pagina < 0) { pagina = PAGINAS; }
-      break;
-
-    case "next":
-      pagina++; if (pagina > PAGINAS) { pagina = 0; }
-      break;
-
-  }
-}
 
 function update_score() {
   let difficulty;
@@ -631,12 +612,11 @@ function update_score() {
       get_score(difficulty).then((score) => {
         current_score = score;
         console.log("success: " + current_score);
-        console.log(current_score[level_index]);
+        //console.log(current_score[level_index]);
         current_score = current_score.slice(0, level_index) + "1" + current_score.slice(level_index + 1);
-        console.log(current_score);
         var xhr_post = new XMLHttpRequest();
         var params = "game=tangram&score=" + current_score + "&difficulty=" + difficulty;
-        console.log(params)
+        console.log(params);
         xhr_post.open("POST", "https://www.wai-not.be/api/save_score");
         xhr_post.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhr_post.addEventListener("load", function () {
@@ -666,7 +646,7 @@ function get_score(difficulty) {
           resolve(user[1].score);
         }
       }
-      resolve("0".padEnd(8, '0'))
+      resolve("0".padEnd(8, '0'));
     });
     xhr_save.send();
   });
@@ -700,13 +680,12 @@ function chose_diff(diff) {   // oproepen als de pagina geladen wordt (je komt d
   }
   for (let i = 0; i < AANTAL; i++) {
     document.getElementById("link"+i).href = 'javascript:chose_level('+i+')';
-    document.getElementById("puzzel" + i).innerHTML = '<img class="image" src=png/' + solutions[i][0].name + '.png >'
+    document.getElementById("puzzel" + i).innerHTML = '<img class="image" src=png/' + solutions[i][0].name + '.png >';
   }
   get_score(difficulty).then((score) => {
     for (let i = 0; i < score.length; i++) {
-      score = "0100101"
       if (score[i] == 1) {
-        document.getElementById("puzzel" + i).innerHTML = '<img class="image" src=png/' + solutions[i][0].name + '_solved.png >'
+        document.getElementById("puzzel" + i).innerHTML = '<img class="image" src=png/' + solutions[i][0].name + '_solved.png >';
       }
     }
   });
@@ -724,8 +703,7 @@ function chose_level(index) {
   if (solutions.length == 0) {
     location.reload();
   }
-  console.log(solutions)
-  console.log(solutions[0].level)
+
   if (solutions[0].level == 'easy') {
     easy_rotate();
   }
