@@ -106,6 +106,41 @@ hard[3].push({ x: 1367 * scale_factor, y: 416 * scale_factor, width: zijde / 2, 
 hard[3].push({ x: 1616 * scale_factor, y: 446 * scale_factor, width: z_vierkant, height: z_vierkant, rotation: 45, type: 'square', hardved: false, level: 'hard', name: "kat"});
 hard[3].push({ x: 1367 * scale_factor, y: 276 * scale_factor, width: zijde / 2, height: zijde, rotation: 45, type: 'big_triangle', hardved: false, level: 'hard' });
 
+//haai
+hard[4].push({ x: 1681 * scale_factor, y: 383 * scale_factor, width: zijde / 2, height: z_vierkant / Math.sqrt(2), rotation: 135, type: 'parallel', hardved: false, level: 'hard', name: 'haai' });
+hard[4].push({ x: 1442 * scale_factor, y: 343 * scale_factor, width: zijde / 2, height: zijde, rotation: 315, type: 'big_triangle', hardved: false, level: 'hard' });
+hard[4].push({ x: 1302 * scale_factor, y: 372 * scale_factor, width: zijde / 2, height: zijde, rotation: 270, type: 'big_triangle', hardved: false, level: 'hard' });
+hard[4].push({ x: 1542 * scale_factor, y: 313 * scale_factor, width: zijde / 4, height: zijde / 2, rotation: 45, type: 'small_triangle', hardved: false, level: 'hard' });
+hard[4].push({ x: 1560 * scale_factor, y: 422 * scale_factor, width: z_vierkant, height: z_vierkant, rotation: 0, type: 'square', hardved: false, level: 'hard'});
+hard[4].push({ x: 1720 * scale_factor, y: 270 * scale_factor, width: zijde / 2, height: zijde / 2, rotation: 180, type: 'med_triangle', hardved: false, level: 'hard' });
+hard[4].push({ x: 1400 * scale_factor, y: 521 * scale_factor, width: zijde / 4, height: zijde / 2, rotation: 90, type: 'small_triangle', hardved: false, level: 'hard' });
+
+//beer
+hard[5].push({ x: 1415 * scale_factor, y: 260 * scale_factor, width: zijde / 2, height: zijde, rotation: 225, type: 'big_triangle', hardved: false, level: 'hard', name: 'beer'  });
+hard[5].push({ x: 1457 * scale_factor, y: 388 * scale_factor, width: zijde / 2, height: zijde / 2, rotation: 90, type: 'med_triangle', hardved: false, level: 'hard' });
+hard[5].push({ x: 1606 * scale_factor, y: 339 * scale_factor, width: z_vierkant, height: z_vierkant, rotation: 0, type: 'square', hardved: false, level: 'hard'});
+hard[5].push({ x: 1722 * scale_factor, y: 335 * scale_factor, width: zijde / 4, height: zijde / 2, rotation: 135, type: 'small_triangle', hardved: false, level: 'hard' });
+hard[5].push({ x: 1568 * scale_factor, y: 503 * scale_factor, width: zijde / 2, height: z_vierkant / Math.sqrt(2), rotation: 45, type: 'parallel', hardved: false, level: 'hard'});
+hard[5].push({ x: 1406 * scale_factor, y: 560 * scale_factor, width: zijde / 4, height: zijde / 2, rotation: 135, type: 'small_triangle', hardved: false, level: 'hard' });
+hard[5].push({ x: 1296 * scale_factor, y: 339 * scale_factor, width: zijde / 2, height: zijde, rotation: 180, type: 'big_triangle', hardved: false, level: 'hard' });
+
+//giraf
+hard[6].push({ x: 1299 * scale_factor, y: 337 * scale_factor, width: zijde / 2, height: zijde, rotation: 180, type: 'big_triangle', hardved: false, level: 'hard', name: 'giraf'  });
+hard[6].push({ x: 1398 * scale_factor, y: 338 * scale_factor, width: zijde / 4, height: zijde / 2, rotation: 0, type: 'small_triangle', hardved: false, level: 'hard' });
+hard[6].push({ x: 1419 * scale_factor, y: 286 * scale_factor, width: z_vierkant, height: z_vierkant, rotation: 45, type: 'square', hardved: false, level: 'hard'});
+hard[6].push({ x: 1448 * scale_factor, y: 336 * scale_factor, width: zijde / 2, height: zijde, rotation: 180, type: 'big_triangle', hardved: false, level: 'hard' });
+hard[6].push({ x: 1473 * scale_factor, y: 191 * scale_factor, width: zijde / 2, height: z_vierkant / Math.sqrt(2), rotation: 90, type: 'parallel', hardved: false, level: 'hard'});
+hard[6].push({ x: 1498 * scale_factor, y: 42 * scale_factor, width: zijde / 4, height: zijde / 2, rotation: 180, type: 'small_triangle', hardved: false, level: 'hard' });
+hard[6].push({ x: 1498 * scale_factor, y: 17 * scale_factor, width: zijde / 2, height: zijde / 2, rotation: 180, type: 'med_triangle', hardved: false, level: 'hard' });
+
+//hond
+hard[7].push({ x: 1587 * scale_factor, y: 344 * scale_factor, width: zijde / 2, height: zijde, rotation: 45, type: 'big_triangle', hardved: false, level: 'hard', name: 'hond'  });
+hard[7].push({ x: 1443 * scale_factor, y: 348 * scale_factor, width: zijde / 2, height: zijde, rotation: 225, type: 'big_triangle', hardved: false, level: 'hard' });
+hard[7].push({ x: 1447 * scale_factor, y: 563 * scale_factor, width: zijde / 4, height: zijde / 2, rotation: 180, type: 'small_triangle', hardved: false, level: 'hard' });
+hard[7].push({ x: 1558 * scale_factor, y: 565 * scale_factor, width: zijde / 2, height: zijde / 2, rotation: 0, type: 'med_triangle', hardved: false, level: 'hard' });
+hard[7].push({ x: 1273 * scale_factor, y: 441 * scale_factor, width: zijde / 2, height: z_vierkant / Math.sqrt(2), rotation: 0, type: 'parallel', hardved: false, level: 'hard'});
+hard[7].push({ x: 1616 * scale_factor, y: 264 * scale_factor, width: z_vierkant, height: z_vierkant, rotation: 45, type: 'square', hardved: false, level: 'hard'});
+hard[7].push({ x: 1718 * scale_factor, y: 192 * scale_factor, width: zijde / 4, height: zijde / 2, rotation: 90, type: 'small_triangle', hardved: false, level: 'hard' });
 
 //NORMAL DIFFICULTY
 
@@ -190,6 +225,16 @@ for (let i = 0; i < 7; i++) {
 
   hard[3][i].x = hard[3][i].x - 300;
   hard[3][i].y = hard[3][i].y - 50;
+
+  hard[4][i].x = hard[4][i].x - 300;
+
+  hard[5][i].x = hard[5][i].x - 300;
+
+  hard[6][i].x = hard[6][i].x - 300;
+  hard[6][i].y = hard[6][i].y + 50;
+
+  hard[7][i].x = hard[7][i].x - 350;
+  hard[7][i].y = hard[7][i].y - 20;
 
   normal[2][i].x = normal[2][i].x - 150;
 
@@ -605,12 +650,11 @@ function chose_diff(diff) {   // oproepen als de pagina geladen wordt (je komt d
         document.getElementById("puzzel1").innerHTML = '<img class="image" src="png/kat.png" >';
         document.getElementById("puzzel2").innerHTML = '<img class="image" src="png/konijn.png" >';  
         document.getElementById("puzzel3").innerHTML = '<img class="image" src="png/vis.png" >';  
-        /*
-        document.getElementById("puzzel4").innerHTML = '<img class="image" src="svg/kat.svg" >';
-        document.getElementById("puzzel5").innerHTML = '<img class="image" src="svg/kat.svg" >';
-        document.getElementById("puzzel6").innerHTML = '<img class="image" src="svg/kat.svg" >';
-        document.getElementById("puzzel7").innerHTML = '<img class="image" src="svg/kat.svg" >';
-        */
+        document.getElementById("puzzel4").innerHTML = '<img class="image" src="png/vis.png" >';  // png voor haai
+        document.getElementById("puzzel5").innerHTML = '<img class="image" src="png/vis.png" >';  // png voor beer
+        document.getElementById("puzzel6").innerHTML = '<img class="image" src="png/vis.png" >';  // png voor giraf
+        document.getElementById("puzzel7").innerHTML = '<img class="image" src="png/vis.png" >';  // png voor hond
+        
         break;
   
       case "normal":
@@ -627,7 +671,7 @@ function chose_diff(diff) {   // oproepen als de pagina geladen wordt (je komt d
       case "easy":
         document.getElementById("easy_button").blur();
         document.getElementById("puzzel0").innerHTML = '<img src="png/huis.png" >';
-        document.getElementById("puzzel1").innerHTML = '<img src="png/boot.png" >';  // SVG van boot
+        document.getElementById("puzzel1").innerHTML = '<img src="png/boot.png" >';  
         document.getElementById("puzzel2").innerHTML = '<img src="png/eend.png" >';  
         document.getElementById("puzzel3").innerHTML = '<img src="png/kameel.png" >';  
 
@@ -639,6 +683,11 @@ function chose_diff(diff) {   // oproepen als de pagina geladen wordt (je komt d
   document.getElementById("link1").href = 'javascript:chose_level(1)';
   document.getElementById("link2").href = 'javascript:chose_level(2)';
   document.getElementById("link3").href = 'javascript:chose_level(3)';
+  document.getElementById("link4").href = 'javascript:chose_level(4)';
+  document.getElementById("link5").href = 'javascript:chose_level(5)';
+  document.getElementById("link6").href = 'javascript:chose_level(6)';
+  document.getElementById("link7").href = 'javascript:chose_level(7)';
+
 }
 
 function chose_level(index) {
